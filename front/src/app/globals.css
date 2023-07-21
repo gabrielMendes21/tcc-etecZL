@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.progress::before {
+    content: "";
+    position: absolute;
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    background-color: #FFF;
+}
