@@ -1,6 +1,3 @@
-"use client"
-
-import Header from '@/components/Header'
 import Progress from '@/components/Progress'
 import Task from '@/components/Task'
 
