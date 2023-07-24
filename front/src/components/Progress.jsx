@@ -1,3 +1,5 @@
+"use client"
+
 export default function Progress({ percentage }) {
     return (
         <div

@@ -1,3 +1,5 @@
+"use client"
+
 import Progress from '@/components/Progress'
 import Task from '@/components/Task'
 
