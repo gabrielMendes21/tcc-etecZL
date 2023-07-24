@@ -2,7 +2,7 @@ export default function Progress({ percentage }) {
     return (
         <div
           style={{
-            "background-image": `conic-gradient(#0F62FE ${percentage * 3.6}deg, #EDEDED 0deg)`
+            background: `conic-gradient(#0F62FE ${percentage * 3.6}deg, #EDEDED 0deg)`
           }} 
           className="mt-14 self-center progress w-40 h-40 bg-red-500 rounded-[50%] flex flex-col items-center justify-center before:absolute before:h-[130px] before:w-[130px] before:rounded-[50%] before:bg-white"
         >
