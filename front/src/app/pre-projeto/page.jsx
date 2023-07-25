@@ -17,7 +17,7 @@ export default function Task() {
 
             <div>
                 <h2 className="font-medium mb-4">Materiais disponíveis:</h2>
-                <div className="border-2 border-[#0F62FE] text-[#0F62FE] p-3 flex gap-2 underline">
+                <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
                     <Image />
                     Arquivo1.png
                 </div>

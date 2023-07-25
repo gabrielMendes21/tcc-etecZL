@@ -7,14 +7,14 @@ export default function CircleProgress({percentage}) {
     const dashOffset = dashArray - (dashArray * percentage) / 100
 
     return (
-        <div className='mt-14 self-center'>
+        <div>
             <svg 
                 width={circleSize}
                 height={circleSize}
                 viewBox={`0 0 ${circleSize} ${circleSize}`}
             >
                 <circle 
-                    className="circle-background"
+                    className="circle-background fill-none stroke-[#DDD]"
                     cx={circleSize / 2}
                     cy={circleSize / 2}
                     strokeWidth="15px"
@@ -22,7 +22,7 @@ export default function CircleProgress({percentage}) {
                 />
 
                 <circle 
-                    className="circle-progress"
+                    className="circle-progress fill-none stroke-highlighted "
                     cx={circleSize / 2}
                     cy={circleSize / 2}
                     strokeWidth="15px"

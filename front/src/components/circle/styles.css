@@ -1,11 +1,5 @@
-.circle-background {
-    fill: none;
-    stroke: #DDD;
-}
-
 .circle-progress {
     fill: none;
-    stroke: #0F62FE;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
