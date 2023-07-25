@@ -13,6 +13,7 @@ function SideBar({ style }) {
   const { setIsOpen } = useContext(MenuContext)
 
   return (
+    // Menu items
     <nav
       style={style}
       className="fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen"
@@ -37,11 +38,11 @@ function SideBar({ style }) {
 
 export default function Header({ hasMenu }) {
   const { isOpen, setIsOpen, handleMenu } = useContext(MenuContext)
-  // console.log(setIsOpen)
 
   return (
     <Delay>
       <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6]">
+        {/* Hamburger */}
         {hasMenu && (
           <Image
             src={isOpen ? closeHamburger : menu}
@@ -50,11 +51,14 @@ export default function Header({ hasMenu }) {
             className="absolute top-1/2 -translate-y-1/2 left-5"
           />
         )}
+
         <SideBar
           style={{
             left: isOpen ? '0' : '-100%',
           }}
         />
+
+        {/* Easy hours logo */}
         <Link href="/">
           <Image
             src={darkLogo}

@@ -5,11 +5,15 @@ export default function Task() {
   return (
     <Delay>
       <main className="px-4 space-y-10">
+        {/* Task info */}
         <div className="py-7">
           <h1 className="text-center font-medium text-xl">Pré-projeto</h1>
           <span className="block text-center">19/03/2023</span>
         </div>
+
         <hr className="border-[#C6C6C6]" />
+
+        {/* Task details */}
         <div>
           <h2 className="font-medium">Detalhes da tarefa:</h2>
           <p className="p-3 text-justify text-xs leading-relaxed">
@@ -19,6 +23,8 @@ export default function Task() {
             nesciunt quibusdam repudiandae. Assumenda, placeat!
           </p>
         </div>
+
+        {/* Attached files */}
         <div>
           <h2 className="font-medium mb-4">Materiais disponíveis:</h2>
           <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">

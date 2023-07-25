@@ -15,17 +15,22 @@ import Link from 'next/link'
 import Delay from '@/components/LoadDelay'
 
 export default function Home() {
+  // Controlling the dropdown
   const [isActive, setIsActive] = useState(true)
   const handleDropDown = () => setIsActive(!isActive)
 
   return (
     <Delay>
       <main className="px-4 relative flex flex-col">
+        {/* Student info */}
         <div className="flex justify-between items-center">
           <h1 className="text-xl py-7">Olá, Danilo!</h1>
           <span className="text-xs">3ºDS AMS, ETEC Zona Leste</span>
         </div>
+
         <hr className="border-[#C6C6C6]" />
+
+        {/* Main activities */}
         <div>
           <h2 className="text-base mt-5 mb-8">Atividades do programa P-TECH</h2>
           <div
@@ -43,16 +48,21 @@ export default function Home() {
           >
             <Task name="Pré-projeto" hours={2} dueDate="19/03/2023" />
             <Task name="Diagramas do projeto" hours={6} dueDate="02/04/2023" />
+
+            {/* See more button */}
+            <Link
+              href="/atividades"
+              className="text-highlighted text-xxs underline flex items-center gap-1 mt-4"
+            >
+              Ver mais
+              <ArrowRight size={12} />
+            </Link>
           </div>
-          <Link
-            href="/atividades"
-            className="text-highlighted text-xxs underline flex items-center gap-1 mt-4"
-          >
-            Ver mais
-            <ArrowRight size={12} />
-          </Link>
         </div>
+
         <hr className="border-[#C6C6C6] my-4" />
+
+        {/* Progress info */}
         <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6">
           <h2 className="col-span-1/2">Horas anuais concluídas</h2>
           <CircleProgress percentage={60} />
