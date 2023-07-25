@@ -8,6 +8,7 @@ import darkLogo from '../assets/dark-logo.svg'
 import Link from 'next/link'
 import { MenuContext } from '@/app/context/MenuContext'
 import { useContext } from 'react'
+import Delay from './LoadDelay'
 
 function SideBar({ style }) {
   const { setIsOpen } = useContext(MenuContext)
@@ -40,28 +41,30 @@ export default function Header({ hasMenu }) {
   // console.log(setIsOpen)
 
   return (
-    <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6]">
-      {hasMenu && (
-        <Image
-          src={isOpen ? closeHamburger : menu}
-          onClick={() => handleMenu()}
-          alt=""
-          className="absolute top-1/2 -translate-y-1/2 left-5"
+    <Delay>
+      <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6]">
+        {hasMenu && (
+          <Image
+            src={isOpen ? closeHamburger : menu}
+            onClick={() => handleMenu()}
+            alt=""
+            className="absolute top-1/2 -translate-y-1/2 left-5"
+          />
+        )}
+        <SideBar
+          style={{
+            left: isOpen ? '0' : '-100%',
+          }}
         />
-      )}
-      <SideBar
-        style={{
-          left: isOpen ? '0' : '-100%',
-        }}
-      />
-      <Link href="/">
-        <Image
-          src={darkLogo}
-          onClick={() => setIsOpen(false)}
-          alt="logo"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-      </Link>
-    </header>
+        <Link href="/">
+          <Image
+            src={darkLogo}
+            onClick={() => setIsOpen(false)}
+            alt="logo"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+        </Link>
+      </header>
+    </Delay>
   )
 }
