@@ -1,6 +1,7 @@
 "use client"
 
-import Progress from '@/components/Progress'
+import CircleProgress from '@/components/circle/CircleProgress'
+// import Progress from '@/components/Progress'
 import Task from '@/components/Task'
 
 export default function Home() {
@@ -20,7 +21,8 @@ export default function Home() {
         <Task name="Cursos do skills build" hours={40} dueDate="24/06/2023" taskStatus="overdue" />
       </div>
 
-      <Progress percentage={58} />
+      {/* <Progress percentage={58} /> */}
+      <CircleProgress percentage={58} />
     </main>
   )
 }

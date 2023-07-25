@@ -37,7 +37,7 @@ export default function Header({ hasMenu }) {
                 left: isOpen ? "0" : "-100%",
             }} />
             <Link href="/">
-                <Image src={darkLogo} alt="logo" className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
+                <Image src={darkLogo} onClick={() => setIsOpen(false)} alt="logo" className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
             </Link>
         </header>
     )
