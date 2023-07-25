@@ -15,7 +15,7 @@ function SideBar({ style }) {
   return (
     <nav
       style={style}
-      className="absolute z-10 top-full transition-all py-9 px-6 bg-white h-screen w-screen"
+      className="fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen"
     >
       <ul className="space-y-5">
         <li onClick={() => setIsOpen(false)}>

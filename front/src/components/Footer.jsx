@@ -7,7 +7,7 @@ import Delay from './LoadDelay'
 export default function Footer() {
   return (
     <Delay>
-      <footer className="flex items-center justify-between px-5 bg-[#262626] absolute bottom-0 w-full py-10">
+      <footer className="flex items-center justify-between px-5 bg-[#262626] w-full py-10">
         <Link href="/">
           <Image src={lightLogo} alt="" />
         </Link>

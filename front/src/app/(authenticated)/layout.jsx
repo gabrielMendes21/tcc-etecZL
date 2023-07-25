@@ -15,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} relative h-screen mt-16`}>
+      <body
+        className={`${inter.className} h-screen flex flex-col gap-16 justify-between`}
+      >
         <MenuContextProvider>
           <Header hasMenu />
           {children}
