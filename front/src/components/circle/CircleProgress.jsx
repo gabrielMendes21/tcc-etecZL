@@ -33,7 +33,12 @@ export default function CircleProgress({percentage}) {
                     }}
                     transform={`rotate(-90 ${circleSize / 2} ${circleSize / 2})`}
                 />
-                <text x="50%" y="50%" dy="0.3em" textAnchor='middle' className='text-3xl font-semibold'>{percentage}%</text>
+                <text x="53%" y="48%" dy="0.3em" textAnchor='middle' className='text-3xl font-semibold'>
+                    {percentage}%
+                </text>
+                <text x="50%" y="65%" dy="0.3em" textAnchor='middle' className='text-xs'>
+                    12/20.7 horas
+                </text>
             </svg>
         </div>
     )

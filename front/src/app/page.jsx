@@ -22,7 +22,7 @@ export default function Home() {
       </div>
 
       {/* <Progress percentage={58} /> */}
-      <CircleProgress percentage={58} />
+      <CircleProgress percentage={60} />
     </main>
   )
 }
