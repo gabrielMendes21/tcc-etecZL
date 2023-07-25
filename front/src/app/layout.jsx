@@ -8,21 +8,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Easy hours',
-  description: 'Ambiente para alunos e coordenadores do programa P-TECH, da IBM',
-} 
+  description:
+    'Ambiente para alunos e coordenadores do programa P-TECH, da IBM',
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-        <body 
-          className={`${inter.className} relative h-screen mt-16`}
-        >
+      <body className={`${inter.className} relative h-screen mt-16`}>
         <MenuContextProvider>
           <Header hasMenu />
-              {children}
+          {children}
           <Footer />
         </MenuContextProvider>
-        </body>
+      </body>
     </html>
   )
 }
