@@ -52,7 +52,9 @@ export default function Home() {
             <ArrowRight size={12} />
           </Link>
         </div>
-        <div className="progress-info flex items-center mt-14 justify-between">
+        <hr className="border-[#C6C6C6] my-4" />
+        <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6">
+          <h2 className="col-span-1/2">Horas anuais concluídas</h2>
           <CircleProgress percentage={60} />
           <ul className="space-y-4">
             <li className="flex items-center gap-3 text-xxs">
