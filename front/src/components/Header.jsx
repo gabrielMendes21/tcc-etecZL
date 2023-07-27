@@ -40,8 +40,8 @@ export default function Header({ hasMenu }) {
   const { isOpen, setIsOpen, handleMenu } = useContext(MenuContext)
 
   return (
-    <Delay>
-      <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6]">
+    <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6]">
+      <Delay>
         {/* Hamburger */}
         {hasMenu && (
           <Image
@@ -67,7 +67,7 @@ export default function Header({ hasMenu }) {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </Link>
-      </header>
-    </Delay>
+      </Delay>
+    </header>
   )
 }

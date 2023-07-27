@@ -7,7 +7,7 @@ import PageTitle from '@/components/PageTitle'
 
 export default function Reclamacoes() {
   return (
-    <main className="px-4 self-start mt-7">
+    <main className="px-4 my-16">
       <Delay>
         <PageTitle title="Reclamações" />
 

@@ -15,9 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body
-        className={`${inter.className} h-screen grid grid-cols-1 grid-rows-[1fr_9fr_1fr]`}
-      >
+      <body className={`${inter.className} min-h-screen grid`}>
         <MenuContextProvider>
           <Header hasMenu />
           {children}
