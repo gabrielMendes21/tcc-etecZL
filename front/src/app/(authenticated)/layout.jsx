@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body
-        className={`${inter.className} h-screen grid grid-cols-1 grid-rows-[1fr_1fr_1fr]`}
+        className={`${inter.className} h-screen grid grid-cols-1 grid-rows-[1fr_9fr_1fr]`}
       >
         <MenuContextProvider>
           <Header hasMenu />
