@@ -1,9 +1,12 @@
 import Delay from '@/components/LoadDelay'
+import PageTitle from '@/components/PageTitle'
 
 export default function Atividades() {
   return (
     <Delay>
-      <h1>Hello, atividades</h1>
+      <main className="px-4">
+        <PageTitle title="Atividades" />
+      </main>
     </Delay>
   )
 }
