@@ -13,7 +13,7 @@ export default function IBMCoordinatorHome() {
       <UserInfo name="Guilherme" status="CoordenadorIBM" />
 
       <p
-        className="underline absolute right-0 top-0 z-50 text-xxs"
+        className="underline absolute right-0 top-2 h-10 z-50 text-xxs"
         onClick={() => {
           setUserType('aluno')
         }}

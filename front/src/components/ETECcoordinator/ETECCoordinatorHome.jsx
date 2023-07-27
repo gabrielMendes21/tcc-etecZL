@@ -15,7 +15,7 @@ export default function ETECCoordinatorHome() {
       <UserInfo name="Rogério" status="Coordenador ETEC Zona Leste" />
 
       <p
-        className="underline absolute right-0 top-0 z-50 text-xxs"
+        className="underline absolute right-0 top-2 h-10 z-50 text-xxs"
         onClick={() => {
           setUserType('coordenador IBM')
         }}
