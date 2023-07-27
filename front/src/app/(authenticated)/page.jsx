@@ -23,8 +23,8 @@ export default function Home() {
     <main className="px-4">
       <Delay>
         {/* Student info */}
-        <div className="flex justify-between items-center">
-          <h1 className="text-xl py-7">Olá, Danilo!</h1>
+        <div className="flex justify-between items-center my-7">
+          <h1 className="text-xl">Olá, Danilo!</h1>
           <span className="text-xs">3ºDS AMS, ETEC Zona Leste</span>
         </div>
 
