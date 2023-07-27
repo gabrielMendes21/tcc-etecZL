@@ -1,17 +1,22 @@
-import { Image } from 'lucide-react'
+import TradLink from '@/components/Link'
 import Delay from '@/components/LoadDelay'
+import { Image } from 'lucide-react'
 
-export default function Task() {
+export default function Pitch() {
   return (
-    <main>
+    <main className="px-4 my-16">
       <Delay>
         {/* Task info */}
-        <div className="px-4 space-y-10 my-16">
+        <div className=" space-y-10">
           <div className="pt-7">
-            <h1 className="text-center font-medium text-xl">Pré-projeto</h1>
-            <span className="block text-center">19/03/2023</span>
+            <h1 className="text-center font-medium text-xl">
+              Pitch de apresentação
+            </h1>
+            <span className="block text-center">19/05/2023</span>
           </div>
+
           <hr className="border-[#C6C6C6]" />
+
           {/* Task details */}
           <div>
             <h2 className="font-medium">Detalhes da tarefa:</h2>
@@ -22,6 +27,7 @@ export default function Task() {
               nesciunt quibusdam repudiandae. Assumenda, placeat!
             </p>
           </div>
+
           {/* Attached files */}
           <div>
             <h2 className="font-medium mb-4">Materiais disponíveis:</h2>
@@ -30,6 +36,11 @@ export default function Task() {
               Arquivo1.png
             </div>
           </div>
+
+          {/* Edit task link */}
+          <TradLink to="/ETECcoordinator/atividades/pitch/editar" size={15}>
+            Editar
+          </TradLink>
         </div>
       </Delay>
     </main>

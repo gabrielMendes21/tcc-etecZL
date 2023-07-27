@@ -3,7 +3,7 @@
 import Card from '@/components/Card'
 import Dropdown from '@/components/Dropdown'
 import Delay from '@/components/LoadDelay'
-import PageTitle from '@/components/PageTitle'
+import PageTitle from '@/components/H1'
 
 export default function Reclamacoes() {
   return (
