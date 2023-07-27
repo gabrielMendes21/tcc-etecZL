@@ -1,3 +1,5 @@
+'use client'
+
 import lightLogo from '@/assets/light-logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'

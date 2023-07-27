@@ -1,12 +1,27 @@
+'use client'
+
 import Card from '../Card'
 import H2 from '../H2'
 import UserInfo from '../UserInfo'
+import { useContext } from 'react'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function ETECCoordinatorHome() {
+  const { setUserType } = useContext(PageContext)
+
   return (
     <main className="px-4 my-16">
       {/* Coordinator info */}
       <UserInfo name="Rogério" status="Coordenador ETEC Zona Leste" />
+
+      <p
+        className="underline absolute right-0 top-0 z-50 text-xxs"
+        onClick={() => {
+          setUserType('coordenador IBM')
+        }}
+      >
+        Trocar usuário
+      </p>
 
       {/* Classes */}
       <H2 title="Classes" />

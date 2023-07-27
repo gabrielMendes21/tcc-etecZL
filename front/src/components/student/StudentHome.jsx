@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import CircleProgress from '@/components/circle/CircleProgress'
 import Task from '@/components/Task'
 import { ChevronDown, ChevronRight, Check, Clock4, Percent } from 'lucide-react'
@@ -8,17 +8,28 @@ import Link from 'next/link'
 import Delay from '@/components/LoadDelay'
 import UserInfo from '../UserInfo'
 import TradLink from '../Link'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function StudentHome() {
   // Controlling the dropdown
   const [isActive, setIsActive] = useState(true)
   const handleDropDown = () => setIsActive(!isActive)
 
+  const { setUserType } = useContext(PageContext)
+
   return (
     <main className="px-4 my-16">
       <Delay>
         {/* Student info */}
         <UserInfo name="Danilo" status="3ºDS AMS, ETEC Zona Leste" />
+        <p
+          className="underline absolute right-0 top-0 z-50 text-xxs"
+          onClick={() => {
+            setUserType('coordenador ETEC')
+          }}
+        >
+          Trocar usuário
+        </p>
 
         {/* Main activities */}
         <div>
