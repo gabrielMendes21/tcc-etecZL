@@ -3,10 +3,10 @@ import PageTitle from '@/components/PageTitle'
 
 export default function Atividades() {
   return (
-    <Delay>
-      <main className="px-4">
+    <main className="px-4">
+      <Delay>
         <PageTitle title="Atividades" />
-      </main>
-    </Delay>
+      </Delay>
+    </main>
   )
 }

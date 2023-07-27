@@ -20,8 +20,8 @@ export default function Home() {
   const handleDropDown = () => setIsActive(!isActive)
 
   return (
-    <Delay>
-      <main className="px-4 relative flex flex-col">
+    <main className="px-4">
+      <Delay>
         {/* Student info */}
         <div className="flex justify-between items-center">
           <h1 className="text-xl py-7">Olá, Danilo!</h1>
@@ -80,7 +80,7 @@ export default function Home() {
             </li>
           </ul>
         </div>
-      </main>
-    </Delay>
+      </Delay>
+    </main>
   )
 }

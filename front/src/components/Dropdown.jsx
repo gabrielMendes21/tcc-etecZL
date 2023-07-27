@@ -1,6 +1,5 @@
 'use client'
 
-import Card from '@/components/Card'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 
