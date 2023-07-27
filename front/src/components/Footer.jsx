@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="flex items-center justify-between px-5 bg-[#262626] w-full py-10 self-end">
       <Delay>
         <Link href="/">
-          <Image src={lightLogo} alt="" />
+          <Image src={lightLogo} alt="" priority />
         </Link>
       </Delay>
     </footer>
