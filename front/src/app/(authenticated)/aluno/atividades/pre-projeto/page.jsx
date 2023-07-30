@@ -1,9 +1,7 @@
 import { ArrowRight, Image, Upload } from 'lucide-react'
 import Delay from '@/components/LoadDelay'
-import H2 from '@/components/H2'
-import Card from '@/components/Card'
 
-export default function Task() {
+export default function Atividade() {
   return (
     <main>
       <Delay>

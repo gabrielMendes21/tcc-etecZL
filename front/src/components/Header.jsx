@@ -22,13 +22,13 @@ function SideBar({ style }) {
           <Link href="/">Minhas horas</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/student/atividades">Atividades</Link>
+          <Link href="/aluno/atividades">Atividades</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/student/reclamacoes">Reclamações</Link>
+          <Link href="/aluno/reclamacoes">Reclamações</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/student/profile">Meu perfil</Link>
+          <Link href="/aluno/meu-perfil">Meu perfil</Link>
         </li>
       </ul>
     </nav>
@@ -42,13 +42,13 @@ function SideBar({ style }) {
           <Link href="/">Classes</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/ETECcoordinator/atividades">Atividades</Link>
+          <Link href="/coordenador-ETEC/atividades">Atividades</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/ETECcoordinator/reclamacoes">Reclamações</Link>
+          <Link href="/coordenador-ETEC/reclamacoes">Reclamações</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/ETECcoordinator/profile">Meu perfil</Link>
+          <Link href="/coordenador-ETEC/meu-perfil">Meu perfil</Link>
         </li>
       </ul>
     </nav>
@@ -63,13 +63,13 @@ function SideBar({ style }) {
           <Link href="/">Classes</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/IBMcoordinator/atividades">Atividades</Link>
+          <Link href="/coordenador-IBM/atividades">Atividades</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/IBMcoordinator/reclamacoes">Reclamações</Link>
+          <Link href="/coordenador-IBM/reclamacoes">Reclamações</Link>
         </li>
         <li onClick={() => setIsOpen(false)}>
-          <Link href="/IBMcoordinator/profile">Meu perfil</Link>
+          <Link href="/coordenador-IBM/meu-perfil">Meu perfil</Link>
         </li>
       </ul>
     </nav>

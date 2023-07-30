@@ -1,8 +1,8 @@
 'use client'
 
-import ETECCoordinatorHome from '@/components/ETECcoordinator/ETECCoordinatorHome'
-import IBMCoordinatorHome from '@/components/IBMcoordinator/IBMCoordinatorHome'
-import StudentHome from '@/components/student/StudentHome'
+import ETECCoordinatorHome from '@/components/coordenador-ETEC/ETECCoordinatorHome'
+import IBMCoordinatorHome from '@/components/coordenador-IBM/IBMCoordinatorHome'
+import StudentHome from '@/components/aluno/StudentHome'
 import { useContext } from 'react'
 import { PageContext } from '../context/PageContext'
 
