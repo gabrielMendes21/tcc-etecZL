@@ -1,6 +1,7 @@
 import TradLink from '@/components/Link'
 import Delay from '@/components/LoadDelay'
-import { Image } from 'lucide-react'
+import { ArrowRight, Image } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Pitch() {
   return (
@@ -38,9 +39,13 @@ export default function Pitch() {
           </div>
 
           {/* Edit task link */}
-          <TradLink to="/coordenador-ETEC/atividades/pitch/editar" size={15}>
-            Editar
-          </TradLink>
+          <Link
+            href="/coordenador-ETEC/atividades/pitch/editar"
+            className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3"
+          >
+            Editar atividade
+            <ArrowRight strokeWidth={1} />
+          </Link>
         </div>
       </Delay>
     </main>
