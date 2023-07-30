@@ -42,7 +42,7 @@ export default function IBMCoordinatorHome() {
         </Card>
       </Dropdown>
 
-      <Dropdown title="ETEC Americana">
+      <Dropdown title="Etec Polivalente de Americana">
         <Card>
           <span className="text-base">1º AMS - FATEC</span>
           <span>2023</span>
