@@ -109,7 +109,7 @@ export default function Header({ hasMenu }) {
   const { setIsOpen } = useContext(PageContext)
 
   return (
-    <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-32">
+    <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-20">
       {/* Menu with hamburger */}
       {hasMenu && <Menu />}
 
@@ -123,7 +123,7 @@ export default function Header({ hasMenu }) {
           onClick={() => setIsOpen(false)}
           alt="logo"
           priority
-          className="md:w-[300px]"
+          className="md:w-[200px]"
         />
       </Link>
     </header>
