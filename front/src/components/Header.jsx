@@ -57,7 +57,6 @@ function SideBar({ style }) {
       style={style}
       className="fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen"
     >
-      (Menu em desenvolvimento)
       <ul className="space-y-5">
         <li onClick={() => setIsOpen(false)}>
           <Link href="/">Classes</Link>
