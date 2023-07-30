@@ -17,6 +17,7 @@ export default function EditarAtividade() {
             type="text"
             id="task-name"
             className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+            placeholder="Coloque o nome da atividade"
           />
 
           <label htmlFor="task-details" className="text-xxs">
@@ -27,6 +28,7 @@ export default function EditarAtividade() {
             cols="30"
             rows="10"
             className="mt-3 mb-8 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            placeholder="Descreva os detalhes da atividade"
           ></textarea>
 
           <label htmlFor="task-date" className="text-xxs">

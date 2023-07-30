@@ -3,10 +3,8 @@
 import UserInfo from '../UserInfo'
 import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
-import H2 from '../H2'
 import Card from '../Card'
 import Dropdown from '../Dropdown'
-import Task from '../Task'
 
 export default function IBMCoordinatorHome() {
   const { setUserType } = useContext(PageContext)
