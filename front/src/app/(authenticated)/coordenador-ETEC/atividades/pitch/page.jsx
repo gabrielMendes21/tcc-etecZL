@@ -1,4 +1,3 @@
-import TradLink from '@/components/Link'
 import Delay from '@/components/LoadDelay'
 import { ArrowRight, Image } from 'lucide-react'
 import Link from 'next/link'
