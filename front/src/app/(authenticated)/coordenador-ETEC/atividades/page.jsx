@@ -3,6 +3,7 @@ import H1 from '@/components/H1'
 import Dropdown from '@/components/Dropdown'
 import Task from '@/components/Task'
 import Link from 'next/link'
+import { PlusCircle } from 'lucide-react'
 
 export default function Atividades() {
   return (
@@ -23,6 +24,15 @@ export default function Atividades() {
           <Task name="Pre-projeto" hours={2} dueDate="19/05/2023" />
           <Task name="Skills Build" hours={30} dueDate="25/06/2023" />
         </Dropdown>
+
+        {/* New activity button */}
+        <Link
+          href="/coordenador-ETEC/atividades/nova-atividade"
+          className="flex gap-3 mt-5"
+        >
+          <PlusCircle color="#C6C6C6" />
+          Criar atividade
+        </Link>
       </Delay>
     </main>
   )
