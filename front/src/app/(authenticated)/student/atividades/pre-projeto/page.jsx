@@ -1,5 +1,7 @@
-import { Image } from 'lucide-react'
+import { ArrowRight, Image, Upload } from 'lucide-react'
 import Delay from '@/components/LoadDelay'
+import H2 from '@/components/H2'
+import Card from '@/components/Card'
 
 export default function Task() {
   return (
@@ -26,12 +28,28 @@ export default function Task() {
           </div>
 
           {/* Attached files */}
-          <div>
-            <h2 className="font-medium mb-4">Materiais disponíveis:</h2>
+          <div className="font-medium">
+            <h2 className="mb-4">Materiais disponíveis:</h2>
             <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
               <Image alt="image icon" />
               Arquivo1.png
             </div>
+          </div>
+
+          <hr className="border-[#C6C6C6]" />
+
+          {/* Student's work files */}
+          <div className="font-medium">
+            <h2 className="mb-4">Meu trabalho:</h2>
+            <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
+              <Upload />
+              Anexar arquivo
+            </div>
+
+            <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3">
+              Enviar
+              <ArrowRight strokeWidth={1} />
+            </button>
           </div>
         </div>
       </Delay>
