@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import CircleProgress from '@/components/circle/CircleProgress'
 import Task from '@/components/Task'
-import { ChevronDown, ChevronRight, Check, Clock4, Percent } from 'lucide-react'
+import { Check, Clock4, Percent } from 'lucide-react'
 import Link from 'next/link'
 import UserInfo from '../UserInfo'
 import TradLink from '../Link'
