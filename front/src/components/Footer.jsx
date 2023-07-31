@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="px-5 bg-[#262626] w-full py-10 self-end text-white">
       <Delay className="flex justify-around flex-wrap">
-        <div className="flex gap-2 md:gap-20 mb-5">
+        <div className="flex gap-5 md:gap-20 mb-5">
           <div className="">
             <h2 className="font-medium text-base mb-[14px]">
               Membros do P-TECH

@@ -34,13 +34,6 @@ export default function StudentHome() {
       <div>
         <h2 className="text-base mt-5 mb-8">Atividades do programa P-TECH</h2>
         <div
-          className="dropdown flex items-end gap-2 mb-6"
-          onClick={handleDropDown}
-        >
-          <h3 className="font-medium">Em breve</h3>
-          {isActive ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
-        </div>
-        <div
           style={{
             display: isActive ? 'block' : 'none',
           }}
