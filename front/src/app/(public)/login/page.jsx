@@ -11,12 +11,12 @@ export default function Login() {
     <>
       <Header className="md:invisible" />
       <Main className="mt-5">
-        <div className="md:flex md:justify-center md:items-center md:gap-20 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+        <div className="md:flex md:justify-center md:items-center md:gap-20 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-1/2">
           <div>
             <Image
               src={darkLogo}
               alt=""
-              className="invisible md:visible w-[300px]"
+              className="invisible md:visible w-[350px]"
             />
             <h1 className="invisible absolute md:visible md:static text-xl">
               Efetue login no Easy Hours
@@ -27,7 +27,7 @@ export default function Login() {
             />
           </div>
 
-          <div>
+          <div className="grow">
             <form action="" className="pt-5">
               <label htmlFor="email" className="text-sm">
                 Email
