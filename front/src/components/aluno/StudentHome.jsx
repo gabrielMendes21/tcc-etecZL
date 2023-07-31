@@ -50,21 +50,21 @@ export default function StudentHome() {
         {/* Right */}
         <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6 lg:gap-x-10">
           {/* Progress info */}
-          <h2 className="col-span-1/2 lg:text-center">
+          <h2 className="col-span-1/2 lg:text-center md:text-2xl">
             Horas anuais concluídas
           </h2>
 
           <CircleProgress percentage={60} />
 
           <ul className="space-y-4 lg:text-center">
-            <li className="flex items-center gap-3 text-xxs">
+            <li className="flex items-center gap-3 text-xxs lg:text-xs">
               <Check color="#0F62FE" />
               12 Horas concluídas
             </li>
-            <li className="flex items-center gap-3 text-xxs">
+            <li className="flex items-center gap-3 text-xxs lg:text-xs">
               <Clock4 color="#0F62FE" />8 horas restantes
             </li>
-            <li className="flex items-center gap-3 text-xxs">
+            <li className="flex items-center gap-3 text-xxs lg:text-xs">
               <Percent color="#0F62FE" />
               60% do caminho
             </li>
