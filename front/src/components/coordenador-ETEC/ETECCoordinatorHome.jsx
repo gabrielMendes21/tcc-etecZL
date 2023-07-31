@@ -26,7 +26,6 @@ export default function ETECCoordinatorHome() {
 
       {/* Classes */}
       <H2 title="Classes" />
-
       <div className="classes space-y-2">
         <Card>
           <span className="text-base">1º AMS - FATEC</span>

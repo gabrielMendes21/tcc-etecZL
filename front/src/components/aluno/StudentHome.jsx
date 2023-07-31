@@ -11,10 +11,6 @@ import { PageContext } from '@/app/context/PageContext'
 import Main from '../Main'
 
 export default function StudentHome() {
-  // Controlling the dropdown
-  const [isActive, setIsActive] = useState(true)
-  const handleDropDown = () => setIsActive(!isActive)
-
   const { setUserType } = useContext(PageContext)
 
   return (
@@ -30,46 +26,50 @@ export default function StudentHome() {
         Trocar usuário
       </p>
 
-      {/* Main activities */}
-      <div>
-        <h2 className="text-base mt-5 mb-8">Atividades do programa P-TECH</h2>
-        <div
-          style={{
-            display: isActive ? 'block' : 'none',
-          }}
-          className="activities space-y-5"
-        >
-          <Link href="/aluno/atividades/pre-projeto" className="block mb-5">
-            <Task name="Pré-projeto" hours={2} dueDate="19/03/2023" />
-          </Link>
-          <Task name="Diagramas do projeto" hours={6} dueDate="02/04/2023" />
-
-          {/* See more link */}
-          <TradLink to="/aluno/atividades" size={10}>
-            Ver mais
-          </TradLink>
+      <div className="lg:flex lg:justify-center lg:mt-12">
+        {/* Left */}
+        <div className="lg:grow">
+          {/* Main activities */}
+          <h2 className="text-base lg:text-2xl mt-5 mb-8">
+            Atividades do programa P-TECH
+          </h2>
+          <div className="activities space-y-5">
+            <Link href="/aluno/atividades/pre-projeto" className="block mb-5">
+              <Task name="Pré-projeto" hours={2} dueDate="19/03/2023" />
+            </Link>
+            <Task name="Diagramas do projeto" hours={6} dueDate="02/04/2023" />
+            {/* See more link */}
+            <TradLink to="/aluno/atividades" size={10}>
+              Ver mais
+            </TradLink>
+          </div>
         </div>
-      </div>
 
-      <hr className="border-[#C6C6C6] my-4" />
+        <hr className="border-[#C6C6C6] my-4 lg:rotate-90 lg:w-72 lg:self-center" />
 
-      {/* Progress info */}
-      <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6">
-        <h2 className="col-span-1/2">Horas anuais concluídas</h2>
-        <CircleProgress percentage={60} />
-        <ul className="space-y-4">
-          <li className="flex items-center gap-3 text-xxs">
-            <Check color="#0F62FE" />
-            12 Horas concluídas
-          </li>
-          <li className="flex items-center gap-3 text-xxs">
-            <Clock4 color="#0F62FE" />8 horas restantes
-          </li>
-          <li className="flex items-center gap-3 text-xxs">
-            <Percent color="#0F62FE" />
-            60% do caminho
-          </li>
-        </ul>
+        {/* Right */}
+        <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6 lg:gap-x-10">
+          {/* Progress info */}
+          <h2 className="col-span-1/2 lg:text-center">
+            Horas anuais concluídas
+          </h2>
+
+          <CircleProgress percentage={60} />
+
+          <ul className="space-y-4 lg:text-center">
+            <li className="flex items-center gap-3 text-xxs">
+              <Check color="#0F62FE" />
+              12 Horas concluídas
+            </li>
+            <li className="flex items-center gap-3 text-xxs">
+              <Clock4 color="#0F62FE" />8 horas restantes
+            </li>
+            <li className="flex items-center gap-3 text-xxs">
+              <Percent color="#0F62FE" />
+              60% do caminho
+            </li>
+          </ul>
+        </div>
       </div>
     </Main>
   )

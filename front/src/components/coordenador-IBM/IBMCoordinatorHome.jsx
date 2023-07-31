@@ -26,7 +26,7 @@ export default function IBMCoordinatorHome() {
 
       {/* Schools */}
       {/* <H2 title="Escolas" /> */}
-      <h2 className="text-base mt-5 mb-8">Escolas</h2>
+      <h2 className="text-base md:text-2xl mt-5 mb-8">Escolas</h2>
 
       <Dropdown title="ETEC Zona Leste">
         <Card>
