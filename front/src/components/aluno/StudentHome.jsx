@@ -5,7 +5,6 @@ import CircleProgress from '@/components/circle/CircleProgress'
 import Task from '@/components/Task'
 import { ChevronDown, ChevronRight, Check, Clock4, Percent } from 'lucide-react'
 import Link from 'next/link'
-import Delay from '@/components/LoadDelay'
 import UserInfo from '../UserInfo'
 import TradLink from '../Link'
 import { PageContext } from '@/app/context/PageContext'
@@ -23,7 +22,7 @@ export default function StudentHome() {
       {/* Student info */}
       <UserInfo name="Danilo" status="3ºDS AMS, ETEC Zona Leste" />
       <p
-        className="underline absolute right-0 top-2 h-10 z-50 text-xxs"
+        className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"
         onClick={() => {
           setUserType('coordenador ETEC')
         }}

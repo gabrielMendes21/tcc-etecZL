@@ -49,12 +49,11 @@ function Menu() {
         className="absolute top-1/2 -translate-y-1/2 left-5 md:invisible"
       />
       <nav
-        // style={style}
-        className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:invisible md:h-auto md:w-auto md:px-0 ${
+        className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
           isOpen ? `left-0` : `-left-full`
         }`}
       >
-        <ul className="space-y-5 md:flex">
+        <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
             <Link href="/">Classes</Link>
           </li>
@@ -65,7 +64,7 @@ function Menu() {
             <Link href="/coordenador-ETEC/reclamacoes">Reclamações</Link>
           </li>
           {/* <li onClick={() => setIsOpen(false)}>
-            <Link href="/aluno/meu-perfil">Meu perfil</Link>
+            <Link href="/coordenador-ETEC/meu-perfil">Meu perfil</Link>
           </li> */}
         </ul>
       </nav>
@@ -79,12 +78,11 @@ function Menu() {
         className="absolute top-1/2 -translate-y-1/2 left-5 md:invisible"
       />
       <nav
-        // style={style}
-        className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:invisible ${
+        className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
           isOpen ? `left-0` : `-left-full`
         }`}
       >
-        <ul className="space-y-5">
+        <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
             <Link href="/">Classes</Link>
           </li>
@@ -95,7 +93,7 @@ function Menu() {
             <Link href="/coordenador-IBM/reclamacoes">Reclamações</Link>
           </li>
           {/* <li onClick={() => setIsOpen(false)}>
-            <Link href="/aluno/meu-perfil">Meu perfil</Link>
+            <Link href="/coordenador-IBM/meu-perfil">Meu perfil</Link>
           </li> */}
         </ul>
       </nav>
@@ -105,11 +103,13 @@ function Menu() {
   )
 }
 
-export default function Header({ hasMenu }) {
+export default function Header({ hasMenu, className }) {
   const { setIsOpen } = useContext(PageContext)
 
   return (
-    <header className="w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-20">
+    <header
+      className={`w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-20 ${className}`}
+    >
       {/* Menu with hamburger */}
       {hasMenu && <Menu />}
 

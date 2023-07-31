@@ -5,17 +5,18 @@ import H2 from '../H2'
 import UserInfo from '../UserInfo'
 import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
+import Main from '../Main'
 
 export default function ETECCoordinatorHome() {
   const { setUserType } = useContext(PageContext)
 
   return (
-    <main className="px-4 my-16">
+    <Main>
       {/* Coordinator info */}
       <UserInfo name="Rogério" status="Coordenador ETEC Zona Leste" />
 
       <p
-        className="underline absolute right-0 top-2 h-10 z-50 text-xxs"
+        className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"
         onClick={() => {
           setUserType('coordenador IBM')
         }}
@@ -42,6 +43,6 @@ export default function ETECCoordinatorHome() {
       </div>
 
       <hr className="border-[#C6C6C6] my-6" />
-    </main>
+    </Main>
   )
 }

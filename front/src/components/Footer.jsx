@@ -16,12 +16,12 @@ export default function Footer() {
             </h2>
             <ul className="text-xxs font-thin space-y-3">
               <li>
-                <a href="" target="_blank">
+                <a href="https://www.eteczonaleste.com.br" target="_blank">
                   ETEC Zona Leste
                 </a>
               </li>
               <li>
-                <a href="" target="_blank">
+                <a href="https://www.etecpa.com.br" target="_blank">
                   Etec Polivalente de Americana
                 </a>
               </li>

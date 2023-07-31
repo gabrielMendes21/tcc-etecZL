@@ -12,7 +12,7 @@ export const metadata = {
 export default function LoginLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} relative h-screen`}>{children}</body>
+      <body className={`${inter.className} min-h-screen grid`}>{children}</body>
     </html>
   )
 }

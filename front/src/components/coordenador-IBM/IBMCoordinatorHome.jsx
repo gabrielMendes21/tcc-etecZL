@@ -5,17 +5,18 @@ import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
 import Card from '../Card'
 import Dropdown from '../Dropdown'
+import Main from '../Main'
 
 export default function IBMCoordinatorHome() {
   const { setUserType } = useContext(PageContext)
 
   return (
-    <main className="px-4 my-16">
+    <Main>
       {/* Coordinator info */}
       <UserInfo name="Guilherme" status="Coordenador IBM" />
 
       <p
-        className="underline absolute right-0 top-2 h-10 z-50 text-xxs"
+        className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"
         onClick={() => {
           setUserType('aluno')
         }}
@@ -56,6 +57,6 @@ export default function IBMCoordinatorHome() {
           <span>2023</span>
         </Card>
       </Dropdown>
-    </main>
+    </Main>
   )
 }
