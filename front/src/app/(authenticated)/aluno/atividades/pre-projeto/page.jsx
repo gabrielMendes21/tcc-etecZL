@@ -5,7 +5,7 @@ export default function Atividade() {
   return (
     <Main>
       {/* Task info */}
-      <div className="px-4 space-y-10">
+      <div className="space-y-10">
         <div className="pt-7">
           <h1 className="text-center font-medium text-xl">Pré-projeto</h1>
           <span className="block text-center">19/03/2023</span>
