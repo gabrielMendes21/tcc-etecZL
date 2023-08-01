@@ -8,14 +8,14 @@ module.exports = {
   theme: {
     extend: {
       gridColumn: {
-        'span-1/2': '1 / span 2'
+        'span-1/2': '1 / span 2',
       },
       colors: {
-        highlighted: "#0F62FE"
+        highlighted: '#0F62FE',
       },
       fontSize: {
-        xxs: "0.625rem"
-      }
+        xxs: '0.625rem',
+      },
     },
   },
   plugins: [],

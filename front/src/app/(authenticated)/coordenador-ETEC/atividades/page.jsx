@@ -4,6 +4,7 @@ import Task from '@/components/Task'
 import Link from 'next/link'
 import { PlusCircle } from 'lucide-react'
 import Main from '@/components/Main'
+import NewButton from '@/components/NewButton'
 
 export default function Atividades() {
   return (
@@ -25,13 +26,10 @@ export default function Atividades() {
       </Dropdown>
 
       {/* New activity button */}
-      <Link
-        href="/coordenador-ETEC/atividades/nova-atividade"
-        className="flex gap-3 mt-5"
-      >
-        <PlusCircle color="#C6C6C6" />
-        Criar atividade
-      </Link>
+      <NewButton
+        text="Nova atividade"
+        to="/coordenador-ETEC/atividades/nova-atividade"
+      />
     </Main>
   )
 }
