@@ -34,9 +34,9 @@ function Menu() {
           <li onClick={() => setIsOpen(false)}>
             <Link href="/aluno/suporte">Suporte</Link>
           </li>
-          {/* <li onClick={() => setIsOpen(false)}>
+          <li onClick={() => setIsOpen(false)}>
             <Link href="/aluno/meu-perfil">Meu perfil</Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </>
@@ -63,9 +63,9 @@ function Menu() {
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-ETEC/suporte">Suporte</Link>
           </li>
-          {/* <li onClick={() => setIsOpen(false)}>
+          <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-ETEC/meu-perfil">Meu perfil</Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </>
@@ -92,9 +92,9 @@ function Menu() {
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-IBM/suporte">Suporte</Link>
           </li>
-          {/* <li onClick={() => setIsOpen(false)}>
+          <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-IBM/meu-perfil">Meu perfil</Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </>
