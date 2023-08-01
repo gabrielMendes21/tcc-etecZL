@@ -1,6 +1,7 @@
+import FormSubmitButton from '@/components/FormSubmitButton'
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
-import { ArrowRight, Trash2 } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 
 export default function EditarAtividade() {
   return (
@@ -49,10 +50,7 @@ export default function EditarAtividade() {
           className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2 text-sm"
         />
 
-        <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mb-2 p-3">
-          Editar
-          <ArrowRight strokeWidth={1} />
-        </button>
+        <FormSubmitButton title="editar" />
         <button className="flex justify-between items-center w-full text-left font-light bg-[#BE2528] text-white p-3">
           Excluir atividade
           <Trash2 strokeWidth={1} />

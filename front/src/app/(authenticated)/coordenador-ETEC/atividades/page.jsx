@@ -2,7 +2,6 @@ import H1 from '@/components/H1'
 import Dropdown from '@/components/Dropdown'
 import Task from '@/components/Task'
 import Link from 'next/link'
-import { PlusCircle } from 'lucide-react'
 import Main from '@/components/Main'
 import NewButton from '@/components/NewButton'
 
