@@ -50,7 +50,7 @@ export default function EditarAtividade() {
           className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2 text-sm"
         />
 
-        <FormSubmitButton title="editar" />
+        <FormSubmitButton title="Editar" />
         <button className="flex justify-between items-center w-full text-left font-light bg-[#BE2528] text-white p-3">
           Excluir atividade
           <Trash2 strokeWidth={1} />
