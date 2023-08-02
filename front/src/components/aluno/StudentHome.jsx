@@ -49,27 +49,28 @@ export default function StudentHome() {
         <hr className="border-[#C6C6C6] my-4 lg:rotate-90 lg:w-72 lg:self-center" />
 
         {/* Right */}
-        <div className="progress-info grid grid-cols-[1fr] items-center gap-y-6 lg:gap-x-10">
+        <div className="progress-info">
           {/* Progress info */}
-          <h2 className="col-span-1/2 lg:text-center md:text-2xl">
-            Horas anuais concluídas
+          <h2 className="text-base lg:text-2xl mt-5 mb-8">
+            Atividades do programa P-TECH
           </h2>
 
-          <CircleProgress ABSNumber={22} reference={10} unity="horas" />
-
-          <ul className="space-y-4 lg:text-center">
-            <li className="flex items-center gap-3 text-xxs lg:text-xs">
-              <Check color="#0F62FE" />
-              12 Horas concluídas
-            </li>
-            <li className="flex items-center gap-3 text-xxs lg:text-xs">
-              <Clock4 color="#0F62FE" />8 horas restantes
-            </li>
-            <li className="flex items-center gap-3 text-xxs lg:text-xs">
-              <Percent color="#0F62FE" />
-              60% do caminho
-            </li>
-          </ul>
+          <div className="flex items-center justify-between md:gap-10 my-4 text-right">
+            <CircleProgress ABSNumber={22} reference={10} unity="horas" />
+            <ul className="space-y-4 lg:text-center">
+              <li className="flex items-center gap-3 text-xxs lg:text-xs">
+                <Check color="#0F62FE" />
+                12 Horas concluídas
+              </li>
+              <li className="flex items-center gap-3 text-xxs lg:text-xs">
+                <Clock4 color="#0F62FE" />8 horas restantes
+              </li>
+              <li className="flex items-center gap-3 text-xxs lg:text-xs">
+                <Percent color="#0F62FE" />
+                60% do caminho
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </Main>
