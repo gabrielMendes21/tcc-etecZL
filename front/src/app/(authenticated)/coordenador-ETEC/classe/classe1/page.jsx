@@ -1,7 +1,6 @@
 import Card from '@/components/Card'
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
-import NewButton from '@/components/NewButton'
 import CircleProgress from '@/components/circle/CircleProgress'
 import { Check, Clock4, FileText, Percent } from 'lucide-react'
 import Link from 'next/link'
@@ -61,10 +60,10 @@ export default function Classe() {
         </Card>
       </div>
 
-      <NewButton
+      {/* <NewButton
         text="Adicionar aluno"
         to="/coordenador-ETEC/classe/classe1/aluno/novo-aluno"
-      />
+      /> */}
     </Main>
   )
 }

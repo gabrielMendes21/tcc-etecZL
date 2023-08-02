@@ -4,7 +4,6 @@ import Card from '@/components/Card'
 import Dropdown from '@/components/Dropdown'
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
-import NewButton from '@/components/NewButton'
 
 export default function Suporte() {
   return (
@@ -36,7 +35,7 @@ export default function Suporte() {
       </Dropdown>
 
       {/* New support requeat button */}
-      <NewButton text="Nova solicitação" to="suporte/nova-solicitacao" />
+      {/* <NewButton text="Nova solicitação" to="suporte/nova-solicitacao" /> */}
     </Main>
   )
 }

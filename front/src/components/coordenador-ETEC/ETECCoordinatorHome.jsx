@@ -1,7 +1,6 @@
 'use client'
 
 import Card from '../Card'
-import H2 from '../H2'
 import UserInfo from '../UserInfo'
 import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'

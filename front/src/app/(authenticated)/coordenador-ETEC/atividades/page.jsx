@@ -1,11 +1,18 @@
+'use client'
+
 import H1 from '@/components/H1'
 import Dropdown from '@/components/Dropdown'
 import Task from '@/components/Task'
 import Link from 'next/link'
 import Main from '@/components/Main'
-import NewButton from '@/components/NewButton'
+import { useState } from 'react'
+import { Modal } from '@mui/material'
 
 export default function Atividades() {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
   return (
     <Main>
       <H1 title="Atividades" />
@@ -25,10 +32,15 @@ export default function Atividades() {
       </Dropdown>
 
       {/* New activity button */}
-      <NewButton
-        text="Nova atividade"
-        to="/coordenador-ETEC/atividades/nova-atividade"
-      />
+      <button onClick={handleOpen}>Nova atividade</button>
+      <Modal
+        open={isOpen}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div>Olá</div>
+      </Modal>
     </Main>
   )
 }
