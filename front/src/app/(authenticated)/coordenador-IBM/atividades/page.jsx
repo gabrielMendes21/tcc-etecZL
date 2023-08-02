@@ -36,7 +36,7 @@ export default function Atividades() {
 
       {/* New activity button */}
       <NewButton
-        to="/coordenador-ETEC/atividades/nova-atividade"
+        to="/coordenador-IBM/atividades/nova-atividade"
         text="Nova atividade"
       />
 
