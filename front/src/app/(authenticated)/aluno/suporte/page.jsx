@@ -2,14 +2,14 @@
 
 import Card from '@/components/Card'
 import Dropdown from '@/components/Dropdown'
-import PageTitle from '@/components/H1'
+import H1 from '@/components/H1'
 import Main from '@/components/Main'
 import NewButton from '@/components/NewButton'
 
 export default function Suporte() {
   return (
     <Main>
-      <PageTitle title="Suporte" />
+      <H1 title="Suporte" />
 
       {/* Complaints sent */}
       <Dropdown title="Solicitações enviadas">
