@@ -60,14 +60,15 @@ export default function StudentHome() {
             <ul className="space-y-4 lg:text-center">
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
                 <Check color="#0F62FE" />
-                12 Horas concluídas
+                10 Horas concluídas
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
-                <Clock4 color="#0F62FE" />8 horas restantes
+                <Clock4 color="#0F62FE" />
+                12 horas restantes
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
                 <Percent color="#0F62FE" />
-                60% do caminho
+                45% do caminho
               </li>
             </ul>
           </div>
