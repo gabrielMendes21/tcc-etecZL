@@ -10,6 +10,7 @@ import { Modal } from '@mui/material'
 import { PlusCircle, Trash2 } from 'lucide-react'
 import FormSubmitButton from '@/components/FormSubmitButton'
 import NewButton from '@/components/NewButton'
+import H2 from '@/components/H2'
 
 export default function Atividades() {
   const [isOpen, setIsOpen] = useState(false)
@@ -62,7 +63,9 @@ export default function Atividades() {
         }}
       >
         <div className="w-1/2 h-4/5 bg-white p-8 overflow-y-auto">
-          <form action="">
+          <H2 title="Criar atividade" />
+
+          <form action="" className="mt-8">
             <label htmlFor="class" className="text-sm">
               Turma
             </label>

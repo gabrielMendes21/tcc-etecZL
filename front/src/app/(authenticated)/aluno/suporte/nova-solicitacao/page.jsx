@@ -21,12 +21,13 @@ export default function NovaSolicitação() {
         <label htmlFor="message" className="text-sm">
           Mensagem
         </label>
-        <input
-          type="text"
-          id="subject"
-          placeholder="Digite a sua mensagem"
-          className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
-        />
+        <textarea
+          id="message"
+          cols="30"
+          rows="10"
+          className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+          placeholder="Digite sua mensagem"
+        ></textarea>
 
         <hr className="border[#C6C6C6]" />
 
