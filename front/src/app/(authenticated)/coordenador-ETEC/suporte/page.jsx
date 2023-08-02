@@ -11,9 +11,9 @@ export default function Suporte() {
 
       <H2 title="Respondidas" />
       <div className="classes space-y-2">
-        <Link href="suporte/suporte1">
+        <Link href="suporte/suporte2">
           <Card>
-            <span className="text-base">Danilo Costa Rodrigues</span>
+            <span className="text-base">Henrique Machado</span>
             <span>3º AMS, ETEC Zona Leste - 12/05/2023</span>
           </Card>
         </Link>
@@ -31,9 +31,9 @@ export default function Suporte() {
 
       <H2 title="Não respondidas" />
       <div className="classes space-y-2">
-        <Link href="suporte/suporte2">
+        <Link href="suporte/suporte1">
           <Card>
-            <span className="text-base">Henrique Machado</span>
+            <span className="text-base">Danilo Costa Rodrigues</span>
             <span>Reconsiderações - 12/05/2023</span>
           </Card>
         </Link>
