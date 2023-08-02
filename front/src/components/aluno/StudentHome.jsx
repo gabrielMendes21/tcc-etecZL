@@ -38,6 +38,7 @@ export default function StudentHome() {
               <Task name="Pré-projeto" hours={2} dueDate="19/03/2023" />
             </Link>
             <Task name="Diagramas do projeto" hours={6} dueDate="02/04/2023" />
+
             {/* See more link */}
             <TradLink to="/aluno/atividades" size={10}>
               Ver mais

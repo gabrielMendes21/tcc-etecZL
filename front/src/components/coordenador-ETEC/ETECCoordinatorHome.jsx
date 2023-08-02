@@ -6,6 +6,8 @@ import UserInfo from '../UserInfo'
 import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
 import Main from '../Main'
+import Link from 'next/link'
+import TradLink from '../Link'
 
 export default function ETECCoordinatorHome() {
   const { setUserType } = useContext(PageContext)
@@ -27,10 +29,12 @@ export default function ETECCoordinatorHome() {
       {/* Classes */}
       <H2 title="Classes" />
       <div className="classes space-y-2">
-        <Card>
-          <span className="text-base">1º AMS - FATEC</span>
-          <span>2023</span>
-        </Card>
+        <Link href="/coordenador-ETEC/classe/classe1">
+          <Card>
+            <span className="text-base">1º AMS - FATEC</span>
+            <span>2023</span>
+          </Card>
+        </Link>
         <Card>
           <span className="text-base">2º AMS - FATEC</span>
           <span>2023</span>
@@ -41,7 +45,30 @@ export default function ETECCoordinatorHome() {
         </Card>
       </div>
 
-      <hr className="border-[#C6C6C6] my-6" />
+      <hr className="border-[#C6C6C6] mt-7" />
+
+      <H2 title="Solicitações de suporte" />
+      <div className="classes space-y-2">
+        <Link href="/coordenador-ETEC/suporte/suporte1">
+          <Card>
+            <span className="text-base">Danilo Costa Rodrigues</span>
+            <span>Horas não contabilizadas - 12/05/2023</span>
+          </Card>
+        </Link>
+        <Card>
+          <span className="text-base">Gabriel da Silva Mendes</span>
+          <span>Reconsiderações - 08/05/2023</span>
+        </Card>
+        <Card>
+          <span className="text-base">Andrei Luiz Florencio Matias</span>
+          <span>Problemas no site - 09/05/2023</span>
+        </Card>
+      </div>
+
+      {/* See more link */}
+      <TradLink to="/coordenador-ETEC/suporte" size={10}>
+        Ver mais
+      </TradLink>
     </Main>
   )
 }
