@@ -16,7 +16,7 @@ export default function Atividade() {
         {/* Task details */}
         <div>
           <h2 className="font-medium">Detalhes da tarefa:</h2>
-          <p className="p-3 text-justify text-xs leading-relaxed">
+          <p className="py-3 text-justify text-xs leading-relaxed">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
             iure corporis hic sit voluptate odit consequatur, eaque eum
             voluptatum, quaerat dolorum veritatis quis exercitationem error
