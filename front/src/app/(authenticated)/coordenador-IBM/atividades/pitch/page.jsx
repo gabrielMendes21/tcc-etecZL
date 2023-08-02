@@ -39,7 +39,7 @@ export default function Pitch() {
 
           {/* Edit task link */}
           <Link
-            href="/coordenador-IBM/atividades/pitch/editar"
+            href="pitch/editar"
             className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3"
           >
             Editar atividade

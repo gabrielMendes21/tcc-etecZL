@@ -22,7 +22,7 @@ export default function Atividades() {
 
       {/* Pending activities */}
       <Dropdown title="Pendentes">
-        <Link href="/coordenador-ETEC/atividades/pitch">
+        <Link href="atividades/pitch">
           <Task name="Pitch de apresentação" hours={1} dueDate="19/05/2023" />
         </Link>
         <Task name="Cursos DIO" hours={1} dueDate="05/12/2023" />

@@ -18,7 +18,7 @@ export default function Atividades() {
 
       {/* Pending Activities */}
       <Dropdown title="Pendentes">
-        <Link href="/aluno/atividades/pre-projeto" className="block mb-5">
+        <Link href="atividades/pre-projeto" className="block mb-5">
           <Task name="Pre-projeto" hours={2} dueDate="19/05/2023" />
         </Link>
         <Task name="Skills Build" hours={30} dueDate="25/06/2023" />
