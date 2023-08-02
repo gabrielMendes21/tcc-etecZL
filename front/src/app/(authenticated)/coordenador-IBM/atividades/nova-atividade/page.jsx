@@ -18,12 +18,12 @@ export default function NovaAtividade() {
           <option value=""></option>
           <option value=""></option>
         </select>
-        {/* <input
+        <input
           type="text"
           id="class"
           className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
           placeholder="Digite o nome da atividade"
-        /> */}
+        />
 
         <label htmlFor="task-details" className="text-sm">
           Detalhes da atividade
