@@ -27,7 +27,7 @@ export default function ETECCoordinatorHome() {
       </p>
 
       {/* Classes */}
-      <H2 title="Classes" />
+      <h2 className="text-base py-7 md:text-2xl">Classes</h2>
       <div className="classes space-y-2">
         <Link href="/coordenador-ETEC/classe/classe1">
           <Card>
@@ -47,7 +47,7 @@ export default function ETECCoordinatorHome() {
 
       <hr className="border-[#C6C6C6] mt-7" />
 
-      <H2 title="Solicitações de suporte" />
+      <h2 className="text-base py-7 md:text-2xl">Solicitações de suporte</h2>
       <div className="classes space-y-2">
         <Link href="/coordenador-ETEC/suporte/suporte1">
           <Card>
