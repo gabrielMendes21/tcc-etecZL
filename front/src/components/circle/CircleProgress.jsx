@@ -1,6 +1,7 @@
 import './styles.css'
 
-export default function CircleProgress({ percentage }) {
+export default function CircleProgress({ ABSNumber, reference, unity }) {
+  const percentage = Math.round((reference / ABSNumber) * 100)
   const circleSize = '160'
   const radius = 68
   const dashArray = radius * Math.PI * 2
@@ -49,7 +50,7 @@ export default function CircleProgress({ percentage }) {
           textAnchor="middle"
           className="text-xs"
         >
-          12/20.7 horas
+          {reference}/{ABSNumber} {unity}
         </text>
       </svg>
     </div>

@@ -55,7 +55,7 @@ export default function StudentHome() {
             Horas anuais concluídas
           </h2>
 
-          <CircleProgress percentage={60} />
+          <CircleProgress ABSNumber={22} reference={10} unity="horas" />
 
           <ul className="space-y-4 lg:text-center">
             <li className="flex items-center gap-3 text-xxs lg:text-xs">
