@@ -6,6 +6,7 @@ import { PageContext } from '@/app/context/PageContext'
 import Card from '../Card'
 import Dropdown from '../Dropdown'
 import Main from '../Main'
+import Link from 'next/link'
 
 export default function IBMCoordinatorHome() {
   const { setUserType } = useContext(PageContext)
@@ -29,10 +30,12 @@ export default function IBMCoordinatorHome() {
       <h2 className="text-base md:text-2xl mt-5 mb-8">Escolas</h2>
 
       <Dropdown title="ETEC Zona Leste">
-        <Card>
-          <span className="text-base">1º AMS - FATEC</span>
-          <span>2023</span>
-        </Card>
+        <Link href="/coordenador-IBM/classe/classe1">
+          <Card>
+            <span className="text-base">1º AMS - FATEC</span>
+            <span>2023</span>
+          </Card>
+        </Link>
         <Card>
           <span className="text-base">2º AMS - FATEC</span>
           <span>2023</span>
