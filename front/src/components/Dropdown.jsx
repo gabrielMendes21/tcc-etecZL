@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Dropdown({ title, children }) {
@@ -11,11 +11,15 @@ export default function Dropdown({ title, children }) {
   return (
     <>
       <div
-        className="dropdown flex items-end gap-2 my-6"
+        className="dropdown flex items-end gap-2 my-6 w-max"
         onClick={handleDropDown}
       >
         <h3 className="font-medium">{title}</h3>
-        {isActive ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+        <ChevronDown
+          size={20}
+          className={`transition-all ${isActive ? `` : `-rotate-90`}`}
+        />
+        {/* {isActive ? <ChevronDown size={20} /> : <ChevronRight size={20} />} */}
       </div>
       <div
         style={{
