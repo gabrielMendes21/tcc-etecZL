@@ -2,7 +2,6 @@
 
 import Card from '@/components/Card'
 import FormSubmitButton from '@/components/FormSubmitButton'
-import H1 from '@/components/H1'
 import H2 from '@/components/H2'
 import Main from '@/components/Main'
 import Modal from '@/components/Modal'
@@ -15,6 +14,7 @@ import {
   Percent,
   PlusCircle,
   Upload,
+  Users,
 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -26,14 +26,16 @@ export default function Classe() {
 
   return (
     <Main>
-      <H1 title="1º AMS" />
+      <div className="text-center">
+        <h1 className="text-xl pt-7 md:text-2xl">1º AMS</h1>
+        <span className="block mb-7 text-[#525252]">2023</span>
+        <hr className="border-[#C6C6C6]" />
+      </div>
 
       <div className="progress-info my-6">
-        <h2 className="lg:text-center md:text-2xl">
-          Atividades concluídas por alunos
-        </h2>
+        <h2 className=" text-center md:text-2xl">Desempenho da turma</h2>
 
-        <div className="flex items-center justify-between my-4 text-right">
+        {/* <div className="flex items-center justify-between my-4 text-right">
           <CircleProgress ABSNumber={40} reference={18} unity="alunos" />
           <ul className="space-y-4 lg:text-center">
             <li className="flex items-center gap-3 text-xxs lg:text-xs">
@@ -48,7 +50,23 @@ export default function Classe() {
               60% do caminho
             </li>
           </ul>
-        </div>
+        </div> */}
+        <div className="w-full bg-blue-gradient rounded-full h-6 my-6"></div>
+
+        <ul className="space-y-4 lg:text-center">
+          <li className="flex items-center gap-3 text-xxs lg:text-xs">
+            <Check color="#0F62FE" />
+            10 alunos concluíram todas as atividades
+          </li>
+          <li className="flex items-center gap-3 text-xxs lg:text-xs">
+            <Percent color="#0F62FE" />
+            25% - 10/40 alunos;
+          </li>
+          <li className="flex items-center gap-3 text-xxs lg:text-xs">
+            <Users color="#0F62FE" />
+            30 alunos restantes
+          </li>
+        </ul>
       </div>
 
       <hr className="border-[#C6C6C6]" />
