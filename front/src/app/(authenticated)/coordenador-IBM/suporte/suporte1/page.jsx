@@ -55,6 +55,14 @@ export default function Suporte() {
         <H2 title="Responder suporte" />
 
         <form action="" className="mt-8">
+          <label htmlFor="assunto">Assunto</label>
+          <input
+            className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            type="text"
+            disabled
+            value="Contabilização de horas"
+          />
+
           <label htmlFor="resposta">Resposta</label>
           <textarea
             id="resposta"
