@@ -89,7 +89,7 @@ export default function Classe() {
       </button>
 
       {/* Modal */}
-      <Modal isOpen={isOpen} handleClose={handleClose}>
+      <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Adicionar aluno" />
 
         <form action="" className="mt-8">

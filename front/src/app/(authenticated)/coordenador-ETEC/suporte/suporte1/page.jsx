@@ -36,7 +36,7 @@ export default function Suporte() {
 
       <Link
         href="suporte1/responder"
-        className="md:absolute md:invisible flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
+        className="md:absolute md:invisible flex justify-between items-center w-full md:w-0 text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
       >
         Responder
         <ArrowRight strokeWidth={1} />
@@ -51,7 +51,7 @@ export default function Suporte() {
       </button>
 
       {/* Modal */}
-      <Modal isOpen={isOpen} handleClose={handleClose}>
+      <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Responder suporte" />
 
         <form action="" className="mt-8">
