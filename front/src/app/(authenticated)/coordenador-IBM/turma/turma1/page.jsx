@@ -6,10 +6,8 @@ import H2 from '@/components/H2'
 import Main from '@/components/Main'
 import Modal from '@/components/Modal'
 import NewButton from '@/components/NewButton'
-import CircleProgress from '@/components/circle/CircleProgress'
 import {
   Check,
-  Clock4,
   FileText,
   Percent,
   PlusCircle,
