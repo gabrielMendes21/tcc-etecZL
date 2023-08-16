@@ -30,7 +30,7 @@ export default function IBMCoordinatorHome() {
       <h2 className="text-base md:text-2xl mt-5 mb-8">Escolas</h2>
 
       <Dropdown title="ETEC Zona Leste">
-        <Link href="/coordenador-IBM/classe/classe1">
+        <Link href="/coordenador-IBM/turma/turma1">
           <Card>
             <span className="text-base">1º AMS - FATEC</span>
             <span>2023</span>

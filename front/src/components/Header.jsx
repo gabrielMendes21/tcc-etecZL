@@ -55,7 +55,7 @@ function Menu() {
       >
         <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/">Classes</Link>
+            <Link href="/">Turmas</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-ETEC/atividades">Atividades</Link>
@@ -84,7 +84,7 @@ function Menu() {
       >
         <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/">Classes</Link>
+            <Link href="/">Turmas</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-IBM/atividades">Atividades</Link>

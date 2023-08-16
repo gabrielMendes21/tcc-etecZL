@@ -26,9 +26,9 @@ export default function ETECCoordinatorHome() {
       </p>
 
       {/* Classes */}
-      <h2 className="text-base py-7 md:text-2xl">Classes</h2>
+      <h2 className="text-base py-7 md:text-2xl">Turmas</h2>
       <div className="classes space-y-2">
-        <Link href="/coordenador-ETEC/classe/classe1">
+        <Link href="/coordenador-ETEC/turma/turma1">
           <Card>
             <span className="text-base">1º AMS - FATEC</span>
             <span>2023</span>
