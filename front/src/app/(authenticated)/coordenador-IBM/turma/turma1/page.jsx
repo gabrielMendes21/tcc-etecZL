@@ -65,7 +65,7 @@ export default function Classe() {
 
       <div className="space-y-2">
         <h2 className="md:text-2xl mb-6">Alunos</h2>
-        <Link href="classe1/aluno">
+        <Link href="turma1/aluno">
           <Card>
             <span className="text-base">Danilo Costa Rodrigues</span>
           </Card>
