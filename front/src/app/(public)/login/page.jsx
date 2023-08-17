@@ -1,4 +1,3 @@
-import H1 from '@/components/H1'
 import Main from '@/components/Main'
 import Image from 'next/image'
 import darkLogo from '../../../assets/dark-logo.svg'
@@ -11,20 +10,24 @@ export default function Login() {
     <>
       <Header className="md:invisible" />
       <Main className="mt-5">
-        <div className="md:flex md:justify-center md:items-center md:gap-20 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-1/2">
+        <div className="md:flex md:justify-center md:items-center md:gap-20 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-3/5">
           <div>
             <Image
               src={darkLogo}
               alt=""
               className="invisible md:visible w-[350px]"
             />
+
             <h1 className="invisible absolute md:visible md:static text-xl">
               Efetue login no Easy Hours
             </h1>
-            <H1
-              title="Efetue login no Easy Hours"
-              className="md:absolute md:invisible pt-0"
-            />
+
+            <div>
+              <h1 className="text-xl py-7 md:text-2xl text-center md:absolute md:invisible pt-0">
+                Efetue login no Easy Hours
+              </h1>
+              <hr className="border-[#C6C6C6] md:absolute md:invisible pt-0" />
+            </div>
           </div>
 
           <div className="grow">
@@ -47,7 +50,7 @@ export default function Login() {
                 className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
                 placeholder="Digite sua senha"
               />
-              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mb-2 p-3">
+              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mb-2 p-3">
                 Entrar
                 <ArrowRight strokeWidth={1} />
               </button>
@@ -57,7 +60,7 @@ export default function Login() {
 
             <span className="text-xs">
               Esqueceu a senha?{' '}
-              <Link href="" className="text-highlighted">
+              <Link href="" className="text-highlighted hover:brightness-110 ">
                 Entre em contato com um coordenador
               </Link>
             </span>
