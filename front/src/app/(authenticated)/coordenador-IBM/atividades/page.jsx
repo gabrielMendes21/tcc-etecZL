@@ -138,7 +138,7 @@ export default function Atividades() {
           </form>
         </div>
       </Modal> */}
-      <Modal isOpen={isOpen} handleClose={handleClose}>
+      <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Criar atividade" />
 
         <form action="" className="mt-8">

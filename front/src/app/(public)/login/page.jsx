@@ -50,7 +50,7 @@ export default function Login() {
                 className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
                 placeholder="Digite sua senha"
               />
-              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mb-2 p-3">
+              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 p-3">
                 Entrar
                 <ArrowRight strokeWidth={1} />
               </button>
