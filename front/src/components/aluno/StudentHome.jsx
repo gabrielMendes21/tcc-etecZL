@@ -27,7 +27,6 @@ export default function StudentHome() {
       </p>
 
       <div className="lg:flex lg:justify-center lg:mt-12">
-        {/* Left */}
         <div className="lg:grow">
           {/* Main activities */}
           <h2 className="text-base lg:text-2xl mt-5 mb-8">
@@ -52,13 +51,13 @@ export default function StudentHome() {
         <div className="progress-info">
           {/* Progress info */}
           <h2 className="text-base lg:text-2xl mt-5 mb-8">
-            Atividades do programa P-TECH
+            Horas anuais concluídas
           </h2>
 
-          <div className="flex items-center justify-between md:gap-10 my-4 text-right">
+          <div className="flex items-center justify-start gap-10 my-4">
             <CircleProgress ABSNumber={22} reference={10} unity="horas" />
             <ul className="space-y-4 lg:text-center">
-              <li className="flex items-center gap-3 text-xxs lg:text-xs">
+              <li className="flex items-center text-left gap-3 text-xxs lg:text-xs">
                 <Check color="#0F62FE" />
                 10 Horas concluídas
               </li>
