@@ -11,14 +11,16 @@ import { useContext } from 'react'
 function Menu() {
   const { isOpen, setIsOpen, userType, handleMenu } = useContext(PageContext)
 
-  return userType === 'aluno' ? (
+  return userType === 'aluno' ? ( // Student header
     <>
+      {/* Logo */}
       <Image
         src={isOpen ? closeHamburger : menu}
         onClick={handleMenu}
         alt=""
         className="absolute top-1/2 -translate-y-1/2 left-5 md:invisible"
       />
+      {/* Navigation */}
       <nav
         className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
           isOpen ? `left-0` : `-left-full`
@@ -40,14 +42,16 @@ function Menu() {
         </ul>
       </nav>
     </>
-  ) : userType === 'coordenador ETEC' ? (
+  ) : userType === 'coordenador ETEC' ? ( // ETEC Coordinator header
     <>
+      {/* Logo */}
       <Image
         src={isOpen ? closeHamburger : menu}
         onClick={handleMenu}
         alt=""
         className="absolute top-1/2 -translate-y-1/2 left-5 md:invisible"
       />
+      {/* Navigation */}
       <nav
         className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
           isOpen ? `left-0` : `-left-full`
@@ -69,14 +73,16 @@ function Menu() {
         </ul>
       </nav>
     </>
-  ) : userType === 'coordenador IBM' ? (
+  ) : userType === 'coordenador IBM' ? ( // IBM Coordinator header
     <>
+      {/* Logo */}
       <Image
         src={isOpen ? closeHamburger : menu}
         onClick={handleMenu}
         alt=""
         className="absolute top-1/2 -translate-y-1/2 left-5 md:invisible"
       />
+      {/* Navigation */}
       <nav
         className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
           isOpen ? `left-0` : `-left-full`
@@ -113,7 +119,8 @@ export default function Header({ hasMenu, className }) {
       {/* Menu with hamburger */}
       {hasMenu && <Menu />}
 
-      {/* Easy hours logo */}
+      {/* Menu with no hamburguer */}
+      {/* logo */}
       <Link
         href="/"
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:-translate-x-0 md:-translate-y-0"

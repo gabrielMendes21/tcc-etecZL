@@ -18,6 +18,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Classe() {
+  // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
@@ -31,6 +32,7 @@ export default function Classe() {
       </div>
 
       <div className="progress-info my-6">
+        {/* Class stats */}
         <h2 className=" text-center md:text-2xl">Desempenho da turma</h2>
 
         {/* <div className="flex items-center justify-between my-4 text-right">
@@ -69,6 +71,7 @@ export default function Classe() {
 
       <hr className="border-[#C6C6C6]" />
 
+      {/* Generate report */}
       <Link
         href="#"
         className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
@@ -79,6 +82,7 @@ export default function Classe() {
 
       <hr className="border-[#C6C6C6] my-8" />
 
+      {/* Students */}
       <div className="space-y-2">
         <h2 className="md:text-2xl mb-6">Alunos</h2>
         <Link href="turma1/aluno">
@@ -96,6 +100,7 @@ export default function Classe() {
 
       <NewButton text="Adicionar aluno" to="turma1/aluno/novo-aluno" />
 
+      {/* New student button */}
       <button
         onClick={handleOpen}
         className="flex gap-3 mt-5 absolute invisible md:static md:visible"

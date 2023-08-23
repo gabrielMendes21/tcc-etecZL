@@ -7,6 +7,7 @@ export default function NovaSolicitação() {
     <Main>
       <H1 title="Solicitar suporte" />
 
+      {/* Form */}
       <form action="" className="pt-5">
         <label htmlFor="subject" className="text-sm">
           Assunto

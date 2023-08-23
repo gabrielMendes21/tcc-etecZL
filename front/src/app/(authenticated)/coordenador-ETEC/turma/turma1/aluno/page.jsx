@@ -16,6 +16,7 @@ export default function Perfil() {
 
   return (
     <Main>
+      {/* Student info */}
       <span className="block mt-7 font-medium text-xl text-center">
         Danilo Costa Rodrigues
       </span>
@@ -52,6 +53,7 @@ export default function Perfil() {
 
       <hr className="border-[#C6C6C6] mt-8 mb-6" />
 
+      {/* Options */}
       <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3">
         Gerar relatório
         <FileText strokeWidth={1} />
@@ -73,6 +75,7 @@ export default function Perfil() {
         <Pen strokeWidth={1} />
       </button>
 
+      {/* Modal */}
       <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Editar aluno" />
 

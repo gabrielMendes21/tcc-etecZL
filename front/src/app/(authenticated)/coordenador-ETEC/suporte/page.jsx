@@ -9,26 +9,28 @@ export default function Suporte() {
     <Main>
       <H1 title="Solicitações de suporte" />
 
+      {/* Answered requests */}
       <H2 title="Respondidas" />
       <div className="classes space-y-2">
         <Link href="suporte/suporte2">
           <Card>
             <span className="text-base">Henrique Machado</span>
-            <span>3º AMS, ETEC Zona Leste - 12/05/2023</span>
+            <span>Sessão do mês passado</span>
           </Card>
         </Link>
         <Card>
           <span className="text-base">Gabriel da Silva Mendes</span>
-          <span>3º AMS, ETEC Zona Leste - 08/05/2023</span>
+          <span>Horas flexíveis</span>
         </Card>
         <Card>
           <span className="text-base">Andrei Luiz Florencio Matias</span>
-          <span>3º AMS, ETEC Zona Leste - 09/05/2023</span>
+          <span>Visita técnica</span>
         </Card>
       </div>
 
       <hr className="border-[#C6C6C6] mt-7" />
 
+      {/* Not-answered requests */}
       <H2 title="Não respondidas" />
       <div className="classes space-y-2">
         <Link href="suporte/suporte1">

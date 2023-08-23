@@ -44,7 +44,7 @@ export default function Suporte() {
         </Card>
       </Dropdown>
 
-      {/* New support requeat button */}
+      {/* New support request button */}
       <NewButton text="Nova solicitação" to="suporte/nova-solicitacao" />
 
       {/* New acivity modal */}

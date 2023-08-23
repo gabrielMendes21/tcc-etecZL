@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Dropdown({ title, children }) {
-  // Controlling the dropdown
+  // DropDown Control
   const [isActive, setIsActive] = useState(true)
   const handleDropDown = () => setIsActive(!isActive)
 

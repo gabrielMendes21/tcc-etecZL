@@ -26,6 +26,7 @@ export default function StudentHome() {
         Trocar usuário
       </p>
 
+      {/* Main activities */}
       <div className="lg:flex lg:justify-center lg:mt-12">
         <div className="lg:grow">
           {/* Main activities */}
@@ -47,7 +48,6 @@ export default function StudentHome() {
 
         <hr className="border-[#C6C6C6] my-4 lg:rotate-90 lg:w-72 lg:self-center" />
 
-        {/* Right */}
         <div className="progress-info">
           {/* Progress info */}
           <h2 className="text-base lg:text-2xl mt-5 mb-8">

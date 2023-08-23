@@ -25,7 +25,7 @@ export default function Atividades() {
       </Dropdown>
 
       {/* Overdue Activities */}
-      <Dropdown title="Não entregues">
+      <Dropdown title="Atrasadas">
         <Card>
           <span className="text-base col-span-1/2">Pitch de apresentação</span>
           <span>19/05/2023</span>

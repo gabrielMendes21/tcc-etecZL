@@ -1,10 +1,16 @@
-import H1 from '@/components/H1'
 import Main from '@/components/Main'
 
 export default function Suporte() {
   return (
     <Main>
-      <H1 title="Suporte" />
+      <h1 className="block mt-7 font-medium text-xl text-center">Suporte</h1>
+      {/* Request subject */}
+      <span className="block font-light text-center">
+        Sessão do mês passado
+      </span>
+
+      <hr className="border-[#C6C6C6] my-8" />
+
       {/* Support message */}
       <div className="my-8">
         <h2 className="font-medium md:text-xl">Mensagem:</h2>

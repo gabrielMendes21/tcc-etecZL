@@ -46,6 +46,7 @@ export default function ETECCoordinatorHome() {
 
       <hr className="border-[#C6C6C6] mt-7" />
 
+      {/* Support requests */}
       <h2 className="text-base py-7 md:text-2xl">Solicitações de suporte</h2>
       <div className="classes space-y-2">
         <Link href="/coordenador-ETEC/suporte/suporte1">

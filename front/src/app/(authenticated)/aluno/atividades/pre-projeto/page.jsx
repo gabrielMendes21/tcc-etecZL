@@ -35,7 +35,7 @@ export default function Atividade() {
 
         <hr className="border-[#C6C6C6]" />
 
-        {/* Student's work files */}
+        {/* Student work */}
         <div className="font-medium">
           <h2 className="mb-4">Meu trabalho:</h2>
           <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
