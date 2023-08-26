@@ -8,7 +8,7 @@ export default function EditarAtividade() {
     <Main>
       <H1 title="Editar atividade" />
 
-      {/* Task fields */}
+      {/* Form */}
       <form action="" className="pt-5">
         <label htmlFor="task-name" className="text-sm">
           Nome da atividade

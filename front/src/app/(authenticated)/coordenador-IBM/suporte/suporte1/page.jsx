@@ -1,7 +1,6 @@
 'use client'
 
 import FormSubmitButton from '@/components/FormSubmitButton'
-import H1 from '@/components/H1'
 import H2 from '@/components/H2'
 import Main from '@/components/Main'
 import Modal from '@/components/Modal'
@@ -10,13 +9,19 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Suporte() {
+  // Modal Control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
   return (
     <Main>
-      <H1 title="Suporte" />
+      <h1 className="block mt-7 font-medium text-xl text-center">Suporte</h1>
+      {/* Request subject */}
+      <span className="block font-light text-center">Reconsiderações</span>
+
+      <hr className="border-[#C6C6C6] my-8" />
+
       {/* Support message */}
       <div className="my-8">
         <h2 className="font-medium md:text-xl">Mensagem:</h2>
@@ -27,6 +32,7 @@ export default function Suporte() {
         </p>
       </div>
 
+      {/* Support request author */}
       <span className="text-xs block">
         Danilo Costa Rodrigues - 3º AMS, ETEC Zona Leste
       </span>
@@ -34,6 +40,7 @@ export default function Suporte() {
 
       <hr className="border-[#C6C6C6] my-8" />
 
+      {/* Answer button (mobile) */}
       <Link
         href="suporte1/responder"
         className="md:absolute md:invisible flex justify-between items-center w-full md:w-0 text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
@@ -42,6 +49,7 @@ export default function Suporte() {
         <ArrowRight strokeWidth={1} />
       </Link>
 
+      {/* Answer button (Tablets and PC's) */}
       <button
         onClick={handleOpen}
         className="absolute invisible md:relative md:visible flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"

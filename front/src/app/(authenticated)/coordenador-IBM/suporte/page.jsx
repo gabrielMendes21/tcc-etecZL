@@ -7,6 +7,7 @@ import Link from 'next/link'
 export default function Suporte() {
   return (
     <Main>
+      {/* Support requests */}
       <H1 title="Solicitações de suporte" />
 
       <H2 title="Respondidas" />

@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Perfil() {
+  // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)

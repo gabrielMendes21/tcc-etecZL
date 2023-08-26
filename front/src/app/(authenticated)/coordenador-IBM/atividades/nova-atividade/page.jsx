@@ -8,7 +8,7 @@ export default function NovaAtividade() {
     <Main>
       <H1 title="Criar atividade" />
 
-      {/* Task fields */}
+      {/* Form */}
       <form action="" className="pt-5">
         <label htmlFor="class" className="text-sm">
           Turma

@@ -10,12 +10,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Perfil() {
+  // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
   return (
     <Main>
+      {/* Student info */}
       <span className="block mt-7 font-medium text-xl text-center">
         Danilo Costa Rodrigues
       </span>
@@ -52,11 +54,13 @@ export default function Perfil() {
 
       <hr className="border-[#C6C6C6] mt-8 mb-6" />
 
+      {/* Options */}
       <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3">
         Gerar relatório
         <FileText strokeWidth={1} />
       </button>
 
+      {/* Edit student button (mobile) */}
       <Link
         className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white my-3 p-3 md:absolute md:invisible"
         href="aluno/editar"
@@ -65,6 +69,7 @@ export default function Perfil() {
         <Pen strokeWidth={1} />
       </Link>
 
+      {/* Edit student button (mobile) */}
       <button
         onClick={handleOpen}
         className="absolute invisible md:static md:visible flex justify-between items-center w-full text-left font-light bg-highlighted hover:cursor-pointer hover:brightness-110 transition-all text-white p-3 my-3"
@@ -73,6 +78,7 @@ export default function Perfil() {
         <Pen strokeWidth={1} />
       </button>
 
+      {/* Modal */}
       <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Editar aluno" />
 

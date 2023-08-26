@@ -32,6 +32,7 @@ export default function Suporte() {
         </p>
       </div>
 
+      {/* Support request author */}
       <span className="text-xs block">
         Danilo Costa Rodrigues - 3º AMS, ETEC Zona Leste
       </span>

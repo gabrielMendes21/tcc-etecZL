@@ -98,9 +98,10 @@ export default function Classe() {
         </Card>
       </div>
 
+      {/* New student button (mobile) */}
       <NewButton text="Adicionar aluno" to="turma1/aluno/novo-aluno" />
 
-      {/* New student button */}
+      {/* New student button (tablets and PC's) */}
       <button
         onClick={handleOpen}
         className="flex gap-3 mt-5 absolute invisible md:static md:visible"
