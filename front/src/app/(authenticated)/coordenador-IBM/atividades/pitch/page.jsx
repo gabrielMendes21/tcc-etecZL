@@ -1,10 +1,19 @@
+'use client'
+
 import Card from '@/components/Card'
 import H2 from '@/components/H2'
 import Main from '@/components/Main'
-import { ArrowRight, Image } from 'lucide-react'
+import { ArrowRight, Image, PlusCircle, Trash2 } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import Modal from '@/components/Modal'
+import FormSubmitButton from '@/components/FormSubmitButton'
 
 export default function Pitch() {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
   return (
     <Main>
       {/* Task info */}
@@ -40,14 +49,75 @@ export default function Pitch() {
 
         <hr className="border-[#C6C6C6] my-8" />
 
-        {/* Edit task link */}
+        {/* Edit activity link */}
         <Link
           href="pitch/editar"
-          className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white p-3"
+          className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white p-3 md:invisible md:absolute md:w-0"
         >
           Editar atividade
           <ArrowRight strokeWidth={1} />
         </Link>
+
+        {/* Edit activity modal button */}
+        <button
+          onClick={handleOpen}
+          className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white p-3 invisible absolute md:visible md:static"
+        >
+          Editar atividade
+        </button>
+
+        {/* Modal */}
+        <Modal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
+          <H2 title="Criar atividade" />
+
+          <form action="" className="mt-8">
+            <label htmlFor="task-name" className="text-sm">
+              Nome da atividade
+            </label>
+            <input
+              type="text"
+              id="task-name"
+              className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+              placeholder="Digite o nome da atividade"
+            />
+
+            <label htmlFor="task-details" className="text-sm">
+              Detalhes da atividade
+            </label>
+            <textarea
+              id="task-details"
+              cols="30"
+              rows="10"
+              className="mt-3 mb-8 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+              placeholder="Digite os detalhes da atividade"
+            ></textarea>
+
+            <label htmlFor="task-date" className="text-sm">
+              Data de entrega
+            </label>
+            <input
+              type="date"
+              id="task-date"
+              className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            />
+
+            <label htmlFor="task-files" className="text-sm">
+              Anexar materiais de apoio
+            </label>
+            <input
+              id="task-files"
+              type="file"
+              multiple
+              className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2 text-sm"
+            />
+
+            <FormSubmitButton title="Editar" />
+            <button className="flex justify-between items-center w-full text-left font-light bg-[#BE2528] text-white p-3">
+              Excluir atividade
+              <Trash2 strokeWidth={1} />
+            </button>
+          </form>
+        </Modal>
       </div>
 
       <hr className="border-[#C6C6C6] mt-8" />

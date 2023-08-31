@@ -41,7 +41,7 @@ export default function Atividades() {
         text="Nova atividade"
       />
 
-      {/* New acivity modal */}
+      {/* New acivity modal button */}
       <button
         onClick={handleOpen}
         className="flex gap-3 mt-5 invisible absolute md:visible md:relative"
