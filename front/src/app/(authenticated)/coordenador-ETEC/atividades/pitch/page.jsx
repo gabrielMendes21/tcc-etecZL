@@ -35,15 +35,6 @@ export default function Pitch() {
             Arquivo1.png
           </div>
         </div>
-
-        {/* Edit task link */}
-        <Link
-          href="/coordenador-ETEC/atividades/pitch/editar"
-          className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3"
-        >
-          Editar atividade
-          <ArrowRight strokeWidth={1} />
-        </Link>
       </div>
     </Main>
   )

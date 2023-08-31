@@ -68,7 +68,7 @@ export default function Suporte() {
             type="text"
             id="subject"
             placeholder="Digite o assunto da sua solicitação"
-            className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+            className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
           />
 
           <label htmlFor="message" className="text-sm">
@@ -78,7 +78,7 @@ export default function Suporte() {
             id="message"
             cols="30"
             rows="10"
-            className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            className="mt-3 mb-8 border-b block resize-none border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
             placeholder="Digite sua mensagem"
           ></textarea>
 
