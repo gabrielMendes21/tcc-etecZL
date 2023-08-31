@@ -7,7 +7,7 @@ export default function TradLink({ to, size, children }) {
       href={to}
       className={`text-highlighted text-[${
         size / 16
-      }rem] underline flex items-center gap-1 mt-4`}
+      }rem] underline flex items-center gap-1 mt-4 hover:brightness-110`}
     >
       {children}
       <ArrowRight size={size} />
