@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Escola {
+  id          String        @id @map("codEscola")
+  nomeEscola  String
+  Aluno       Aluno[]
+  Coordenador Coordenador[]
+}
+
+model Aluno {
+  id        String @id @map("rm")
+  codEscola String
+
+  nome            String
+  email           String
+  senha           String
+  turma           String
+  horasConcluidas Int
+  horasAnuais     Int
+
+  escola Escola @relation(fields: [escolaId], references: [id])
+
+  Entrega  Entrega[]
+  escolaId String
+}
+
+model Entrega {
+  id           String @id @default(uuid())
+  codAtividade Int
+  alunoRm      String
+
+  dataEntrega DateTime
+
+  atividade Atividade @relation(fields: [codAtividade], references: [id])
+  aluno     Aluno     @relation(fields: [alunoRm], references: [id])
+}
+
+model Atividade {
+  id             Int      @id @default(autoincrement()) @map("codAtividade")
+  titulo         String
+  descricao      String
+  tipoAtividade  String
+  anexos         String
+  horasAtividade Int
+  dataCriacao    DateTime @default(now())
+  prazoEntrega   DateTime
+
+  Entrega Entrega[]
+}
+
+model SolicitacaoSuporte {
+  id     Int    @id @map("codSolicitacao")
+  titulo String
+}
+
+model Coordenador {
+  id String @id @default(uuid()) @map("codCoordenador")
+
+  nome  String
+  email String
+  senha String
+
+  escola   Escola @relation(fields: [escolaId], references: [id])
+  escolaId String
+}
