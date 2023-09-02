@@ -23,7 +23,7 @@ function Menu() {
       {/* Navigation */}
       <nav
         className={`fixed z-10 top-16 transition-all py-9 px-6 bg-white h-screen w-screen md:static md:bg-transparent md:h-auto md:w-auto md:p-0 ${
-          isOpen ? `left-0` : `-left-full`
+          isOpen ? `left-0` : `-left-[1000px]`
         }`}
       >
         <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
