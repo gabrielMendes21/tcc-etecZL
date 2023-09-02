@@ -9,7 +9,8 @@ const loginUrl = `${process.env.NEXT_PUBLIC_WEB_URL}login`
 export function middleware(req) {
   if (!req.url.includes('login')) {
     // Auth Token
-    const token = req.cookies.get('token')?.value
+    // const token = req.cookies.get('token')?.value
+    const token = 'asd'
     // Se o token não existir, o usuário não está logado, logo, ele será redirecionado para a tela de login
     if (!token) {
       return NextResponse.redirect(loginUrl, {

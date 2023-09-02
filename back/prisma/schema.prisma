@@ -21,7 +21,7 @@ model Aluno {
   id Int @id @map("rm")
 
   nome            String
-  email           String
+  email           String @unique
   senha           String
   turma           String
   horasConcluidas Int
@@ -98,7 +98,7 @@ model Resposta {
 model Coordenador {
   id              Int    @id @default(autoincrement()) @map("codCoordenador")
   nome            String
-  email           String
+  email           String @unique
   senha           String
   tipoCoordenador String
 

@@ -3,7 +3,7 @@
 import Card from '@/components/Card'
 import H2 from '@/components/H2'
 import Main from '@/components/Main'
-import { ArrowRight, Image, PlusCircle, Trash2 } from 'lucide-react'
+import { ArrowRight, Image, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import Modal from '@/components/Modal'
