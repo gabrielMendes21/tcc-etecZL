@@ -7,24 +7,13 @@ import { Check, Clock4, Percent } from 'lucide-react'
 import Link from 'next/link'
 import UserInfo from '../UserInfo'
 import TradLink from '../Link'
-import { PageContext } from '@/app/context/PageContext'
 import Main from '../Main'
 
 export default function StudentHome() {
-  const { setUserType } = useContext(PageContext)
-
   return (
     <Main>
       {/* Student info */}
       <UserInfo name="Danilo" status="3ºDS AMS, ETEC Zona Leste" />
-      <p
-        className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"
-        onClick={() => {
-          setUserType('coordenador ETEC')
-        }}
-      >
-        Trocar usuário
-      </p>
 
       {/* Main activities */}
       <div className="lg:flex lg:justify-center lg:mt-12">

@@ -1,11 +1,28 @@
+'use client'
+
 import Main from '@/components/Main'
 import Image from 'next/image'
 import darkLogo from '../../../assets/dark-logo.svg'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Header from '@/components/Header'
+import { useForm } from 'react-hook-form'
+import { useContext } from 'react'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function Login() {
+  const { login } = useContext(PageContext)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = async (data) => {
+    await login(data)
+  }
+
   return (
     <>
       <Header className="md:invisible" />
@@ -33,26 +50,63 @@ export default function Login() {
 
           {/* Form */}
           <div className="grow">
-            <form action="" className="pt-5">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              method="POST"
+              className="pt-5"
+            >
               <label htmlFor="email" className="text-sm">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+                className="mt-3 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
                 placeholder="Digite seu email"
+                {...register('email', {
+                  required: true,
+                  pattern: /.*@.*\.*/i,
+                })}
               />
-              <label htmlFor="senha" className="text-sm">
+              {errors.email?.type === 'required' && (
+                <p role="alert" className="text-red-500 text-xs font-bold mt-2">
+                  *Não deixe o campo vazio
+                </p>
+              )}
+              {errors.email?.type === 'pattern' && (
+                <p role="alert" className="text-red-500 text-xs font-bold mt-2">
+                  *Exemplo: nome@dominio.com
+                </p>
+              )}
+
+              <label htmlFor="senha" className="mt-8 text-sm inline-block">
                 Senha
               </label>
               <input
                 type="password"
                 id="senha"
-                className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+                className="mt-3 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
                 placeholder="Digite sua senha"
+                {...register('senha', { required: true, minLength: 6 })}
               />
-              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 p-3">
+              {errors.senha?.type === 'required' && (
+                <p
+                  role="alert"
+                  className="text-red-500 text-xs font-bold mb-8 mt-2"
+                >
+                  *Não deixe o campo vazio
+                </p>
+              )}
+              {errors.senha?.type === 'minLength' && (
+                <p
+                  role="alert"
+                  className="text-red-500 text-xs font-bold mb-8 mt-2"
+                >
+                  *Sua senha deve ter no mínimo 6 caracteres
+                </p>
+              )}
+
+              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 mt-8 p-3">
                 Entrar
                 <ArrowRight strokeWidth={1} />
               </button>
@@ -62,7 +116,10 @@ export default function Login() {
 
             <span className="text-xs">
               Esqueceu a senha?{' '}
-              <Link href="" className="text-highlighted hover:brightness-110 ">
+              <Link
+                href="mailto:teste@gmail.com"
+                className="text-highlighted hover:brightness-110 "
+              >
                 Entre em contato com um coordenador
               </Link>
             </span>

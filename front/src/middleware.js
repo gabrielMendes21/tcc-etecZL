@@ -8,7 +8,7 @@ const loginUrl = `${process.env.NEXT_PUBLIC_WEB_URL}login`
 export function middleware(req) {
   console.log('Teste')
   // Auth Token
-  const token = req.cookies.get('token')?.value
+  const token = req.cookies.get('auth-token')?.value
 
   // Se o token não existir, o usuário não está logado, logo, ele será redirecionado para a tela de login
   if (!token) {

@@ -1,4 +1,5 @@
 import '../globals.css'
+import { PageContextProvider } from '../context/PageContext'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,7 +13,11 @@ export const metadata = {
 export default function LoginLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} min-h-screen grid`}>{children}</body>
+      <PageContextProvider>
+        <body className={`${inter.className} min-h-screen grid`}>
+          {children}
+        </body>
+      </PageContextProvider>
     </html>
   )
 }
