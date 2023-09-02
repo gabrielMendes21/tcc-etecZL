@@ -11,15 +11,14 @@ datasource db {
 }
 
 model Escola {
-  id          String        @id @map("codEscola")
+  id          Int           @id @default(autoincrement()) @map("codEscola")
   nomeEscola  String
   Aluno       Aluno[]
   Coordenador Coordenador[]
 }
 
 model Aluno {
-  id        String @id @map("rm")
-  codEscola String
+  id Int @id @map("rm")
 
   nome            String
   email           String
@@ -28,21 +27,23 @@ model Aluno {
   horasConcluidas Int
   horasAnuais     Int
 
-  escola Escola @relation(fields: [escolaId], references: [id])
+  escolaId Int
+  escola   Escola @relation(fields: [escolaId], references: [id])
 
-  Entrega  Entrega[]
-  escolaId String
+  Entrega            Entrega[]
+  SolicitacaoSuporte SolicitacaoSuporte[]
 }
 
 model Entrega {
-  id           String @id @default(uuid())
-  codAtividade Int
-  alunoRm      String
-
+  id          String   @id @default(uuid())
   dataEntrega DateTime
+  anexos      String?
 
-  atividade Atividade @relation(fields: [codAtividade], references: [id])
-  aluno     Aluno     @relation(fields: [alunoRm], references: [id])
+  codAtividade Int
+  atividade    Atividade @relation(fields: [codAtividade], references: [id])
+
+  alunoRm Int
+  aluno   Aluno @relation(fields: [alunoRm], references: [id])
 }
 
 model Atividade {
@@ -50,26 +51,60 @@ model Atividade {
   titulo         String
   descricao      String
   tipoAtividade  String
-  anexos         String
+  anexos         String?
   horasAtividade Int
   dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
 
-  Entrega Entrega[]
+  Entrega  Entrega[]
+  Correcao Correcao[]
+}
+
+model Correcao {
+  id           Int      @id @default(autoincrement())
+  dataCorrecao DateTime @default(now())
+
+  coordenadorId Int
+  coordenador   Coordenador @relation(fields: [coordenadorId], references: [id])
+
+  atividadeId Int
+  atividade   Atividade @relation(fields: [atividadeId], references: [id])
 }
 
 model SolicitacaoSuporte {
-  id     Int    @id @map("codSolicitacao")
-  titulo String
+  id          Int      @id @default(autoincrement()) @map("codSolicitacao")
+  titulo      String
+  mensagem    String
+  dataCriacao DateTime @default(now())
+
+  alunoId Int
+  aluno   Aluno @relation(fields: [alunoId], references: [id])
+
+  Resposta Resposta[]
+}
+
+model Resposta {
+  id           Int      @id @default(autoincrement())
+  dataResposta DateTime @default(now())
+  resposta     String
+
+  coordenadorId Int
+  coordenador   Coordenador @relation(fields: [coordenadorId], references: [id])
+
+  solicitacaoSuporteId Int
+  solicitacao          SolicitacaoSuporte @relation(fields: [solicitacaoSuporteId], references: [id])
 }
 
 model Coordenador {
-  id String @id @default(uuid()) @map("codCoordenador")
+  id              Int    @id @default(autoincrement()) @map("codCoordenador")
+  nome            String
+  email           String
+  senha           String
+  tipoCoordenador String
 
-  nome  String
-  email String
-  senha String
-
+  escolaId Int
   escola   Escola @relation(fields: [escolaId], references: [id])
-  escolaId String
+
+  Resposta Resposta[]
+  Correcao Correcao[]
 }
