@@ -1,21 +1,15 @@
 'use client'
 
-import ETECCoordinatorHome from '@/components/coordenador-ETEC/ETECCoordinatorHome'
-import IBMCoordinatorHome from '@/components/coordenador-IBM/IBMCoordinatorHome'
-import StudentHome from '@/components/aluno/StudentHome'
-import { useContext } from 'react'
-import { PageContext } from '../context/PageContext'
+import Main from '@/components/Main'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function Home() {
-  const { userType } = useContext(PageContext)
-
-  return userType === 'aluno' ? (
-    <StudentHome />
-  ) : userType === 'coordenador ETEC' ? (
-    <ETECCoordinatorHome />
-  ) : userType === 'coordenador IBM' ? (
-    <IBMCoordinatorHome />
-  ) : (
-    'Usuário inválido'
+  const router = useRouter()
+  useEffect(() => router.push('/dashboard'), [])
+  return (
+    <Main>
+      <h1>Moving to dashboard...</h1>
+    </Main>
   )
 }
