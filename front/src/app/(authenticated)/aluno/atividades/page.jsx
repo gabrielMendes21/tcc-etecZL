@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { Box, Tab } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import Link from 'next/link'
-import Task from './Task'
+import Task from '@/components/Task'
 
 export default function Atividades() {
   const [value, setValue] = useState('1')

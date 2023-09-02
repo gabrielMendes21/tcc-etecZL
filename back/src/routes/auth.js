@@ -5,6 +5,18 @@ const prisma = new PrismaClient({
 })
 
 export async function authRoutes(app) {
+    app.decorate("authenticate", async (req, res) => {
+        try {
+            await req.jwtVerify()
+        } catch (err) {
+            res.send(err)
+        }
+    })
+
+    app.get('/validateToken', {onRequest: [app.authenticate]}, async(req, res) => {
+        return req.user
+    })
+
     app.post('/login', async (req, res) => {
         // Check type of user and if it exists
         const { email, senha } = req.body 
@@ -23,7 +35,10 @@ export async function authRoutes(app) {
 
         if (userStudent) {
             if (userStudent.senha !== senha) {
-                res.send("Senha incorreta")
+                return {
+                    token: undefined,
+                    message: "Senha incorreta"
+                }
             } else {
                 const token = app.jwt.sign({
                     nome: userStudent.nome, 
@@ -37,11 +52,16 @@ export async function authRoutes(app) {
                     expiresIn: '1 day'
                 })
 
-                res.send(token)
+                return {
+                    token
+                }
             }
         } else if (userCoordinator) {
             if (userCoordinator.senha !== senha) {
-                res.send("Senha incorreta")
+                return {
+                    token: undefined,
+                    message: "Senha incorreta"
+                }
             } else {
                 const token = app.jwt.sign({
                     nome: userCoordinator.nome, 
@@ -57,6 +77,7 @@ export async function authRoutes(app) {
             }
         } else {
             return {
+                token: undefined,
                 message: "Usuário não existe"
             }
         }
