@@ -8,12 +8,18 @@ import Link from 'next/link'
 import UserInfo from '../UserInfo'
 import TradLink from '../Link'
 import Main from '../Main'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function StudentHome() {
+  const { user } = useContext(PageContext)
+  const firstName = user?.nome?.split(' ')[0]
   return (
     <Main>
       {/* Student info */}
-      <UserInfo name="Danilo" status="3ºDS AMS, ETEC Zona Leste" />
+      <UserInfo
+        name={firstName}
+        status={`${user?.turma}, ${user?.escola?.nomeEscola}`}
+      />
 
       {/* Main activities */}
       <div className="lg:flex lg:justify-center lg:mt-12">
@@ -44,19 +50,24 @@ export default function StudentHome() {
           </h2>
 
           <div className="flex items-center justify-start gap-10 my-4">
-            <CircleProgress ABSNumber={22} reference={10} unity="horas" />
+            <CircleProgress
+              ABSNumber={user?.horasAnuais}
+              reference={user?.horasConcluidas}
+              unity="horas"
+            />
             <ul className="space-y-4 lg:text-center">
               <li className="flex items-center text-left gap-3 text-xxs lg:text-xs">
                 <Check color="#0F62FE" />
-                10 Horas concluídas
+                {user?.horasConcluidas} Horas concluídas
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
                 <Clock4 color="#0F62FE" />
-                12 horas restantes
+                {user?.horasAnuais - user?.horasConcluidas} horas restantes
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
                 <Percent color="#0F62FE" />
-                45% do caminho
+                {Math.round((user?.horasConcluidas / user?.horasAnuais) * 100)}%
+                do caminho
               </li>
             </ul>
           </div>

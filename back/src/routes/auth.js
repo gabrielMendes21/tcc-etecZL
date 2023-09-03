@@ -13,10 +13,6 @@ export async function authRoutes(app) {
         }
     })
 
-    app.get('/validateToken', {onRequest: [app.authenticate]}, async(req, res) => {
-        return req.user
-    })
-
     app.post('/login', async (req, res) => {
         // Check type of user and if it exists
         const { email, senha } = req.body 
@@ -24,12 +20,18 @@ export async function authRoutes(app) {
         const userStudent = await prisma.aluno.findUnique({
             where: {
                email: email,
+            },
+            include: {
+                escola: true,
             }
         })
 
         const userCoordinator = await prisma.coordenador.findUnique({
             where: {
                email: email,
+            },
+            include: {
+                escola: true
             }
         })
 
@@ -46,7 +48,7 @@ export async function authRoutes(app) {
                     horasAnuais: userStudent.horasAnuais, 
                     horasConcluidas: userStudent.horasConcluidas, 
                     turma: userStudent.turma, 
-                    escolaId: userStudent.escolaId
+                    escola: userStudent.escola
                 }, {
                     sub: userStudent.id.toString(),
                     expiresIn: '1 day'
@@ -67,7 +69,7 @@ export async function authRoutes(app) {
                     nome: userCoordinator.nome, 
                     email: userCoordinator.email,
                     tipoCoordenador: userCoordinator.tipoCoordenador,  
-                    escolaId: userCoordinator.escolaId
+                    escola: userCoordinator.escola
                 }, {
                     sub: userCoordinator.id.toString(),
                     expiresIn: '1 day'
@@ -81,5 +83,9 @@ export async function authRoutes(app) {
                 message: "Usuário não existe"
             }
         }
+    })
+
+    app.get('/validateToken', {onRequest: [app.authenticate]}, async(req, res) => {
+        return req.user
     })
 }

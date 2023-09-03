@@ -36,7 +36,7 @@ async function createMainData() {
                     Entrega: {
                         create: [{
                             dataEntrega: "2023-09-19T02:59:59.000Z",
-                            codAtividade: 1
+                            codAtividade: 1,
                         }]
                     }
                 }, {
@@ -47,12 +47,6 @@ async function createMainData() {
                     turma: "3ºDS AMS",
                     horasConcluidas: 99,
                     horasAnuais: 120,
-                    Entrega: {
-                        create: [{
-                            dataEntrega: "2023-03-15T02:59:59.000Z",
-                            codAtividade: 2
-                        }]
-                    }
                 }]
             },
             Coordenador: {
@@ -64,7 +58,7 @@ async function createMainData() {
                     Correcao: {
                         create: [{
                             dataCorrecao: "2023-03-19T02:59:59.000Z",
-                            atividadeId: 2
+                            atividadeId: 1
                         }]
                     }
                 }]
@@ -72,6 +66,12 @@ async function createMainData() {
         }
     })
 
+    const AlunoAtividade = await prisma.alunoAtividade.create({
+        data: {
+            alunoId: 2,
+            atividadeId: 2
+        }
+    })
 
     const solicitacaoSuporte1 = await prisma.solicitacaoSuporte.create({
         data: {

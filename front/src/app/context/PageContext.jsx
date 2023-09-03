@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 export const PageContext = createContext({})
 
 export function PageContextProvider({ children }) {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState()
 
   const router = useRouter()
 
@@ -42,14 +42,23 @@ export function PageContextProvider({ children }) {
 
     if (router.pathname !== '/login') {
       if (token) {
-        axios(`../api/auth?token=${token}`)
-          .then((response) => setUser(response.data))
+        axios('http://localhost:3333/validateToken', {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            setUser(response.data)
+            console.log(response.data)
+          })
           .catch((err) => console.log(err))
       }
     }
   }, [router])
 
   return (
-    <PageContext.Provider value={{ login }}>{children}</PageContext.Provider>
+    <PageContext.Provider value={{ login, user }}>
+      {children}
+    </PageContext.Provider>
   )
 }

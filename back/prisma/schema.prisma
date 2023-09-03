@@ -32,10 +32,21 @@ model Aluno {
 
   Entrega            Entrega[]
   SolicitacaoSuporte SolicitacaoSuporte[]
+  AlunoAtividade     AlunoAtividade[]
+}
+
+model AlunoAtividade {
+  id Int @id @default(autoincrement())
+
+  aluno   Aluno @relation(fields: [alunoId], references: [id])
+  alunoId Int
+
+  atividade   Atividade @relation(fields: [atividadeId], references: [id])
+  atividadeId Int
 }
 
 model Entrega {
-  id          String   @id @default(uuid())
+  id          Int      @id @default(autoincrement())
   dataEntrega DateTime
   anexos      String?
 
@@ -56,8 +67,9 @@ model Atividade {
   dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
 
-  Entrega  Entrega[]
-  Correcao Correcao[]
+  Entrega        Entrega[]
+  Correcao       Correcao[]
+  AlunoAtividade AlunoAtividade[]
 }
 
 model Correcao {

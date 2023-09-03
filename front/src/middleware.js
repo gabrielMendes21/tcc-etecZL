@@ -6,7 +6,6 @@ import { NextResponse } from 'next/server'
 const loginUrl = `${process.env.NEXT_PUBLIC_WEB_URL}login`
 
 export function middleware(req) {
-  console.log('Teste')
   // Auth Token
   const token = req.cookies.get('auth-token')?.value
 
