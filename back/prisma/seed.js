@@ -66,13 +66,6 @@ async function createMainData() {
         }
     })
 
-    const AlunoAtividade = await prisma.alunoAtividade.create({
-        data: {
-            alunoId: 2,
-            atividadeId: 2
-        }
-    })
-
     const solicitacaoSuporte1 = await prisma.solicitacaoSuporte.create({
         data: {
             titulo: "Sessão do mês passado",
