@@ -49,8 +49,8 @@ export function PageContextProvider({ children }) {
         // })
         axios('../api/login', {
           params: {
-            token
-          }
+            token,
+          },
         })
           .then((response) => {
             setUser(response.data)
