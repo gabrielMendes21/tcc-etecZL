@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Escola {
+  id          Int           @id @default(autoincrement()) @map("codEscola")
+  nomeEscola  String
+  Aluno       Aluno[]
+  Coordenador Coordenador[]
+}
+
+model Aluno {
+  id Int @id @map("rm")
+
+  nome            String
+  email           String @unique
+  senha           String
+  turma           String
+  horasConcluidas Int
+  horasAnuais     Int
+
+  escolaId Int
+  escola   Escola @relation(fields: [escolaId], references: [id])
+
+  // Entrega            Entrega[]
+  // SolicitacaoSuporte SolicitacaoSuporte[]
+  // AlunoAtividade     AlunoAtividade[]
+}
+
+model Coordenador {
+  id              Int    @id @default(autoincrement()) @map("codCoordenador")
+  nome            String
+  email           String @unique
+  senha           String
+  tipoCoordenador String
+
+  escolaId Int
+  escola   Escola @relation(fields: [escolaId], references: [id])
+
+  // Resposta Resposta[]
+  // Correcao Correcao[]
+}

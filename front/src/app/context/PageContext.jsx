@@ -15,7 +15,7 @@ export function PageContextProvider({ children }) {
   // Login function => Called by the login page only
   async function login({ email, senha }) {
     try {
-      const response = await axios.post('http://localhost:3333/login', {
+      const response = await axios.post('../api/login', {
         email,
         senha,
       })
@@ -42,16 +42,23 @@ export function PageContextProvider({ children }) {
 
     if (router.pathname !== '/login') {
       if (token) {
-        axios('http://localhost:3333/validateToken', {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
+        // axios('../api/login', {
+        //   headers: {
+        //     Authorization: `bearer ${token}`,
+        //   },
+        // })
+        axios('../api/login', {
+          params: {
+            token
+          }
         })
           .then((response) => {
             setUser(response.data)
-            console.log(response.data)
           })
-          .catch((err) => console.log(err))
+          .catch((err) => {
+            console.log(err)
+            router.push('/')
+          })
       }
     }
   }, [router])
