@@ -2,15 +2,27 @@
 import ETECCoordinatorHome from '@/components/coordenador-ETEC/ETECCoordinatorHome'
 import IBMCoordinatorHome from '@/components/coordenador-IBM/IBMCoordinatorHome'
 import StudentHome from '@/components/aluno/StudentHome'
+import { useContext, useState } from 'react'
+import { PageContext } from '../context/PageContext'
 
 export default function Home() {
-  const userType = 'aluno'
+  const { user } = useContext(PageContext)
+  // const { userType, setUserType } = useState('')
+  let userType = ''
 
-  return userType === 'aluno' ? (
+  if (user?.tipoCoordenador) {
+    // setUserType(user?.tipoCoordenador)
+    userType = user?.tipoCoordenador
+  } else {
+    // setUserType('Aluno')
+    userType = 'Aluno'
+  }
+
+  return userType === 'Aluno' ? (
     <StudentHome />
-  ) : userType === 'coordenador ETEC' ? (
+  ) : userType === 'Coordenador ETEC' ? (
     <ETECCoordinatorHome />
-  ) : userType === 'coordenador IBM' ? (
+  ) : userType === 'Coordenador IBM' ? (
     <IBMCoordinatorHome />
   ) : (
     'Usuário inválido'

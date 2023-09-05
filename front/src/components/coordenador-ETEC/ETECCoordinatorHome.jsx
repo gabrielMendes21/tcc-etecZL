@@ -2,28 +2,19 @@
 
 import Card from '../Card'
 import UserInfo from '../UserInfo'
-import { useContext } from 'react'
-import { PageContext } from '@/app/context/PageContext'
 import Main from '../Main'
 import Link from 'next/link'
 import TradLink from '../Link'
+import { useContext } from 'react'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function ETECCoordinatorHome() {
-  const { setUserType } = useContext(PageContext)
+  const { user } = useContext(PageContext)
 
   return (
     <Main>
       {/* Coordinator info */}
-      <UserInfo name="Rogério" status="Coordenador ETEC Zona Leste" />
-
-      <p
-        className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"
-        onClick={() => {
-          setUserType('coordenador IBM')
-        }}
-      >
-        Trocar usuário
-      </p>
+      <UserInfo name={user?.nome} status={user?.tipoCoordenador} />
 
       {/* Classes */}
       <h2 className="text-base py-7 md:text-2xl">Turmas</h2>
