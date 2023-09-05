@@ -20,10 +20,10 @@ export function PageContextProvider({ children }) {
         senha,
       })
 
-      const { message, token } = response.data
+      const { token } = response.data
 
       if (!token) {
-        console.log(message)
+        console.log('')
       } else {
         setCookie(null, 'auth-token', token, {
           maxAge: 60 * 60 * 24 * 7,
@@ -53,6 +53,7 @@ export function PageContextProvider({ children }) {
           },
         })
           .then((response) => {
+            // console.log(response.data)
             setUser(response.data)
           })
           .catch((err) => {

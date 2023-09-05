@@ -69,6 +69,7 @@ export async function POST(req) {
       })
     }
   } else if (userCoordinator) {
+    // return NextResponse.json(userCoordinator)
     if (userCoordinator.senha !== senha) {
       return NextResponse({
         token: undefined,
@@ -82,13 +83,17 @@ export async function POST(req) {
           tipoCoordenador: userCoordinator.tipoCoordenador,
           escola: userCoordinator.escola,
         },
+        process.env.NEXT_PUBLIC_TOKENSECRET,
         {
-          sub: userCoordinator.id.toString(),
+          subject: userCoordinator.id.toString(),
           expiresIn: '1 day',
         },
       )
 
-      return NextResponse.json(token)
+      return NextResponse.json({
+        token,
+        message: 'token gerado',
+      })
     }
   } else {
     return {
