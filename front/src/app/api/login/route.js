@@ -59,7 +59,7 @@ export async function POST(req) {
         process.env.NEXT_PUBLIC_TOKENSECRET,
         {
           subject: userStudent.id.toString(),
-          expiresIn: '1 day',
+          expiresIn: '7 days',
         },
       )
 
@@ -86,7 +86,7 @@ export async function POST(req) {
         process.env.NEXT_PUBLIC_TOKENSECRET,
         {
           subject: userCoordinator.id.toString(),
-          expiresIn: '1 day',
+          expiresIn: '7 days',
         },
       )
 
