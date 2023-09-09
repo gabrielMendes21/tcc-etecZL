@@ -5,6 +5,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL")
@@ -34,6 +38,31 @@ model Aluno {
   // Entrega            Entrega[]
   // SolicitacaoSuporte SolicitacaoSuporte[]
   // AlunoAtividade     AlunoAtividade[]
+  AlunoAtividade AlunoAtividade[]
+}
+
+model Atividade {
+  id             Int              @id @default(autoincrement()) @map("codAtividade")
+  titulo         String
+  descricao      String
+  tipoAtividade  String
+  anexos         String
+  horasAtividade Int
+  dataCriacao    DateTime         @default(now())
+  prazoEntrega   DateTime
+  AlunoAtividade AlunoAtividade[]
+}
+
+model AlunoAtividade {
+  id             Int     @id @default(autoincrement())
+  entregue       Boolean @default(false)
+  conteudoEntega String?
+
+  aluno   Aluno @relation(fields: [alunoId], references: [id])
+  alunoId Int
+
+  atividade   Atividade @relation(fields: [atividadeId], references: [id])
+  atividadeId Int
 }
 
 model Coordenador {

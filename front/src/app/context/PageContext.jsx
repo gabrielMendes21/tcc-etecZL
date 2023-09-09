@@ -39,7 +39,6 @@ export function PageContextProvider({ children }) {
   // Take the JWT (if it exists) and return the user data
   useEffect(() => {
     const { 'auth-token': token } = parseCookies()
-    console.log(token)
 
     if (router.pathname !== '/login') {
       if (token) {
