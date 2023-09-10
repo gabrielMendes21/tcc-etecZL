@@ -13,6 +13,7 @@ import { PageContext } from '@/app/context/PageContext'
 export default function StudentHome() {
   const { user } = useContext(PageContext)
   const firstName = user?.nome?.split(' ')[0]
+
   return (
     <Main>
       {/* Student info */}
