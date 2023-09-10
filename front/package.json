@@ -33,6 +33,7 @@
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.4.0",
     "@rocketseat/eslint-config": "^2.1.0",
     "prisma": "^5.2.0"
   }
