@@ -14,14 +14,17 @@ export function PageContextProvider({ children }) {
 
   // Login function => Called by the login page only
   async function login({ email, senha }) {
+    const response = await axios.post('../api/login', {
+      email,
+      senha,
+    })
+
     try {
       const response = await axios.post('../api/login', {
         email,
         senha,
       })
-
       const { token } = response.data
-
       if (!token) {
         console.log('')
       } else {
@@ -29,7 +32,24 @@ export function PageContextProvider({ children }) {
           maxAge: 60 * 60 * 24 * 7,
           path: '/',
         })
-        router.push('/')
+
+        const response = await axios('../api/login', {
+          params: {
+            token,
+          },
+        })
+
+        const userInfo = response.data
+
+        if (userInfo.tipoCoordenador) {
+          if (userInfo.tipoCoordenador === 'Coordenador ETEC') {
+            router.push('/coordenador-ETEC/dashboard')
+          } else {
+            router.push('/coordenador-IBM/dashboard')
+          }
+        } else {
+          router.push('/')
+        }
       }
     } catch (err) {
       console.log(err)
