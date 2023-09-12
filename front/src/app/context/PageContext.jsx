@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import nookies, { destroyCookie, parseCookies, setCookie } from 'nookies'
+import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
