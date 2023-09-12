@@ -1,7 +1,14 @@
-import './styles.css'
+'use client'
 
-export default function CircleProgress({ ABSNumber, reference, unity }) {
-  const percentage = Math.round((reference / ABSNumber) * 100)
+import { useContext } from 'react'
+import './styles.css'
+import { PageContext } from '@/app/context/PageContext'
+
+export default function CircleProgress({ unity }) {
+  const { user } = useContext(PageContext)
+  const annualHours = user?.horasAnuais
+  const hoursCompleted = user?.horasConcluidas
+  const percentage = Math.round((hoursCompleted / annualHours) * 100)
   const circleSize = '160'
   const radius = 68
   const dashArray = radius * Math.PI * 2
@@ -50,7 +57,7 @@ export default function CircleProgress({ ABSNumber, reference, unity }) {
           textAnchor="middle"
           className="text-xs"
         >
-          {reference}/{ABSNumber} {unity}
+          {hoursCompleted}/{annualHours} {unity}
         </text>
       </svg>
     </div>

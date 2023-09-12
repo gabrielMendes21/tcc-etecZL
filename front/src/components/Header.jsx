@@ -33,7 +33,7 @@ function Menu() {
             <Link href="/aluno/atividades">Atividades</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/aluno/reclamacoes">Reclamações</Link>
+            <Link href="/aluno/suporte">Suporte</Link>
           </li>
         </ul>
       </nav>

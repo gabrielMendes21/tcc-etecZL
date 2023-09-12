@@ -1,26 +1,16 @@
-'use client'
-
-import { useContext } from 'react'
-import CircleProgress from '@/components/circle/CircleProgress'
-import Task from '@/components/Task'
-import { Check, Clock4, Percent } from 'lucide-react'
-import Link from 'next/link'
-import UserInfo from '../UserInfo'
-import TradLink from '../Link'
 import Main from '../Main'
-import { PageContext } from '@/app/context/PageContext'
+import UserInfo from '../UserInfo'
+import Link from 'next/link'
+import Task from '../Task'
+import TradLink from '../Link'
+import CircleProgress from '../circle/CircleProgress'
+import { Check, Clock4, Percent } from 'lucide-react'
 
-export default function StudentHome() {
-  const { user } = useContext(PageContext)
-  const firstName = user?.nome?.split(' ')[0]
-
+export default async function StudentHome() {
   return (
     <Main>
       {/* Student info */}
-      <UserInfo
-        name={firstName}
-        status={`${user?.turma}, ${user?.escola?.nomeEscola}`}
-      />
+      <UserInfo />
 
       {/* Main activities */}
       <div className="lg:flex lg:justify-center lg:mt-12">
@@ -51,24 +41,16 @@ export default function StudentHome() {
           </h2>
 
           <div className="flex items-center justify-start gap-10 my-4">
-            <CircleProgress
-              ABSNumber={user?.horasAnuais}
-              reference={user?.horasConcluidas}
-              unity="horas"
-            />
+            <CircleProgress unity="horas" />
             <ul className="space-y-4 lg:text-center">
               <li className="flex items-center text-left gap-3 text-xxs lg:text-xs">
-                <Check color="#0F62FE" />
-                {user?.horasConcluidas} Horas concluídas
+                <Check color="#0F62FE" />x Horas concluídas
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
-                <Clock4 color="#0F62FE" />
-                {user?.horasAnuais - user?.horasConcluidas} horas restantes
+                <Clock4 color="#0F62FE" />x horas restantes
               </li>
               <li className="flex items-center gap-3 text-xxs lg:text-xs">
-                <Percent color="#0F62FE" />
-                {Math.round((user?.horasConcluidas / user?.horasAnuais) * 100)}%
-                do caminho
+                <Percent color="#0F62FE" />x do caminho
               </li>
             </ul>
           </div>

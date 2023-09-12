@@ -16,9 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body className={`${inter.className} min-h-screen grid`}>
-        <Header hasMenu />
-        <PageProvider>{children}</PageProvider>
-        <Footer />
+        <PageProvider>
+          <Header hasMenu />
+          {children}
+          <Footer />
+        </PageProvider>
       </body>
     </html>
   )
