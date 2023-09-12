@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { parseCookies, setCookie } from 'nookies'
+import nookies, { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -54,6 +54,12 @@ export function PageContextProvider({ children }) {
     }
   }
 
+  // Logout function
+  function logout() {
+    destroyCookie(null, 'auth-token')
+    router.push('/login')
+  }
+
   // Take the JWT (if it exists) and return the user data
   useEffect(() => {
     const { 'auth-token': token } = parseCookies()
@@ -84,7 +90,7 @@ export function PageContextProvider({ children }) {
 
   return (
     <PageContext.Provider
-      value={{ login, user, isOpen, setIsOpen, handleMenu }}
+      value={{ login, user, isOpen, setIsOpen, handleMenu, logout }}
     >
       {children}
     </PageContext.Provider>

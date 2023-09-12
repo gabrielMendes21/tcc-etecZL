@@ -10,7 +10,8 @@ import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
 
 function Menu() {
-  const { isOpen, setIsOpen, user, handleMenu } = useContext(PageContext)
+  const { isOpen, setIsOpen, user, handleMenu, logout } =
+    useContext(PageContext)
 
   return !user?.tipoCoordenador ? (
     <>
@@ -34,6 +35,12 @@ function Menu() {
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/aluno/suporte">Suporte</Link>
+          </li>
+          <li
+            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            onClick={logout}
+          >
+            Sair
           </li>
         </ul>
       </nav>
@@ -61,6 +68,12 @@ function Menu() {
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-ETEC/suporte">Suporte</Link>
           </li>
+          <li
+            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            onClick={logout}
+          >
+            Sair
+          </li>
         </ul>
       </nav>
     </>
@@ -86,6 +99,12 @@ function Menu() {
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-IBM/suporte">Suporte</Link>
+          </li>
+          <li
+            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            onClick={logout}
+          >
+            Sair
           </li>
         </ul>
       </nav>
