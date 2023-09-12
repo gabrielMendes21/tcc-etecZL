@@ -27,7 +27,7 @@ export default async function PendingTasks() {
 
   const tasks = tasksInfoResponse.data
 
-  return (
+  return tasks.length > 0 ? (
     <div className="lg:grow">
       <h2 className="text-base lg:text-2xl mt-5 mb-8">
         Atividades do programa P-TECH
@@ -54,6 +54,15 @@ export default async function PendingTasks() {
           Ver mais
         </TradLink>
       </div>
+    </div>
+  ) : (
+    <div>
+      <h2 className="text-base lg:text-2xl mt-5 mb-5">
+        Atividades do programa P-TECH
+      </h2>
+      <span className="text-black/30 block">
+        Você não possui nenhuma atividade
+      </span>
     </div>
   )
 }
