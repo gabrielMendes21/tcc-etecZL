@@ -9,22 +9,20 @@ export const PageContext = createContext({})
 
 export function PageContextProvider({ children }) {
   const [user, setUser] = useState()
+  const [isOpen, setIsOpen] = useState(false)
+  const handleMenu = () => setIsOpen(!isOpen)
 
   const router = useRouter()
 
   // Login function => Called by the login page only
   async function login({ email, senha }) {
-    const response = await axios.post('../api/login', {
-      email,
-      senha,
-    })
-
     try {
       const response = await axios.post('../api/login', {
         email,
         senha,
       })
       const { token } = response.data
+
       if (!token) {
         console.log('')
       } else {
@@ -85,7 +83,9 @@ export function PageContextProvider({ children }) {
   }, [router])
 
   return (
-    <PageContext.Provider value={{ login, user }}>
+    <PageContext.Provider
+      value={{ login, user, isOpen, setIsOpen, handleMenu }}
+    >
       {children}
     </PageContext.Provider>
   )
