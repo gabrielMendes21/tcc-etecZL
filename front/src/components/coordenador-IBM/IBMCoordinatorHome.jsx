@@ -14,7 +14,7 @@ export default function IBMCoordinatorHome() {
   return (
     <Main>
       {/* Coordinator info */}
-      <UserInfo name="Guilherme" status="Coordenador IBM" />
+      <UserInfo />
 
       <p
         className="underline absolute right-0 top-2 h-10 z-50 text-xxs hover:cursor-pointer"

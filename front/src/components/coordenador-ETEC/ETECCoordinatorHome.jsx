@@ -14,7 +14,7 @@ export default function ETECCoordinatorHome() {
   return (
     <Main>
       {/* Coordinator info */}
-      <UserInfo name={user?.nome} status={user?.tipoCoordenador} />
+      <UserInfo />
 
       {/* Classes */}
       <h2 className="text-base py-7 md:text-2xl">Turmas</h2>
