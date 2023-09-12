@@ -59,7 +59,7 @@ function Menu() {
             <Link href="/coordenador-ETEC/atividades">Atividades</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/coordenador-ETEC/reclamacoes">Reclamações</Link>
+            <Link href="/coordenador-ETEC/suporte">Suporte</Link>
           </li>
         </ul>
       </nav>
@@ -85,7 +85,7 @@ function Menu() {
             <Link href="/coordenador-IBM/atividades">Atividades</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/coordenador-IBM/reclamacoes">Reclamações</Link>
+            <Link href="/coordenador-IBM/suporte">Suporte</Link>
           </li>
         </ul>
       </nav>
