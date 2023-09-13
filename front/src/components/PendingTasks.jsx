@@ -25,7 +25,9 @@ export default async function PendingTasks() {
     `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades/pendentes?id=${user.sub}`,
   )
 
-  const tasks = tasksInfoResponse.data
+  const tasks = tasksInfoResponse.data.filter((task, index) => {
+    return index <= 1
+  })
 
   return tasks.length > 0 ? (
     <div className="lg:grow">
@@ -36,7 +38,7 @@ export default async function PendingTasks() {
       <div className="space-y-5">
         {tasks.map((task) => {
           return (
-            <Link href="#">
+            <Link href={`/aluno/atividades/${task.id}`}>
               <Task
                 name={task.atividade.titulo}
                 hours={task.atividade.horasAtividade}
