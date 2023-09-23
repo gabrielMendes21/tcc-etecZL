@@ -1,10 +1,6 @@
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
 import jwt from 'jsonwebtoken'
-
-const prisma = new PrismaClient({
-  log: ['error', 'query'],
-})
+import prisma from '@/lib/prisma'
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url)
