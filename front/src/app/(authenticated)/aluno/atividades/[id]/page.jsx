@@ -90,3 +90,5 @@ export default async function Atividade({ params }) {
     </Main>
   )
 }
+
+export const dynamic = 'force-dynamic'

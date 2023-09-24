@@ -5,12 +5,8 @@ import UserInfo from '../UserInfo'
 import Main from '../Main'
 import Link from 'next/link'
 import TradLink from '../Link'
-import { useContext } from 'react'
-import { PageContext } from '@/app/context/PageContext'
 
 export default function ETECCoordinatorHome() {
-  const { user } = useContext(PageContext)
-
   return (
     <Main>
       {/* Coordinator info */}
