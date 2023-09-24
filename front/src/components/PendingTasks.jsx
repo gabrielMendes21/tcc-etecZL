@@ -20,7 +20,7 @@ export default async function PendingTasks() {
 
   const user = userInfoResponse.data
 
-  // Get the user tasks
+  // Get the user pending tasks
   const tasksInfoResponse = await axios(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades/pendentes?id=${user.sub}`,
   )
