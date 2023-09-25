@@ -5,7 +5,7 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url)
   const userId = searchParams.get('id')
 
-  const atividades = await prisma.alunoAtividade.findMany({
+  const atividades = await prisma.entrega.findMany({
     where: {
       alunoId: Number(userId),
       AND: {
