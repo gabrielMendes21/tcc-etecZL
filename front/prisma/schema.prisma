@@ -32,24 +32,24 @@ model Aluno {
   escolaId Int
   escola   Escola @relation(fields: [escolaId], references: [id])
 
-  AlunoAtividade AlunoAtividade[]
+  AlunoAtividade Entrega[]
 
   @@index([escolaId])
 }
 
 model Atividade {
-  id             Int              @id @default(autoincrement()) @map("codAtividade")
+  id             Int       @id @default(autoincrement()) @map("codAtividade")
   titulo         String
   descricao      String
   tipoAtividade  String
   anexos         String
   horasAtividade Int
-  dataCriacao    DateTime         @default(now())
+  dataCriacao    DateTime  @default(now())
   prazoEntrega   DateTime
-  AlunoAtividade AlunoAtividade[]
+  AlunoAtividade Entrega[]
 }
 
-model AlunoAtividade {
+model Entrega {
   id             Int       @id @default(autoincrement())
   entregue       Boolean   @default(false)
   conteudoEntega String?
