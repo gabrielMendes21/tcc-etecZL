@@ -1,12 +1,10 @@
 import Main from '@/components/Main'
-import axios from 'axios'
+import { api } from '@/lib/api'
 import { ArrowRight, File, Upload } from 'lucide-react'
 import { cookies } from 'next/headers'
 
 export async function generateStaticParams() {
-  const response = await axios(
-    `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades`,
-  )
+  const response = await api.get(`/aluno/atividades`)
 
   const tasks = response.data
 
@@ -20,19 +18,16 @@ export default async function Atividade({ params }) {
   const token = cookieStore.get('auth-token').value
 
   // Get user id
-  const userInfoResponse = await axios(
-    `${process.env.NEXT_PUBLIC_WEB_URL}api/login`,
-    {
-      params: {
-        token,
-      },
+  const userInfoResponse = await api.get(`/login`, {
+    params: {
+      token,
     },
-  )
+  })
 
   const userId = userInfoResponse.data.sub
 
-  const tasksResponse = await axios(
-    `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades/pendentes?id=${userId}`,
+  const tasksResponse = await api.get(
+    `/aluno/atividades/pendentes?id=${userId}`,
   )
 
   const task = tasksResponse.data.find(

@@ -1,28 +1,25 @@
-import axios from 'axios'
 import Task from './Task'
 import Link from 'next/link'
 import TradLink from './Link'
 import { cookies } from 'next/headers'
+import { api } from '@/lib/api'
 
 export default async function PendingTasks() {
   const cookieStore = cookies()
   const token = cookieStore.get('auth-token').value
 
   // Get user information by sending the token in the cookies
-  const userInfoResponse = await axios(
-    `${process.env.NEXT_PUBLIC_WEB_URL}api/login`,
-    {
-      params: {
-        token,
-      },
+  const userInfoResponse = await api.get(`/login`, {
+    params: {
+      token,
     },
-  )
+  })
 
   const user = userInfoResponse.data
 
   // Get the user pending tasks
-  const tasksInfoResponse = await axios(
-    `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades/pendentes?id=${user.sub}`,
+  const tasksInfoResponse = await api(
+    `/aluno/atividades/pendentes?id=${user.sub}`,
   )
 
   const tasks = tasksInfoResponse.data.filter((task, index) => {
