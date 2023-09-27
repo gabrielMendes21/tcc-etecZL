@@ -7,7 +7,7 @@ export async function generateStaticParams() {
   const response = await api.get(`/atividades`)
 
   const tasks = response.data
-  console.log(tasks)
+  console.log(typeof tasks)
 
   return tasks?.map((task) => ({
     id: task.id.toString(),
