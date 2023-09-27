@@ -6,7 +6,7 @@ import { cookies } from 'next/headers'
 export async function generateStaticParams() {
   const response = await api.get(`/atividades`)
 
-  const tasks = []
+  const tasks = response.data
 
   return tasks.map((task) => ({
     id: task.id.toString(),
