@@ -45,7 +45,7 @@ export function PageContextProvider({ children }) {
         router.push('/')
       }
     } catch (err) {
-      console.log(err.response.data.error)
+      return err.response.data.error
     }
   }
 

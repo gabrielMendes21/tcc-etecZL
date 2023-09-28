@@ -3,14 +3,18 @@
 import Main from '@/components/Main'
 import Image from 'next/image'
 import darkLogo from '../../../assets/dark-logo.svg'
-import { ArrowRight } from 'lucide-react'
+import { AlertCircle, ArrowRight, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import { useForm } from 'react-hook-form'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { PageContext } from '@/app/context/PageContext'
+import LoginErrorMessages from '@/components/LoginErrorMessages'
+import { SyncLoader } from 'react-spinners'
 
 export default function Login() {
+  const [error, setError] = useState('')
+  const [icon, setIcon] = useState(<ArrowRight strokeWidth={1} />)
   const { login } = useContext(PageContext)
 
   const {
@@ -20,7 +24,15 @@ export default function Login() {
   } = useForm()
 
   const onSubmit = async (data) => {
-    await login(data)
+    try {
+      setIcon(<SyncLoader color="#FFF" size={5} />)
+      const message = await login(data)
+      setError(message)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIcon(<ArrowRight strokeWidth={1} />)
+    }
   }
 
   return (
@@ -50,6 +62,7 @@ export default function Login() {
 
           {/* Form */}
           <div className="grow">
+            {error && <LoginErrorMessages>{error}</LoginErrorMessages>}
             <form
               onSubmit={handleSubmit(onSubmit)}
               method="POST"
@@ -108,7 +121,7 @@ export default function Login() {
 
               <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 mt-8 p-3">
                 Entrar
-                <ArrowRight strokeWidth={1} />
+                {icon}
               </button>
             </form>
 
