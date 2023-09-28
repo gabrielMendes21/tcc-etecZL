@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
 import prisma from '@/lib/prisma'
 
+// Get the user JWT
 export async function GET(req) {
   const { searchParams } = new URL(req.url)
   const token = searchParams.get('token')
@@ -14,6 +15,7 @@ export async function GET(req) {
   }
 }
 
+// Create a new login session
 export async function POST(req) {
   const body = await req.json()
   const { email, senha } = body
@@ -38,10 +40,7 @@ export async function POST(req) {
 
   if (userStudent) {
     if (userStudent.senha !== senha) {
-      return NextResponse.json({
-        token: undefined,
-        message: 'Senha incorreta',
-      })
+      return NextResponse.json({ error: 'Senha incorreta' }, { status: 400 })
     } else {
       const token = jwt.sign(
         {
@@ -61,16 +60,12 @@ export async function POST(req) {
 
       return NextResponse.json({
         token,
-        message: 'token gerado',
+        user: userStudent,
       })
     }
   } else if (userCoordinator) {
-    // return NextResponse.json(userCoordinator)
     if (userCoordinator.senha !== senha) {
-      return NextResponse({
-        token: undefined,
-        message: 'Senha incorreta',
-      })
+      return NextResponse.json({ error: 'Senha incorreta' }, { status: 400 })
     } else {
       const token = jwt.sign(
         {
@@ -88,13 +83,10 @@ export async function POST(req) {
 
       return NextResponse.json({
         token,
-        message: 'token gerado',
+        user: userCoordinator,
       })
     }
   } else {
-    return {
-      token: undefined,
-      message: 'Usuário não existe',
-    }
+    return NextResponse.json({ error: 'Usuário não existe' }, { status: 400 })
   }
 }

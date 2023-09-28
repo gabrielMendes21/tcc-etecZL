@@ -16,41 +16,36 @@ export function PageContextProvider({ children }) {
 
   // Login function => Called by the login page only
   async function login({ email, senha }) {
+    // Login request
     try {
-      const response = await axios.post('../api/login', {
+      const loginResponse = await axios.post('../api/login', {
         email,
         senha,
       })
-      const { token } = response.data
 
-      if (!token) {
-        console.log('')
-      } else {
-        setCookie(null, 'auth-token', token, {
-          maxAge: 60 * 60 * 24 * 7,
-          path: '/',
-        })
+      // Get the token and the user info
+      const { token, user } = loginResponse.data
 
-        const response = await axios('../api/login', {
-          params: {
-            token,
-          },
-        })
+      // Create the auth cookie
+      setCookie(null, 'auth-token', token, {
+        maxAge: 60 * 60 * 24 * 7,
+        path: '/',
+      })
 
-        const userInfo = response.data
+      const userInfo = user
 
-        if (userInfo.tipoCoordenador) {
-          if (userInfo.tipoCoordenador === 'Coordenador ETEC') {
-            router.push('/coordenador-ETEC/dashboard')
-          } else {
-            router.push('/coordenador-IBM/dashboard')
-          }
+      // Redirect to user dashboard
+      if (userInfo.tipoCoordenador) {
+        if (userInfo.tipoCoordenador === 'Coordenador ETEC') {
+          router.push('/coordenador-ETEC/dashboard')
         } else {
-          router.push('/')
+          router.push('/coordenador-IBM/dashboard')
         }
+      } else {
+        router.push('/')
       }
     } catch (err) {
-      console.log(err)
+      console.log(err.response.data.error)
     }
   }
 
@@ -77,7 +72,6 @@ export function PageContextProvider({ children }) {
           },
         })
           .then((response) => {
-            // console.log(response.data)
             setUser(response.data)
           })
           .catch((err) => {
