@@ -25,22 +25,20 @@ export default function Login() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data, event) => {
+  const onSubmit = async (data, event) => {
     event.preventDefault()
-    console.log('adas')
-    router.push('/')
-    // try {
-    //   setIcon(<SyncLoader color="#FFF" size={5} />)
-    //   const message = await login(data)
-    //   if (!message) {
-    //     router.push('/')
-    //   }
-    //   setError(message)
-    // } catch (err) {
-    //   console.log(err)
-    // } finally {
-    //   setIcon(<ArrowRight strokeWidth={1} />)
-    // }
+    try {
+      setIcon(<SyncLoader color="#FFF" size={5} />)
+      const message = await login(data)
+      if (!message) {
+        router.push('/')
+      }
+      setError(message)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIcon(<ArrowRight strokeWidth={1} />)
+    }
   }
 
   return (
