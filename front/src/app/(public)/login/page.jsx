@@ -30,9 +30,6 @@ export default function Login() {
     try {
       setIcon(<SyncLoader color="#FFF" size={5} />)
       const message = await login(data)
-      if (!message) {
-        router.push('/')
-      }
       setError(message)
     } catch (err) {
       console.log(err)
