@@ -42,7 +42,7 @@ export function PageContextProvider({ children }) {
           router.push('/coordenador-IBM/dashboard')
         }
       } else {
-        router.push('/')
+        // router.push('/')
       }
     } catch (err) {
       return err.response.data.error
