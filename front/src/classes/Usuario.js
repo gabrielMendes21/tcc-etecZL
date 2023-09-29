@@ -4,9 +4,25 @@ import jwt from 'jsonwebtoken'
 
 export default class Usuario {
   constructor() {
+    this.codUsuario = 0
     this.email = ''
     this.senha = ''
     this.nome = ''
+    this.turma = ''
+    this.rm = 0
+    this.horasConcluidas = 0
+    this.horasAnuais = 0
+    this.escola = 0
+    this.tipoUsuario = ''
+  }
+
+  // Getters and setters
+  set setCodUsuario(newValue) {
+    this.codUsuario = newValue
+  }
+
+  get getCodUsuario() {
+    return this.codUsuario
   }
 
   set setEmail(newValue) {
@@ -25,14 +41,63 @@ export default class Usuario {
     return this.senha
   }
 
-  set getNome(newValue) {
+  set setNome(newValue) {
     this.nome = newValue
   }
 
-  get setNome() {
+  get getNome() {
     return this.nome
   }
+  
+  set setTurma(newValue) {
+    this.turma = newValue
+  }
 
+  get getTurma() {
+    return this.turma
+  }
+  
+  set setRm(newValue) {
+    this.rm = newValue
+  }
+
+  get getRm() {
+    return this.rm
+  }
+  
+  set setHorasConcluidas(newValue) {
+    this.horasConcluidas = newValue
+  }
+
+  get setHorasConcluidas() {
+    return this.horasConcluidas
+  }
+  
+  set setHorasAnuais(newValue) {
+    this.horasAnuais = newValue
+  }
+
+  get getHorasAnuais() {
+    return this.horasAnuais
+  }
+  
+  set setEscola(newValue) {
+    this.escola = newValue
+  }
+
+  get getEscola() {
+    return this.escola
+  }
+  
+  set setTipoUsuario(newValue) {
+    this.tipoUsuario = newValue
+  }
+
+  get getTipoUsuario() {
+    return this.tipoUsuario
+  }
+  
+  // Methods
   async fazerLogin() {
     const userStudent = await prisma.aluno.findUnique({
       where: {

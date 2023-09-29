@@ -19,6 +19,19 @@ model Escola {
   Coordenador Coordenador[]
 }
 
+model Usuario {
+  id Int @id @map("codUsuario")
+  email String
+  senha String
+  nome String
+  turma String?
+  rm Int?
+  horasConcluidas Int?
+  horasAnuais Int?
+  escola Int?
+  tipoUsuario String
+}
+
 model Aluno {
   id Int @id @map("rm")
 
