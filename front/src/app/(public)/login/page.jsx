@@ -3,7 +3,7 @@
 import Main from '@/components/Main'
 import Image from 'next/image'
 import darkLogo from '../../../assets/dark-logo.svg'
-import { AlertCircle, ArrowRight, Loader2 } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import { useForm } from 'react-hook-form'
@@ -23,7 +23,8 @@ export default function Login() {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault()
     try {
       setIcon(<SyncLoader color="#FFF" size={5} />)
       const message = await login(data)
