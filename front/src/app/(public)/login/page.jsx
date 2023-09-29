@@ -11,10 +11,8 @@ import { useContext, useState } from 'react'
 import { PageContext } from '@/app/context/PageContext'
 import LoginErrorMessages from '@/components/LoginErrorMessages'
 import { SyncLoader } from 'react-spinners'
-import { useRouter } from 'next/navigation'
 
 export default function Login() {
-  const router = useRouter()
   const [error, setError] = useState('')
   const [icon, setIcon] = useState(<ArrowRight strokeWidth={1} />)
   const { login } = useContext(PageContext)
