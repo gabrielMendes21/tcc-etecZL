@@ -13,80 +13,91 @@ datasource db {
 }
 
 model Escola {
-  id          Int           @id @default(autoincrement()) @map("codEscola")
-  nomeEscola  String
-  Aluno       Aluno[]
-  Coordenador Coordenador[]
+  id         Int    @id @default(autoincrement()) @map("codEscola")
+  nomeEscola String
+
+  Usuario Usuario[]
 }
 
 model Usuario {
-  id Int @id @map("codUsuario")
-  email String
-  senha String
-  nome String
-  turma String?
-  rm Int?
-  horasConcluidas Int?
-  horasAnuais Int?
-  escola Int?
-  tipoUsuario String
-}
-
-model Aluno {
-  id Int @id @map("rm")
-
-  nome            String
-  email           String @unique
+  id              Int     @id @default(autoincrement()) @map("codUsuario")
+  email           String
   senha           String
-  turma           String
-  horasConcluidas Int
-  horasAnuais     Int
+  nome            String
+  turma           String?
+  rm              Int?
+  horasConcluidas Int?
+  horasAnuais     Int?
+  escola          Int?
+  tipoUsuario     String
 
-  escolaId Int
-  escola   Escola @relation(fields: [escolaId], references: [id])
+  escolaRel Escola?   @relation(fields: [escola], references: [id])
+  Entrega   Entrega[]
 
-  AlunoAtividade Entrega[]
-
-  @@index([escolaId])
+  @@index([escola])
 }
 
 model Atividade {
-  id             Int       @id @default(autoincrement()) @map("codAtividade")
+  id             Int      @id @default(autoincrement()) @map("codAtividade")
   titulo         String
   descricao      String
   tipoAtividade  String
   anexos         String
   horasAtividade Int
-  dataCriacao    DateTime  @default(now())
+  dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
-  AlunoAtividade Entrega[]
+
+  entrega Entrega[]
 }
 
 model Entrega {
-  id             Int       @id @default(autoincrement())
-  entregue       Boolean   @default(false)
-  conteudoEntega String?
-  dataEntrega    DateTime?
+  id          Int       @id @default(autoincrement()) @map("codEntrega")
+  dataEntrega DateTime?
+  conteudo    String?
+  entregue    Boolean   @default(false)
 
-  aluno   Aluno @relation(fields: [alunoId], references: [id])
-  alunoId Int
+  aluno    Usuario @relation(fields: [codAluno], references: [id])
+  codAluno Int
 
-  atividade   Atividade @relation(fields: [atividadeId], references: [id])
-  atividadeId Int
+  atividade    Atividade @relation(fields: [codAtividade], references: [id])
+  codAtividade Int
 
-  @@index([alunoId])
-  @@index([atividadeId])
+  @@index([codAluno])
+  @@index([codAtividade])
 }
 
-model Coordenador {
-  id              Int    @id @default(autoincrement()) @map("codCoordenador")
-  nome            String
-  email           String @unique
-  senha           String
-  tipoCoordenador String
+// model Coordenador {
+//   id              Int    @id @default(autoincrement()) @map("codCoordenador")
+//   nome            String
+//   email           String @unique
+//   senha           String
+//   tipoCoordenador String
 
-  escolaId Int
-  escola   Escola @relation(fields: [escolaId], references: [id])
+//   escolaId Int
+//   escola   Escola @relation(fields: [escolaId], references: [id])
 
-  @@index([escolaId])
-}
+//   @@index([escolaId])
+// }
+
+// model Aluno {
+//   id Int @id @map("rm")
+
+//   nome            String
+//   email           String @unique
+//   senha           String
+//   turma           String
+//   horasConcluidas Int
+//   horasAnuais     Int
+
+//   escolaId Int
+//   escola   Escola @relation(fields: [escolaId], references: [id])
+
+//   AlunoAtividade Entrega[]
+
+//   @@index([escolaId])
+// }
+
+//   AlunoAtividade Entrega[]
+
+//   @@index([escolaId])
+// }

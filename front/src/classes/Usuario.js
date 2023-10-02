@@ -48,7 +48,7 @@ export default class Usuario {
   get getNome() {
     return this.nome
   }
-  
+
   set setTurma(newValue) {
     this.turma = newValue
   }
@@ -56,7 +56,7 @@ export default class Usuario {
   get getTurma() {
     return this.turma
   }
-  
+
   set setRm(newValue) {
     this.rm = newValue
   }
@@ -64,7 +64,7 @@ export default class Usuario {
   get getRm() {
     return this.rm
   }
-  
+
   set setHorasConcluidas(newValue) {
     this.horasConcluidas = newValue
   }
@@ -72,7 +72,7 @@ export default class Usuario {
   get setHorasConcluidas() {
     return this.horasConcluidas
   }
-  
+
   set setHorasAnuais(newValue) {
     this.horasAnuais = newValue
   }
@@ -80,7 +80,7 @@ export default class Usuario {
   get getHorasAnuais() {
     return this.horasAnuais
   }
-  
+
   set setEscola(newValue) {
     this.escola = newValue
   }
@@ -88,7 +88,7 @@ export default class Usuario {
   get getEscola() {
     return this.escola
   }
-  
+
   set setTipoUsuario(newValue) {
     this.tipoUsuario = newValue
   }
@@ -96,7 +96,7 @@ export default class Usuario {
   get getTipoUsuario() {
     return this.tipoUsuario
   }
-  
+
   // Methods
   async fazerLogin() {
     const userStudent = await prisma.aluno.findUnique({
