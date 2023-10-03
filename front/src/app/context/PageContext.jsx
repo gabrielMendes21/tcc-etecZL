@@ -15,34 +15,32 @@ export function PageContextProvider({ children }) {
   const router = useRouter()
 
   // Login function => Called by the login page only
-  async function login({ email, senha }) {
+  async function login({ email, password }) {
     // Login request
     try {
       const loginResponse = await axios.post('../api/login', {
         email,
-        senha,
+        password,
       })
 
       // Get the token and the user info
       const { token, user } = loginResponse.data
-
       // Create the auth cookie
       setCookie(null, 'auth-token', token, {
         maxAge: 60 * 60 * 24 * 7,
         path: '/',
       })
 
-      const userInfo = user
-
       // Redirect to user dashboard
-      if (userInfo.tipoCoordenador) {
-        if (userInfo.tipoCoordenador === 'Coordenador ETEC') {
-          router.push('/coordenador-ETEC/dashboard')
-        } else {
-          router.push('/coordenador-IBM/dashboard')
-        }
+      if (user.tipoUsuario === 'Coordenador ETEC') {
+        // router.push('/coordenador-ETEC/dashboard')
+        console.log('Bem-vindo, ' + user.tipoUsuario)
+      } else if (user.tipoUsuario === 'Coordenador IBM') {
+        // router.push('/coordenador-IBM/dashboard')
+        console.log('Bem-vindo, ' + user.tipoUsuario)
       } else {
-        router.push('/')
+        // router.push('/')
+        console.log('Bem-vindo, ' + user.tipoUsuario)
       }
     } catch (err) {
       return err.response.data.error

@@ -98,75 +98,107 @@ export default class Usuario {
   }
 
   // Methods
-  async fazerLogin() {
-    const userStudent = await prisma.aluno.findUnique({
+  async fazerLogin(email, password) {
+    // Get the params and search the user in database
+    const user = await prisma.usuario.findFirst({
       where: {
-        email: this.email,
+        email,
       },
       include: {
-        escola: true,
+        escolaRel: true,
       },
     })
 
-    const userCoordinator = await prisma.coordenador.findUnique({
-      where: {
-        email: this.email,
-      },
-      include: {
-        escola: true,
-      },
-    })
+    // Verify if the params are correct
+    if (user) {
+      if (password === user.senha) {
+        // Fill class data with user information
+        this.setCodUsuario = user.id
+        this.setEmail = user.email
+        this.setSenha = user.senha
+        this.setNome = user.nome
+        this.setTurma = user.turma
+        this.setRm = user.rm
+        this.setHorasConcluidas = user.horasConcluidas
+        this.setHorasAnuais = user.horasAnuais
+        this.setEscola = user.escola
+        this.setTipoUsuario = user.tipoUsuario
 
-    if (userStudent) {
-      if (userStudent.senha !== this.senha) {
-        return 'Senha incorreta'
+        return true
       } else {
-        const token = jwt.sign(
-          {
-            nome: userStudent.nome,
-            email: userStudent.email,
-            horasAnuais: userStudent.horasAnuais,
-            horasConcluidas: userStudent.horasConcluidas,
-            turma: userStudent.turma,
-            escola: userStudent.escola,
-          },
-          process.env.NEXT_PUBLIC_TOKENSECRET,
-          {
-            subject: userStudent.id.toString(),
-            expiresIn: '7 days',
-          },
-        )
-
-        return {
-          token,
-          user: userStudent,
-        }
+        return false
       }
-    } else if (userCoordinator) {
-      if (userCoordinator.senha !== this.senha) {
-        return 'Senha incorreta'
-      } else {
-        const token = jwt.sign(
-          {
-            nome: userCoordinator.nome,
-            email: userCoordinator.email,
-            tipoCoordenador: userCoordinator.tipoCoordenador,
-            escola: userCoordinator.escola,
-          },
-          process.env.NEXT_PUBLIC_TOKENSECRET,
-          {
-            subject: userCoordinator.id.toString(),
-            expiresIn: '7 days',
-          },
-        )
-
-        return {
-          token,
-          user: userCoordinator,
-        }
-      }
-    } else {
-      return 'Usuário não existe'
     }
+
+    return user
+    // const userStudent = await prisma.aluno.findUnique({
+    //   where: {
+    //     email: this.email,
+    //   },
+    //   include: {
+    //     escola: true,
+    //   },
+    // })
+
+    // const userCoordinator = await prisma.coordenador.findUnique({
+    //   where: {
+    //     email: this.email,
+    //   },
+    //   include: {
+    //     escola: true,
+    //   },
+    // })
+
+    // if (userStudent) {
+    //   if (userStudent.senha !== this.senha) {
+    //     return 'Senha incorreta'
+    //   } else {
+    //     const token = jwt.sign(
+    //       {
+    //         nome: userStudent.nome,
+    //         email: userStudent.email,
+    //         horasAnuais: userStudent.horasAnuais,
+    //         horasConcluidas: userStudent.horasConcluidas,
+    //         turma: userStudent.turma,
+    //         escola: userStudent.escola,
+    //       },
+    //       process.env.NEXT_PUBLIC_TOKENSECRET,
+    //       {
+    //         subject: userStudent.id.toString(),
+    //         expiresIn: '7 days',
+    //       },
+    //     )
+
+    //     return {
+    //       token,
+    //       user: userStudent,
+    //     }
+    //   }
+    // } else if (userCoordinator) {
+    //   if (userCoordinator.senha !== this.senha) {
+    //     return 'Senha incorreta'
+    //   } else {
+    //     const token = jwt.sign(
+    //       {
+    //         nome: userCoordinator.nome,
+    //         email: userCoordinator.email,
+    //         tipoCoordenador: userCoordinator.tipoCoordenador,
+    //         escola: userCoordinator.escola,
+    //       },
+    //       process.env.NEXT_PUBLIC_TOKENSECRET,
+    //       {
+    //         subject: userCoordinator.id.toString(),
+    //         expiresIn: '7 days',
+    //       },
+    //     )
+
+    //     return {
+    //       token,
+    //       user: userCoordinator,
+    //     }
+    //   }
+    // } else {
+    //   return 'Usuário não existe'
+    // }
   }
 }

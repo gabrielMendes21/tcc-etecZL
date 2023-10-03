@@ -93,17 +93,17 @@ export default function Login() {
                 </p>
               )}
 
-              <label htmlFor="senha" className="mt-8 text-sm inline-block">
+              <label htmlFor="password" className="mt-8 text-sm inline-block">
                 Senha
               </label>
               <input
                 type="password"
-                id="senha"
+                id="password"
                 className="mt-3 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
                 placeholder="Digite sua senha"
-                {...register('senha', { required: true, minLength: 6 })}
+                {...register('password', { required: true, minLength: 6 })}
               />
-              {errors.senha?.type === 'required' && (
+              {errors.password?.type === 'required' && (
                 <p
                   role="alert"
                   className="text-red-500 text-xs font-bold mb-8 mt-2"
