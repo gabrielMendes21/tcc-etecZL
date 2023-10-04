@@ -42,7 +42,7 @@ model Atividade {
   titulo         String
   descricao      String
   tipoAtividade  String
-  anexos         String
+  anexos         String?
   horasAtividade Int
   dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
