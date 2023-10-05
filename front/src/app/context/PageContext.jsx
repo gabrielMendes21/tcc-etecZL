@@ -1,6 +1,5 @@
 'use client'
-
-import axios from 'axios'
+import { api } from '@/lib/api'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -18,7 +17,7 @@ export function PageContextProvider({ children }) {
   async function login({ email, password }) {
     // Login request
     try {
-      const loginResponse = await axios.post('../api/login', {
+      const loginResponse = await api.post('/login', {
         email,
         password,
       })
@@ -33,14 +32,11 @@ export function PageContextProvider({ children }) {
 
       // Redirect to user dashboard
       if (user.tipoUsuario === 'Coordenador ETEC') {
-        // router.push('/coordenador-ETEC/dashboard')
-        console.log('Bem-vindo, ' + user.tipoUsuario)
+        router.push('/coordenador-ETEC/dashboard')
       } else if (user.tipoUsuario === 'Coordenador IBM') {
-        // router.push('/coordenador-IBM/dashboard')
-        console.log('Bem-vindo, ' + user.tipoUsuario)
+        router.push('/coordenador-IBM/dashboard')
       } else {
-        // router.push('/')
-        console.log('Bem-vindo, ' + user.tipoUsuario)
+        router.push('/')
       }
     } catch (err) {
       return err.response.data.error
@@ -64,11 +60,12 @@ export function PageContextProvider({ children }) {
         //     Authorization: `bearer ${token}`,
         //   },
         // })
-        axios('../api/login', {
-          params: {
-            token,
-          },
-        })
+        api
+          .get('/login', {
+            params: {
+              token,
+            },
+          })
           .then((response) => {
             setUser(response.data)
           })
