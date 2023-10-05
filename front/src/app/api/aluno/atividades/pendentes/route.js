@@ -7,7 +7,7 @@ export async function GET(req) {
 
   const atividades = await prisma.entrega.findMany({
     where: {
-      alunoId: Number(userId),
+      codAluno: Number(userId),
       AND: {
         entregue: false,
       },
