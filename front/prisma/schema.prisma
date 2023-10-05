@@ -12,6 +12,10 @@ datasource db {
   relationMode      = "prisma"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 model Escola {
   id         Int    @id @default(autoincrement()) @map("codEscola")
   nomeEscola String

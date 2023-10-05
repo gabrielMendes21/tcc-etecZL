@@ -1,4 +1,4 @@
-import prisma from '../src/lib/prisma.js'
+const prisma = require('../src/lib/prisma.js')
 
 async function seed() {
   await prisma.usuario.create({
