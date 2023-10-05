@@ -46,6 +46,7 @@ export async function POST(req) {
         horasConcluidas: user.horasConcluidas,
         turma: user.turma,
         escola: schoolInfo,
+        tipoUsuario: user.tipoUsuario,
       },
       process.env.NEXT_PUBLIC_TOKENSECRET,
       {
