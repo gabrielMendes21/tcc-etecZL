@@ -1,6 +1,15 @@
 import prisma from '../src/lib/prisma.js'
 
 async function seed() {
+  await prisma.usuario.create({
+    data: {
+      email: 'guilherme@email.com',
+      senha: '111111',
+      nome: 'Guilherme',
+      tipoUsuario: 'Coordenador IBM',
+    }
+  })
+
   await prisma.escola.create({
     data: {
       nomeEscola: 'ETEC Zona Leste',
@@ -26,6 +35,12 @@ async function seed() {
             horasAnuais: 120,
             tipoUsuario: 'Aluno',
           },
+          {
+            email: 'rogerio.costa3@etec.sp.gov.br',
+            senha: '987654',
+            nome: 'Rogério Bezerra Costa',
+            tipoUsuario: 'Coordenador ETEC',
+          },
         ],
       },
     },
@@ -35,13 +50,43 @@ async function seed() {
     data: [
       {
         titulo: 'Design Thinking',
-        descricao:
-          'Fale sobre o que você aprendeu na última sessão de Design Thinking',
+        descricao: 'Fale sobre o que você aprendeu na última sessão de Design Thinking',
         tipoAtividade: 'Sessão',
         horasAtividade: 2,
-        prazoEntrega: '2023-11-10T03:00:00.000Z',
+        prazoEntrega: '2023-11-10T10:00:00.000Z',
+      },
+      {
+        titulo: 'Horas flexíveis',
+        descricao: 'Anexe as horas flexíveis',
+        tipoAtividade: 'Tarefa',
+        horasAtividade: 20,
+        prazoEntrega: '2023-10-18T10:00:00.000Z',
       },
     ],
+  })
+
+  await prisma.entrega.createMany({
+    data: [{
+      dataEntrega: "2023-11-02T04:00:00.000Z",
+      conteudo: "Aprendi bastante coisa.",
+      entregue: true,
+      codAluno: 1,
+      codAtividade: 1
+    }, {
+      entregue: false,
+      codAluno: 1,
+      codAtividade: 2
+    }, {
+      entregue: false,
+      codAluno: 2,
+      codAtividade: 1
+    }, {
+      dataEntrega: "2023-10-09T09:00:00.000Z",
+      conteudo: "Anexado.",
+      entregue: true,
+      codAluno: 2,
+      codAtividade: 2
+    }]
   })
 }
 
