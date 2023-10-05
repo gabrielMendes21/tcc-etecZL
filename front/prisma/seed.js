@@ -88,6 +88,42 @@ async function seed() {
       codAtividade: 2
     }]
   })
+
+  await prisma.correcao.createMany({
+    data: [{
+      codCoordenador: 1,
+      codEntrega: 1,
+      conteudo: "Meus parabéns."
+    }, {
+      codCoordenador: 1,
+      codEntrega: 4,
+      conteudo: "Sem palavras!"
+    }]
+  })
+
+  await prisma.solicitacaoSuporte.createMany({
+    data: [{
+      titulo: "Contabilização de horas",
+      conteudo: "Boa tarde. Minhas horas não foram contabilizadas, mas eu realizei todas as atividades propostas, tanto que eu não possuo nenhuma atividade pendente.",
+      codAluno: 2,
+    }, {
+      titulo: "Problema com entrega de atividade",
+      conteudo: "Bom dia. Não estou conseguindo entregar a minha atividade, e eu tenho apenas 2 hroas até o fechamento da mesma.",
+      codAluno: 3
+    }]
+  })
+
+  await prisma.resposta.createMany({
+    data: [{
+      codCoordenador: 1,
+      codSolicitacao: 1,
+      resposta: "Entendo. Estou providenciando a contabilizaçao das suas horas. Tenha uma boa tarde."
+    }, {
+      codCoordenador: 4,
+      codSolicitacao: 2,
+      resposta: "Desculpe a demora. O seu problema ja foi resolvido. Espero que tenha conseguido entregar a sua atividade!"
+    }]
+  })
 }
 
 seed()
