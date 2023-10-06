@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { Box, Tab } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
+import Link from 'next/link'
+import Task from './Task'
 
 export default function TasksTab({ pendingTasks, sentTasks, overdueTasks }) {
   const [value, setValue] = useState('1')
@@ -33,9 +35,65 @@ export default function TasksTab({ pendingTasks, sentTasks, overdueTasks }) {
             <Tab label="Atrasadas" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1">Pendentes</TabPanel>
-        <TabPanel value="2">Entregues</TabPanel>
-        <TabPanel value="3">Atrasadas</TabPanel>
+        <TabPanel value="1">
+          {
+            pendingTasks.map(task => {
+              return (
+                <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
+                  <Task
+                    name={task.atividade.titulo}
+                    hours={task.atividade.horasAtividade}
+                    dueDate={
+                      new Date(task.atividade.prazoEntrega)
+                        .toLocaleString('pt-BR')
+                        .split(', ')[0]
+                    }
+                  />
+                </Link>
+              )
+            })
+          }
+        </TabPanel>
+        <TabPanel value="2">
+          {
+              sentTasks.map(task => {
+                return (
+                  <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
+                    <Task
+                      name={task.atividade.titulo}
+                      hours={task.atividade.horasAtividade}
+                      dueDate={
+                        new Date(task.atividade.prazoEntrega)
+                          .toLocaleString('pt-BR')
+                          .split(', ')[0]
+                      }
+                    />
+                  </Link>
+                )
+              })
+            }
+        </TabPanel>
+        <TabPanel value="3">
+          {
+              overdueTasks.length === 0 ? 
+              <span className="text-black/30 block">Você não possui nenhuma atividade atrasada</span> :
+              overdueTasks.map(task => {
+                return (
+                  <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
+                    <Task
+                      name={task.atividade.titulo}
+                      hours={task.atividade.horasAtividade}
+                      dueDate={
+                        new Date(task.atividade.prazoEntrega)
+                          .toLocaleString('pt-BR')
+                          .split(', ')[0]
+                      }
+                    />
+                  </Link>
+                )
+              })
+            }
+        </TabPanel>
       </TabContext>
     </Box>
   )

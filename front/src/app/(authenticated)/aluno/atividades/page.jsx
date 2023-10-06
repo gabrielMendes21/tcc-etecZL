@@ -1,5 +1,6 @@
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
+import TasksTab from '@/components/TasksTab'
 import axios from 'axios'
 import { cookies } from 'next/headers'
 
@@ -27,7 +28,7 @@ export default async function Atividades() {
 
   // Pending Tasks
   const pendingTasks = tasks.filter((task) => task.entregue === false)
-
+  
   // Sent Tasks
   const sentTasks = tasks.filter((task) => task.entregue)
 
@@ -42,6 +43,7 @@ export default async function Atividades() {
   return (
     <Main>
       <H1 title="Atividades" />
+      <TasksTab pendingTasks={pendingTasks} sentTasks={sentTasks} overdueTasks={overdueTasks} />
     </Main>
   )
 }

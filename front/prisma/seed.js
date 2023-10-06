@@ -65,6 +65,20 @@ async function seed() {
         horasAtividade: 20,
         prazoEntrega: '2023-10-18T10:00:00.000Z',
       },
+      {
+        titulo: 'Sessão',
+        descricao: 'Fale sobre o que você aprendeu na última sessão',
+        tipoAtividade: 'Sessão',
+        horasAtividade: 2,
+        prazoEntrega: '2023-09-05T10:00:00.000Z',
+      },
+      {
+        titulo: 'IBM Skills Build',
+        descricao: 'Anexe os prints dos seus cursos na plataforma IBM Skills Build',
+        tipoAtividade: 'Tarefa',
+        horasAtividade: 40,
+        prazoEntrega: '2023-10-07T10:00:00.000Z',
+      }
     ],
   })
 
@@ -74,24 +88,29 @@ async function seed() {
         dataEntrega: '2023-11-02T04:00:00.000Z',
         conteudo: 'Aprendi bastante coisa.',
         entregue: true,
-        codAluno: 1,
+        codAluno: 2,
         codAtividade: 1,
       },
       {
         entregue: false,
-        codAluno: 1,
-        codAtividade: 2,
+        codAluno: 2,
+        codAtividade: 3,
       },
       {
         entregue: false,
         codAluno: 2,
+        codAtividade: 2,
+      },
+      {
+        entregue: false,
+        codAluno: 3,
         codAtividade: 1,
       },
       {
         dataEntrega: '2023-10-09T09:00:00.000Z',
         conteudo: 'Anexado.',
         entregue: true,
-        codAluno: 2,
+        codAluno: 3,
         codAtividade: 2,
       },
     ],

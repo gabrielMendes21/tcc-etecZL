@@ -27,12 +27,14 @@ export default async function Atividade({ params }) {
   const userId = userInfoResponse.data.sub
 
   const tasksResponse = await api.get(
-    `/aluno/atividades/pendentes?id=${userId}`,
+    `/aluno/atividades?id=${userId}`,
   )
 
   const task = tasksResponse.data.find(
     (task) => task.id.toString() === params.id,
   )
+
+  console.log(task)
 
   return (
     <Main>
@@ -71,10 +73,17 @@ export default async function Atividade({ params }) {
         {/* Student work */}
         <div className="font-medium">
           <h2 className="mb-4">Meu trabalho:</h2>
-          <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
-            <Upload />
-            Anexar arquivo
-          </div>
+          {
+            task.entregue ? 
+            <p className='font-normal'>{task.conteudo}</p> : 
+            (
+              <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
+                <Upload />
+                Anexar arquivo
+              </div>
+            )
+          }
+          
 
           <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3">
             Enviar
