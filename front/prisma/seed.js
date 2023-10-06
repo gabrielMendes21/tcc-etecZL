@@ -1,5 +1,6 @@
-// const prisma = require('../src/lib/prisma.js')
-import prisma from '../src/lib/prisma.js'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
 async function seed() {
   await prisma.usuario.create({
