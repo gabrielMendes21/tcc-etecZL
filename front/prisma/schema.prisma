@@ -25,37 +25,53 @@ model Escola {
 
 model Usuario {
   id              Int     @id @default(autoincrement()) @map("codUsuario")
-  email           String @unique
+  email           String  @unique
   senha           String
   nome            String
   turma           String?
-  rm              Int? @unique
+  rm              Int?    @unique
   horasConcluidas Int?
   horasAnuais     Int?
   escola          Int?
-  tipoUsuario     String
 
-  escolaRel Escola?   @relation(fields: [escola], references: [id])
+  escolaRel Escola? @relation(fields: [escola], references: [id])
 
-  Entrega   Entrega[]
+  Entrega            Entrega[]
   SolicitacaoSuporte SolicitacaoSuporte[]
-  Resposta Resposta[]
-  Correcao Correcao[]
+  Resposta           Resposta[]
+  Correcao           Correcao[]
+  codTipoUsuario     tipoUsuario?
 
   @@index([escola])
+}
+
+model tipoUsuario {
+  id          Int    @id @default(autoincrement()) @map("codTipoUsuario")
+  tipoUsuario String
+
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int     @unique
 }
 
 model Atividade {
   id             Int      @id @default(autoincrement()) @map("codAtividade")
   titulo         String
   descricao      String
-  tipoAtividade  String
   anexos         String?
   horasAtividade Int
   dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
 
-  entrega Entrega[]
+  entrega          Entrega[]
+  codTipoAtividade tipoAtividade?
+}
+
+model tipoAtividade {
+  id            Int    @id @default(autoincrement()) @map("codTipoAtividade")
+  tipoAtividade String
+
+  atividade   Atividade @relation(fields: [atividadeId], references: [id])
+  atividadeId Int       @unique
 }
 
 model Entrega {
@@ -77,9 +93,9 @@ model Entrega {
 }
 
 model SolicitacaoSuporte {
-  id Int @id @map("codSolicitacao") @default(autoincrement())
-  titulo String
-  conteudo String
+  id          Int      @id @default(autoincrement()) @map("codSolicitacao")
+  titulo      String
+  conteudo    String
   dataCriacao DateTime @default(now())
 
   aluno    Usuario @relation(fields: [codAluno], references: [id])
@@ -91,30 +107,30 @@ model SolicitacaoSuporte {
 }
 
 model Resposta {
-  id Int @id @map("codResposta") @default(autoincrement())
+  id           Int      @id @default(autoincrement()) @map("codResposta")
   dataResposta DateTime @default(now())
-  resposta String
+  resposta     String
 
   coordenador    Usuario @relation(fields: [codCoordenador], references: [id])
   codCoordenador Int
 
   solicitacaoSuporte SolicitacaoSuporte @relation(fields: [codSolicitacao], references: [id])
-  codSolicitacao Int @unique
+  codSolicitacao     Int                @unique
 
   @@index([codCoordenador])
   @@index([codSolicitacao])
 }
 
 model Correcao {
-  id Int @id @map("codCorrecao") @default(autoincrement())
+  id           Int      @id @default(autoincrement()) @map("codCorrecao")
   dataCorrecao DateTime @default(now())
-  conteudo String
+  conteudo     String
 
   coordenador    Usuario @relation(fields: [codCoordenador], references: [id])
   codCoordenador Int
 
   entrega    Entrega @relation(fields: [codEntrega], references: [id])
-  codEntrega Int @unique
+  codEntrega Int     @unique
 
   @@index([codEntrega])
   @@index([codCoordenador])
