@@ -3,12 +3,37 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function seed() {
+  await prisma.tipoUsuario.createMany({
+    data: [
+      {
+        tipoUsuario: 'Aluno',
+      },
+      {
+        tipoUsuario: 'Coordenador ETEC',
+      },
+      {
+        tipoUsuario: 'Coordenador IBM',
+      },
+    ],
+  })
+
+  await prisma.tipoAtividade.createMany({
+    data: [
+      {
+        tipoAtividade: 'Sessão',
+      },
+      {
+        tipoAtividade: 'Tarefa',
+      },
+    ],
+  })
+
   await prisma.usuario.create({
     data: {
       email: 'guilherme@email.com',
       senha: '111111',
       nome: 'Guilherme',
-      tipoUsuario: 'Coordenador IBM',
+      codTipoUsuario: 3,
     },
   })
 
@@ -25,7 +50,7 @@ async function seed() {
             rm: 22302,
             horasConcluidas: 50,
             horasAnuais: 120,
-            tipoUsuario: 'Aluno',
+            codTipoUsuario: 1,
           },
           {
             email: 'danilo.rodrigues108@etec.sp.gov.br',
@@ -35,13 +60,13 @@ async function seed() {
             rm: 22388,
             horasConcluidas: 69,
             horasAnuais: 120,
-            tipoUsuario: 'Aluno',
+            codTipoUsuario: 1,
           },
           {
             email: 'rogerio.costa3@etec.sp.gov.br',
             senha: '987654',
             nome: 'Rogério Bezerra Costa',
-            tipoUsuario: 'Coordenador ETEC',
+            codTipoUsuario: 2,
           },
         ],
       },
@@ -54,31 +79,32 @@ async function seed() {
         titulo: 'Design Thinking',
         descricao:
           'Fale sobre o que você aprendeu na última sessão de Design Thinking',
-        tipoAtividade: 'Sessão',
         horasAtividade: 2,
         prazoEntrega: '2023-11-10T10:00:00.000Z',
+        codTipoAtividade: 1,
       },
       {
         titulo: 'Horas flexíveis',
         descricao: 'Anexe as horas flexíveis',
-        tipoAtividade: 'Tarefa',
         horasAtividade: 20,
         prazoEntrega: '2023-10-18T10:00:00.000Z',
+        codTipoAtividade: 2,
       },
       {
         titulo: 'Sessão',
         descricao: 'Fale sobre o que você aprendeu na última sessão',
-        tipoAtividade: 'Sessão',
         horasAtividade: 2,
         prazoEntrega: '2023-09-05T10:00:00.000Z',
+        codTipoAtividade: 1,
       },
       {
         titulo: 'IBM Skills Build',
-        descricao: 'Anexe os prints dos seus cursos na plataforma IBM Skills Build',
-        tipoAtividade: 'Tarefa',
+        descricao:
+          'Anexe os prints dos seus cursos na plataforma IBM Skills Build',
         horasAtividade: 40,
         prazoEntrega: '2023-10-07T10:00:00.000Z',
-      }
+        codTipoAtividade: 2,
+      },
     ],
   })
 

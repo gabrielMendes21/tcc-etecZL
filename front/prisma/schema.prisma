@@ -40,17 +40,17 @@ model Usuario {
   SolicitacaoSuporte SolicitacaoSuporte[]
   Resposta           Resposta[]
   Correcao           Correcao[]
-  codTipoUsuario     tipoUsuario?
+  tipoUsuario        tipoUsuario          @relation(fields: [codTipoUsuario], references: [id])
+  codTipoUsuario     Int
 
   @@index([escola])
+  @@index([codTipoUsuario])
 }
 
 model tipoUsuario {
-  id          Int    @id @default(autoincrement()) @map("codTipoUsuario")
+  id          Int       @id @default(autoincrement()) @map("codTipoUsuario")
   tipoUsuario String
-
-  usuario   Usuario @relation(fields: [usuarioId], references: [id])
-  usuarioId Int     @unique
+  Usuario     Usuario[]
 }
 
 model Atividade {
@@ -62,16 +62,19 @@ model Atividade {
   dataCriacao    DateTime @default(now())
   prazoEntrega   DateTime
 
-  entrega          Entrega[]
-  codTipoAtividade tipoAtividade?
+  tipoAtividade    tipoAtividade @relation(fields: [codTipoAtividade], references: [id])
+  codTipoAtividade Int
+
+  entrega Entrega[]
+
+  @@index([codTipoAtividade])
 }
 
 model tipoAtividade {
   id            Int    @id @default(autoincrement()) @map("codTipoAtividade")
   tipoAtividade String
 
-  atividade   Atividade @relation(fields: [atividadeId], references: [id])
-  atividadeId Int       @unique
+  Atividade Atividade[]
 }
 
 model Entrega {
