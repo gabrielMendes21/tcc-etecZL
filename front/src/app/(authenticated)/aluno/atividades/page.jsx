@@ -19,6 +19,10 @@ export default async function Atividades() {
     },
   )
 
+  // Now
+  const now = new Date()
+  now.setHours(now.getHours() - 3)
+
   // Get all tasks
   const tasksResponse = await axios(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/aluno/atividades?id=${userResponse.data.sub}`,
@@ -27,23 +31,32 @@ export default async function Atividades() {
   const tasks = tasksResponse.data
 
   // Pending Tasks
-  const pendingTasks = tasks.filter((task) => task.entregue === false)
-  
+  const pendingTasks = tasks.filter((task) => {
+    // Task due date
+    const taskDueDate = new Date(task.atividade.prazoEntrega)
+
+    return task.entregue === false && taskDueDate > now
+  })
+
   // Sent Tasks
   const sentTasks = tasks.filter((task) => task.entregue)
 
   // Overdue Tasks
-  const now = new Date()
-  now.setHours(now.getHours() - 3)
+  const overdueTasks = tasks.filter((task) => {
+    // Task due date
+    const taskDueDate = new Date(task.atividade.prazoEntrega)
 
-  const overdueTasks = tasks.filter(
-    (task) => new Date(task.atividade.prazoEntrega) < now,
-  )
+    return taskDueDate < now && task.entregue === false
+  })
 
   return (
     <Main>
       <H1 title="Atividades" />
-      <TasksTab pendingTasks={pendingTasks} sentTasks={sentTasks} overdueTasks={overdueTasks} />
+      <TasksTab
+        pendingTasks={pendingTasks}
+        sentTasks={sentTasks}
+        overdueTasks={overdueTasks}
+      />
     </Main>
   )
 }

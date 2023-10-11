@@ -22,8 +22,15 @@ export default async function PendingTasks() {
     `/aluno/atividades/pendentes?id=${user.sub}`,
   )
 
-  const tasks = tasksInfoResponse.data.filter((task, index) => {
-    return index <= 1
+  const tasks = tasksInfoResponse.data.filter((task) => {
+    // Now
+    const now = new Date()
+    now.setHours(now.getHours() - 3)
+
+    // Task due date
+    const taskDueDate = new Date(task.atividade.prazoEntrega)
+
+    return taskDueDate > now
   })
 
   return tasks.length > 0 ? (
