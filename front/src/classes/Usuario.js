@@ -3,16 +3,16 @@ import prisma from '@/lib/prisma'
 
 export default class Usuario {
   constructor() {
-    this.codUsuario = 0
-    this.email = ''
-    this.senha = ''
-    this.nome = ''
-    this.turma = ''
-    this.rm = 0
-    this.horasConcluidas = 0
-    this.horasAnuais = 0
-    this.escola = 0
-    this.tipoUsuario = ''
+    this.codUsuario = null
+    this.email = null
+    this.senha = null
+    this.nome = null
+    this.turma = null
+    this.rm = null
+    this.horasConcluidas = null
+    this.horasAnuais = null
+    this.escola = null
+    this.tipoUsuario = null
   }
 
   // Getters and setters
@@ -105,6 +105,7 @@ export default class Usuario {
       },
       include: {
         escolaRel: true,
+        tipoUsuario: true
       },
     })
 
@@ -121,7 +122,7 @@ export default class Usuario {
         this.setHorasConcluidas = user.horasConcluidas
         this.setHorasAnuais = user.horasAnuais
         this.setEscola = user.escola
-        this.setTipoUsuario = user.tipoUsuario
+        this.setTipoUsuario = user.tipoUsuario.tipoUsuario
 
         return true
       } else {

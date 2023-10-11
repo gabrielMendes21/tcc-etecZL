@@ -11,6 +11,8 @@ export default function UserInfo() {
     (user?.tipoUsuario === 'Coordenador ETEC' && user?.tipoUsuario) ||
     (user?.tipoUsuario === 'Coordenador IBM' && user?.tipoUsuario)
 
+    console.log(user)
+
   return (
     <>
       <div className="flex justify-between items-center">

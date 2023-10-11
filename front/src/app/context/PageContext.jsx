@@ -33,7 +33,7 @@ export function PageContextProvider({ children }) {
       // Redirect to user dashboard
       if (user.tipoUsuario === 'Coordenador ETEC') {
         router.push('/coordenador-ETEC/dashboard')
-      } else if (user.tipoUsuario === 'Coordenador IBM') {
+      } else if (user.codTipoUsuario === 'Coordenador IBM') {
         router.push('/coordenador-IBM/dashboard')
       } else {
         router.push('/')
