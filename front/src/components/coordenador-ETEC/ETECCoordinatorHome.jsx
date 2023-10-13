@@ -1,35 +1,18 @@
-'use client'
-
 import Card from '../Card'
 import UserInfo from '../UserInfo'
 import Main from '../Main'
 import Link from 'next/link'
 import TradLink from '../Link'
+import Classes from '../Classes'
 
-export default function ETECCoordinatorHome() {
+export default async function ETECCoordinatorHome() {
   return (
     <Main>
       {/* Coordinator info */}
       <UserInfo />
 
       {/* Classes */}
-      <h2 className="text-base py-7 md:text-2xl">Turmas</h2>
-      <div className="classes space-y-2">
-        <Link href="/coordenador-ETEC/turma/turma1">
-          <Card>
-            <span className="text-base">1º AMS - FATEC</span>
-            <span>2023</span>
-          </Card>
-        </Link>
-        <Card>
-          <span className="text-base">2º AMS - FATEC</span>
-          <span>2023</span>
-        </Card>
-        <Card>
-          <span className="text-base">3º AMS - FATEC</span>
-          <span>2023</span>
-        </Card>
-      </div>
+      <Classes />
 
       <hr className="border-[#C6C6C6] mt-7" />
 
