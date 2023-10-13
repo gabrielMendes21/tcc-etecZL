@@ -1,12 +1,12 @@
 'use client'
 
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import './styles.css'
-import { PageContext } from '@/app/context/PageContext'
+// import { PageContext } from '@/app/context/PageContext'
 import { Check, Clock4, Percent } from 'lucide-react'
 
-export default function CircleProgress({ unity }) {
-  const { user } = useContext(PageContext)
+export default function CircleProgress({ unity, user }) {
+  // const { user } = useContext(PageContext)
   const annualHours = user?.horasAnuais
   const hoursCompleted = user?.horasConcluidas
   const percentage = Math.round((hoursCompleted / annualHours) * 100)
@@ -74,7 +74,7 @@ export default function CircleProgress({ unity }) {
         </li>
         <li className="flex items-center gap-3 text-left text-xxs lg:text-xs">
           <Percent color="#0F62FE" />
-          {Math.round((hoursCompleted / annualHours) * 100)} do caminho
+          {Math.round((hoursCompleted / annualHours) * 100)}% do caminho
         </li>
       </ul>
     </div>
