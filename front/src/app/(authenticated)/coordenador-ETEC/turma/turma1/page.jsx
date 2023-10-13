@@ -4,7 +4,7 @@ import Card from '@/components/Card'
 import FormSubmitButton from '@/components/FormSubmitButton'
 import H2 from '@/components/H2'
 import Main from '@/components/Main'
-import Modal from '@/components/Modal'
+import MyModal from '@/components/Modal'
 import NewButton from '@/components/NewButton'
 import {
   Check,
