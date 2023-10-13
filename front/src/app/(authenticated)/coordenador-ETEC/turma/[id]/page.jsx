@@ -25,8 +25,26 @@ export default async function Turma({ params }) {
     return schoolclass.id === Number(params.id)
   })[0]
 
+  // Get all students
+  const students = await prisma.usuario.findMany({
+    where: {
+      codTurma: Number(params.id),
+    },
+    include: {
+      Entrega: true,
+    },
+  })
+
+  // Check students with all the tasks completed
+  const studentsWithAllTasksDone = students.filter((student) => {
+    return student.Entrega.every((task) => {
+      return task.entregue === true
+    })
+  })
+
   return (
     <Main>
+      {/* Class title */}
       <div className="text-center">
         <h1 className="text-xl pt-7 md:text-2xl">{turma.nomeTurma}</h1>
         <span className="block mb-7 text-[#525252]">{turma.ano}</span>
@@ -37,20 +55,29 @@ export default async function Turma({ params }) {
         {/* Class stats */}
         <h2 className=" text-center md:text-2xl">Desempenho da turma</h2>
 
-        <div className="w-full bg-blue-gradient rounded-full h-6 my-6"></div>
+        <div
+          className="w-full rounded-full h-6 my-6"
+          style={{
+            background: `linear-gradient(90deg, blue ${
+              (studentsWithAllTasksDone.length / students.length) * 100
+            }%, #D9D9D9 0%)`,
+          }}
+        ></div>
 
         <ul className="space-y-4 lg:text-center">
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Check color="#0F62FE" />
-            10 alunos concluíram todas as atividades
+            {studentsWithAllTasksDone.length} aluno(s) concluíram todas as
+            atividades
           </li>
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Percent color="#0F62FE" />
-            25% - 10/40 alunos;
+            {(studentsWithAllTasksDone.length / students.length) * 100}% -{' '}
+            {studentsWithAllTasksDone.length}/{students.length} alunos
           </li>
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Users color="#0F62FE" />
-            30 alunos restantes
+            {students.length - studentsWithAllTasksDone.length} alunos restantes
           </li>
         </ul>
       </div>
@@ -71,17 +98,15 @@ export default async function Turma({ params }) {
       {/* Students */}
       <div className="space-y-2">
         <h2 className="md:text-2xl mb-6">Alunos</h2>
-        <Link href="turma1/aluno">
-          <Card>
-            <span className="text-base">Danilo Costa Rodrigues</span>
-          </Card>
-        </Link>
-        <Card>
-          <span className="text-base">Lucas Carvalho</span>
-        </Card>
-        <Card>
-          <span className="text-base">João Vitor</span>
-        </Card>
+        {students.map((student) => {
+          return (
+            <Link href={`turma1/aluno/${student.id}`} key={student.id}>
+              <Card>
+                <span className="text-base">{student.nome}</span>
+              </Card>
+            </Link>
+          )
+        })}
       </div>
 
       {/* New student button (mobile) */}
