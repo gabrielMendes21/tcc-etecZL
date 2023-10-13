@@ -2,7 +2,7 @@ import Main from '@/components/Main'
 import CircleProgress from '@/components/circle/CircleProgress'
 import EditStudentModal from '@/components/editStudentModal'
 import { api } from '@/lib/api'
-import { Check, Clock4, FileText, Pen, Percent, Trash2 } from 'lucide-react'
+import { FileText, Pen, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
