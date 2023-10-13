@@ -118,7 +118,7 @@ export default class Usuario {
         this.setEmail = user.email
         this.setSenha = user.senha
         this.setNome = user.nome
-        this.setTurma = user.turma.nomeTurma
+        this.setTurma = user.turma?.nomeTurma
         this.setRm = user.rm
         this.setHorasConcluidas = user.horasConcluidas
         this.setHorasAnuais = user.horasAnuais
