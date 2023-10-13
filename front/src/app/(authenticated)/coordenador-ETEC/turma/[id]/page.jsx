@@ -100,7 +100,7 @@ export default async function Turma({ params }) {
         <h2 className="md:text-2xl mb-6">Alunos</h2>
         {students.map((student) => {
           return (
-            <Link href={`turma1/aluno/${student.id}`} key={student.id}>
+            <Link href={`${params.id}/aluno/${student.id}`} key={student.id}>
               <Card>
                 <span className="text-base">{student.nome}</span>
               </Card>
