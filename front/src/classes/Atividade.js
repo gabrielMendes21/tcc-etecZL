@@ -1,95 +1,93 @@
-import { TurnRightSharp } from "@mui/icons-material"
-
 /* eslint-disable accessor-pairs */
 export default class Atividade {
-    constructor() {
-        this.codAtividade = 0
-        this.titulo = ""
-        this.descricao = ""
-        this.tipoAtividade = ""
-        this.anexos = ""
-        this.horasAtividade = 0
-        this.dataCriacao = ""
-        this.prazoEntrega = ""
-    }
+  constructor() {
+    this.codAtividade = 0
+    this.titulo = ''
+    this.descricao = ''
+    this.tipoAtividade = ''
+    this.anexos = ''
+    this.horasAtividade = 0
+    this.dataCriacao = ''
+    this.prazoEntrega = ''
+  }
 
-    set setCodAtividade(newValue) {
-        this.codAtividade = newValue
-    }
+  set setCodAtividade(newValue) {
+    this.codAtividade = newValue
+  }
 
-    get getCodAtividade() {
-        return this.codAtividade
-    }
+  get getCodAtividade() {
+    return this.codAtividade
+  }
 
-    set setTitulo(newValue) {
-        this.titulo = newValue
-    }
+  set setTitulo(newValue) {
+    this.titulo = newValue
+  }
 
-    get getTitulo() {
-        return this.titulo
-    }
+  get getTitulo() {
+    return this.titulo
+  }
 
-    set setDescricao(newValue) {
-        this.descricao = newValue
-    }
+  set setDescricao(newValue) {
+    this.descricao = newValue
+  }
 
-    get getDescricao() {
-        return this.descricao
-    }
+  get getDescricao() {
+    return this.descricao
+  }
 
-    set setTipoAtividade(newValue) {
-        this.tipoAtividade = newValue
-    }
+  set setTipoAtividade(newValue) {
+    this.tipoAtividade = newValue
+  }
 
-    get getTipoAtividade() {
-        return this.tipoAtividade
-    }
+  get getTipoAtividade() {
+    return this.tipoAtividade
+  }
 
-    set setAnexos(newValue) {
-        this.anexos =  newValue
-    }
+  set setAnexos(newValue) {
+    this.anexos = newValue
+  }
 
-    get getAnexos() {
-        return this.anexos
-    }
+  get getAnexos() {
+    return this.anexos
+  }
 
-    set setHorasAtividade(newValue) {
-        this.horasAtividade = newValue
-    }
+  set setHorasAtividade(newValue) {
+    this.horasAtividade = newValue
+  }
 
-    get getHorasAtividade() {
-        return this.horasAtividade
-    }
+  get getHorasAtividade() {
+    return this.horasAtividade
+  }
 
-    set setDataCriacao(newValue) {
-        this.dataCriacao = newValue
-    }
+  set setDataCriacao(newValue) {
+    this.dataCriacao = newValue
+  }
 
-    get getDataCriacao() {
-        return this.dataCriacao
-    }
+  get getDataCriacao() {
+    return this.dataCriacao
+  }
 
-    set setPrazoEntrega(newValue) {
-        this.prazoEntrega = newValue
-    }
+  set setPrazoEntrega(newValue) {
+    this.prazoEntrega = newValue
+  }
 
-    get getPrazoEntrega() {
-        return this.prazoEntrega
-    }
+  get getPrazoEntrega() {
+    return this.prazoEntrega
+  }
 
-    setAtividade(atividade) {
-        return true
-    }
+  setAtividade(atividade) {
+    return true
+  }
 
-    getAtividade() {
-        return {...this}
-    }
+  getAtividade() {
+    return { ...this }
+  }
 
-    updateAtividade(atividade) {
-        return true
-    }
+  updateAtividade(atividade) {
+    return true
+  }
 
-    deleteAtividade() {
-        return true
-    }
+  deleteAtividade() {
+    return true
+  }
 }
