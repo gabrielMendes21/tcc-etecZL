@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
@@ -40,35 +40,41 @@ async function seed() {
   await prisma.escola.create({
     data: {
       nomeEscola: 'ETEC Zona Leste',
+      Turma: {
+        create: {
+          ano: 2023,
+          nomeTurma: '3º DS AMS',
+          Usuario: {
+            create: [
+              {
+                email: 'gabriel.mendes88@etec.sp.gov.br',
+                senha: '123456',
+                nome: 'Gabriel da Silva Mendes',
+                rm: 22302,
+                horasConcluidas: 50,
+                horasAnuais: 120,
+                codTipoUsuario: 1,
+              },
+              {
+                email: 'danilo.rodrigues108@etec.sp.gov.br',
+                senha: '654321',
+                nome: 'Danilo Costa Rodrigues',
+                rm: 22388,
+                horasConcluidas: 69,
+                horasAnuais: 120,
+                codTipoUsuario: 1,
+              },
+            ],
+          },
+        },
+      },
       Usuario: {
-        create: [
-          {
-            email: 'gabriel.mendes88@etec.sp.gov.br',
-            senha: '123456',
-            nome: 'Gabriel da Silva Mendes',
-            turma: '3º DS AMS',
-            rm: 22302,
-            horasConcluidas: 50,
-            horasAnuais: 120,
-            codTipoUsuario: 1,
-          },
-          {
-            email: 'danilo.rodrigues108@etec.sp.gov.br',
-            senha: '654321',
-            nome: 'Danilo Costa Rodrigues',
-            turma: '3º DS AMS',
-            rm: 22388,
-            horasConcluidas: 69,
-            horasAnuais: 120,
-            codTipoUsuario: 1,
-          },
-          {
-            email: 'rogerio.costa3@etec.sp.gov.br',
-            senha: '987654',
-            nome: 'Rogério Bezerra Costa',
-            codTipoUsuario: 2,
-          },
-        ],
+        create: {
+          email: 'rogerio.costa3@etec.sp.gov.br',
+          senha: '987654',
+          nome: 'Rogério Bezerra Costa',
+          codTipoUsuario: 2,
+        },
       },
     },
   })
