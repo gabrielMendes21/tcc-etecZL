@@ -2,8 +2,22 @@ import Main from '../Main'
 import UserInfo from '../UserInfo'
 import CircleProgress from '../circle/CircleProgress'
 import PendingTasks from '../PendingTasks'
+import { cookies } from 'next/headers'
+import { api } from '@/lib/api'
 
 export default async function StudentHome() {
+  // Get student info for circle progress
+  const cookieStore = cookies()
+  const token = cookieStore.get('auth-token').value
+
+  const userInfoResponse = await api.get(`/login`, {
+    params: {
+      token,
+    },
+  })
+
+  const student = userInfoResponse.data
+
   return (
     <Main>
       {/* Student info */}
@@ -21,7 +35,7 @@ export default async function StudentHome() {
           </h2>
 
           <div className="flex items-center justify-start gap-10 my-4">
-            <CircleProgress unity="horas" />
+            <CircleProgress unity="horas" user={student} />
           </div>
         </div>
       </div>
