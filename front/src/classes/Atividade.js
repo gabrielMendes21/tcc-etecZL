@@ -75,11 +75,11 @@ export default class Atividade {
     return this.prazoEntrega
   }
 
-  setAtividade(atividade) {
+  createAtividade(atividade) {
     return true
   }
 
-  getAtividade() {
+  readAtividade() {
     return { ...this }
   }
 

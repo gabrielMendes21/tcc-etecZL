@@ -105,7 +105,7 @@ export default class Usuario {
       },
       include: {
         escolaRel: true,
-        tipoUsuario: true
+        tipoUsuario: true,
       },
     })
 
