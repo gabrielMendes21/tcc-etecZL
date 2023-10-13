@@ -16,9 +16,6 @@ module.exports = {
       fontSize: {
         xxs: '0.625rem',
       },
-      backgroundImage: {
-        'blue-gradient': 'linear-gradient(90deg, #0F62FE 25%, #D9D9D9 0%)',
-      },
     },
   },
   plugins: [],
