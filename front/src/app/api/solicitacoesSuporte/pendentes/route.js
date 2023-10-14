@@ -5,6 +5,7 @@ export async function GET() {
   const requests = await prisma.solicitacaoSuporte.findMany({
     include: {
       Resposta: true,
+      aluno: true,
     },
   })
 
