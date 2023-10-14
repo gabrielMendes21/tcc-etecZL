@@ -2,7 +2,7 @@
 import { api } from '@/lib/api'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 export const PageContext = createContext({})
 
@@ -12,6 +12,7 @@ export function PageContextProvider({ children }) {
   const handleMenu = () => setIsOpen(!isOpen)
 
   const router = useRouter()
+  const pathname = usePathname()
 
   // Login function => Called by the login page only
   async function login({ email, password }) {
@@ -53,34 +54,46 @@ export function PageContextProvider({ children }) {
   useEffect(() => {
     const { 'auth-token': token } = parseCookies()
 
-    if (router.pathname !== '/login') {
+    if (pathname !== '/login') {
       if (token) {
-        // axios('../api/login', {
-        //   headers: {
-        //     Authorization: `bearer ${token}`,
-        //   },
-        // })
-        api
-          .get('/login', {
-            params: {
-              token,
-            },
-          })
-          .then((response) => {
-            setUser(response.data)
-            if (response.data.tipoUsuario === 'Coordenador ETEC') {
-              router.push('/coordenador-ETEC/dashboard')
-            } else if (response.data.tipoUsuario === 'Coordenador IBM') {
-              router.push('/coordenador-IBM/dashboard')
-            } else {
-              router.push('/')
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-            router.push('/')
-          })
+        if (
+          pathname === '/' ||
+          pathname === '/coordenador-ETEC/dashboard' ||
+          pathname === '/coordenador-IBM/dashboard'
+        ) {
+          api
+            .get('/login', {
+              params: { token },
+            })
+            .then((response) => {
+              if (response.data.tipoUsuario === 'Coordenador ETEC') {
+                router.push('/coordenador-ETEC/dashboard')
+              } else if (response.data.tipoUsuario === 'Coordenador IBM') {
+                router.push('/coordenador-IBM/dashboard')
+              } else {
+                router.push('/')
+              }
+            })
+        }
       }
+      // axios('../api/login', {
+      //   headers: {
+      //     Authorization: `bearer ${token}`,
+      //   },
+      // })
+      api
+        .get('/login', {
+          params: {
+            token,
+          },
+        })
+        .then((response) => {
+          setUser(response.data)
+        })
+        .catch((err) => {
+          console.log(err)
+          router.push('/')
+        })
     }
   }, [router])
 

@@ -13,7 +13,6 @@ export default function EditStudentModal() {
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
   const { user } = useContext(PageContext)
-
   console.log(user)
 
   return (
@@ -23,7 +22,7 @@ export default function EditStudentModal() {
         onClick={handleOpen}
         className="absolute invisible w-0 md:static md:visible flex justify-between items-center md:w-full text-left font-light bg-highlighted hover:cursor-pointer hover:brightness-110 transition-all text-white p-3 my-3"
       >
-        Editar alunoa
+        Editar aluno
         <Pen strokeWidth={1} />
       </button>
 
@@ -56,7 +55,7 @@ export default function EditStudentModal() {
             type="text"
             placeholder="Digite o RM do aluno"
             id="rm"
-            value={user?.rm}
+            value="{user?.rm}"
           />
 
           <FormSubmitButton title="Editar aluno" />
