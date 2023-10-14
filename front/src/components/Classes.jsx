@@ -25,7 +25,6 @@ export default async function Classes() {
 
   return (
     <>
-      <h2 className="text-base py-7 md:text-2xl">Turmas</h2>
       <div className="classes space-y-2">
         {classes.map((schoolClass) => {
           return (

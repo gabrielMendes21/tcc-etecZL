@@ -2,7 +2,7 @@ import { api } from '@/lib/api'
 import Link from 'next/link'
 import Card from './Card'
 
-export default async function SupportRequests() {
+export default async function PendingSupportRequests() {
   const pendingRequestsResponse = await api.get(
     '/solicitacoesSuporte/pendentes',
   )
@@ -10,7 +10,6 @@ export default async function SupportRequests() {
 
   return (
     <>
-      <h2 className="text-base py-7 md:text-2xl">Solicitações de suporte</h2>
       <div className="classes space-y-2">
         {pendingRequests.length === 0 ? (
           <span className="text-black/30 block">
