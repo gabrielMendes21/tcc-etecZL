@@ -68,6 +68,13 @@ export function PageContextProvider({ children }) {
           })
           .then((response) => {
             setUser(response.data)
+            if (response.data.tipoUsuario === 'Coordenador ETEC') {
+              router.push('/coordenador-ETEC/dashboard')
+            } else if (response.data.tipoUsuario === 'Coordenador IBM') {
+              router.push('/coordenador-IBM/dashboard')
+            } else {
+              router.push('/')
+            }
           })
           .catch((err) => {
             console.log(err)

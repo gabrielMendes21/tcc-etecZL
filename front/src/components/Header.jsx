@@ -13,7 +13,7 @@ function Menu() {
   const { isOpen, setIsOpen, user, handleMenu, logout } =
     useContext(PageContext)
 
-  return !user?.tipoCoordenador ? (
+  return !user?.tipoUsuario ? (
     <>
       <Image
         src={isOpen ? closeHamburger : menu}
@@ -45,7 +45,7 @@ function Menu() {
         </ul>
       </nav>
     </>
-  ) : user?.tipoCoordenador === 'Coordenador ETEC' ? (
+  ) : user?.tipoUsuario === 'Coordenador ETEC' ? (
     <>
       <Image
         src={isOpen ? closeHamburger : menu}
@@ -60,7 +60,7 @@ function Menu() {
       >
         <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/">Turmas</Link>
+            <Link href="/coordenador-ETEC/dashboard">Turmas</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-ETEC/atividades">Atividades</Link>
@@ -77,7 +77,7 @@ function Menu() {
         </ul>
       </nav>
     </>
-  ) : user?.tipoCoordenador === 'Coordenador IBM' ? (
+  ) : user?.tipoUsuario === 'Coordenador IBM' ? (
     <>
       <Image
         src={isOpen ? closeHamburger : menu}
@@ -92,7 +92,7 @@ function Menu() {
       >
         <ul className="space-y-5 md:space-y-0 md:flex md:items-center md:gap-16">
           <li onClick={() => setIsOpen(false)}>
-            <Link href="/">Turmas</Link>
+            <Link href="/coordenador-IBM/dashboard">Turmas</Link>
           </li>
           <li onClick={() => setIsOpen(false)}>
             <Link href="/coordenador-IBM/atividades">Atividades</Link>
@@ -115,6 +115,8 @@ function Menu() {
 }
 
 export default function Header({ hasMenu, className }) {
+  const { user } = useContext(PageContext)
+
   return (
     <header
       className={`w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-20 ${className}`}
@@ -124,7 +126,13 @@ export default function Header({ hasMenu, className }) {
 
       {/* Easy hours logo */}
       <Link
-        href="/"
+        href={
+          !user?.tipoUsuario
+            ? '/'
+            : user?.tipoUsuario === 'Coordenador ETEC'
+            ? '/coordenador-ETEC/dashboard'
+            : '/coordenador-IBM/dashboard'
+        }
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:-translate-x-0 md:-translate-y-0"
       >
         <Image src={darkLogo} alt="logo" priority className="md:w-[200px]" />
