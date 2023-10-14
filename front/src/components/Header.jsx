@@ -110,7 +110,7 @@ function Menu() {
       </nav>
     </>
   ) : (
-    'Usuário inválido'
+    ''
   )
 }
 
