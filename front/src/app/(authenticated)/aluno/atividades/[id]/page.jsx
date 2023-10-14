@@ -41,7 +41,7 @@ export default async function Atividade({ params }) {
             {task.atividade.titulo}
           </h1>
           <span className="block text-center">
-            {new Date(task.atividade.prazoEntrega).toLocaleString('pt-BR')}
+            {new Date(task.atividade.prazoEntrega).toLocaleDateString()}
           </span>
         </div>
 

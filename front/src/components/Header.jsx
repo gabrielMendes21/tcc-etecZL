@@ -13,7 +13,7 @@ function Menu() {
   const { isOpen, setIsOpen, user, handleMenu, logout } =
     useContext(PageContext)
 
-  return !user?.tipoUsuario ? (
+  return user?.tipoUsuario === 'Aluno' ? (
     <>
       <Image
         src={isOpen ? closeHamburger : menu}
