@@ -1,19 +1,21 @@
 'use client'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import MyModal from './Modal'
 import FormSubmitButton from './FormSubmitButton'
 import H2 from './H2'
 import { Pen } from 'lucide-react'
-import { PageContext } from '@/app/context/PageContext'
 
-export default function EditStudentModal() {
+export default function EditStudentModal({ studentData }) {
+  // Input values
+  const [name, setName] = useState(studentData.nome)
+  const [email, setEmail] = useState(studentData.email)
+  const [rm, setRm] = useState(studentData.rm)
+
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
-  const { user } = useContext(PageContext)
-  console.log(user)
 
   return (
     // PC Button
@@ -37,7 +39,8 @@ export default function EditStudentModal() {
             type="text"
             placeholder="Digite o nome do aluno"
             id="name"
-            value="Danilo Costa Rodrigues"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
 
           <label htmlFor="email">Email</label>
@@ -46,7 +49,8 @@ export default function EditStudentModal() {
             type="text"
             placeholder="Digite o email institucional do aluno"
             id="email"
-            value="danilo.rodrigues108@etec.sp.gov.br"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <label htmlFor="rm">RM</label>
@@ -55,7 +59,8 @@ export default function EditStudentModal() {
             type="text"
             placeholder="Digite o RM do aluno"
             id="rm"
-            value="{user?.rm}"
+            value={rm}
+            onChange={(e) => setRm(e.target.value)}
           />
 
           <FormSubmitButton title="Editar aluno" />

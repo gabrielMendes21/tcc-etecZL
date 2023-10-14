@@ -110,7 +110,7 @@ export default async function Turma({ params }) {
       </div>
 
       {/* New student button (mobile) */}
-      <NewButton text="Adicionar aluno" to="turma1/aluno/novo-aluno" />
+      <NewButton text="Adicionar aluno" to={`${params.id}/novo-aluno`} />
 
       {/* Modal */}
       <NewStudentModal />

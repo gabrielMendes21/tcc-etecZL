@@ -1,6 +1,6 @@
 import Main from '@/components/Main'
 import CircleProgress from '@/components/circle/CircleProgress'
-import EditStudentModal from '@/components/editStudentModal'
+import EditStudentModal from '@/components/EditStudentModal'
 import { api } from '@/lib/api'
 import { FileText, Pen, Trash2 } from 'lucide-react'
 import Link from 'next/link'
@@ -62,7 +62,7 @@ export default async function Aluno({ params }) {
           {/* Mobile button */}
           <Link
             className="flex justify-between items-center md:w-0 w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white my-3 p-3 md:absolute md:invisible"
-            href="aluno/editar"
+            href={`${params.alunoId}/editar`}
           >
             Editar aluno
             <Pen strokeWidth={1} />
@@ -79,7 +79,7 @@ export default async function Aluno({ params }) {
           </button>
 
           {/* Modal */}
-          <EditStudentModal />
+          <EditStudentModal studentData={student} />
         </div>
       </div>
     </Main>
