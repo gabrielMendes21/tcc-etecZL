@@ -11,13 +11,13 @@ export default function Suporte() {
 
       {/* Answered requests */}
       <H2 title="Respondidas" />
-      <AnsweredSupportRequests />
+      <AnsweredSupportRequests coordinator="ETEC" />
 
       <hr className="border-[#C6C6C6] mt-7" />
 
       {/* Not-answered requests */}
       <H2 title="Não respondidas" />
-      <PendingSupportRequests />
+      <PendingSupportRequests coordinator="ETEC" />
     </Main>
   )
 }

@@ -17,7 +17,7 @@ export default function Suporte() {
 
       {/* Not-answered requests */}
       <H2 title="Não respondidas" />
-      <PendingSupportRequests />
+      <PendingSupportRequests coordinator="IBM" />
     </Main>
   )
 }

@@ -2,7 +2,7 @@ import { api } from '@/lib/api'
 import Link from 'next/link'
 import Card from './Card'
 
-export default async function PendingSupportRequests() {
+export default async function PendingSupportRequests({ coordinator }) {
   const pendingRequestsResponse = await api.get(
     '/solicitacoesSuporte/pendentes',
   )
@@ -21,7 +21,7 @@ export default async function PendingSupportRequests() {
             const formattedDate = creationDate.toLocaleDateString()
 
             return (
-              <Link href={`/coordenador-ETEC/suporte/${request.id}`}>
+              <Link href={`/coordenador-${coordinator}/suporte/${request.id}`}>
                 <Card>
                   <span className="text-base">{request.aluno.nome}</span>
                   <span>
