@@ -11,6 +11,7 @@ export async function GET(req) {
     },
     include: {
       Resposta: true,
+      aluno: true,
     },
   })
 
