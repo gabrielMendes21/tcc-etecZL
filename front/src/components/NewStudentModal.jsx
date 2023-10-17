@@ -5,12 +5,44 @@ import MyModal from './Modal'
 import FormSubmitButton from './FormSubmitButton'
 import { PlusCircle, Upload } from 'lucide-react'
 import H2 from './H2'
+import * as XLSX from 'xlsx'
 
 export default function NewStudentModal() {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  // Read excel function
+  const readExcel = (file) => {
+
+    const promise = new Promise((resolve, reject) => {
+      const fileReader = new FileReader()
+      fileReader.readAsArrayBuffer(file)
+
+      fileReader.onload = (event) => {
+        const bufferArray = event.target.result
+
+        const wb = XLSX.read(bufferArray, { type: 'buffer' })
+        const wsname = wb.SheetNames[0]
+        const ws = wb.Sheets[wsname]
+        const data = XLSX.utils.sheet_to_json(ws)
+
+        resolve(data)
+      }
+
+      fileReader.onerror = (error) => {
+        reject(error)
+      }
+
+    })
+
+    promise
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
+
+    console.log(file)
+  }
 
   return (
     <>
@@ -27,7 +59,7 @@ export default function NewStudentModal() {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Adicionar aluno" />
 
-        <form action="" className="mt-8">
+        <form action="" method='POST' className="mt-8" encType='multipart/form-data'>
           <label htmlFor="name">Nome do aluno</label>
           <input
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
@@ -54,10 +86,16 @@ export default function NewStudentModal() {
 
           <FormSubmitButton title="Adicionar aluno" />
 
-          <button className="flex justify-between items-center w-full text-left font-light bg-[#008000] hover:brightness-110 transition-all text-white mb-2 p-3">
+          <label htmlFor="fileInput" className="hover:cursor-pointer flex justify-between items-center w-full text-left font-light bg-[#008000] hover:brightness-110 transition-all text-white mb-2 p-3">
             Importar planilha
             <Upload strokeWidth={1} />
-          </button>
+          </label>
+          <input type="file" name="fileInput" id="fileInput" accept='.xlsx' className='invisible' onChange={(event) => {
+            event.preventDefault()
+            const file = event.target.files[0]
+
+            readExcel(file)
+          }} />
         </form>
       </MyModal>
     </>
