@@ -1,8 +1,31 @@
+'use client'
+
 import FormSubmitButton from '@/components/FormSubmitButton'
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export default function Editar() {
+  // Input values
+  const [name, setName] = useState()
+  const [email, setEmail] = useState()
+  const [rm, setRm] = useState()
+
+  const pathName = usePathname()
+  const paths = pathName.split('/')
+  const studentId = paths[paths.indexOf('editar') - 1]
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/aluno?id=${studentId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setName(data.nome)
+        setEmail(data.email)
+        setRm(data.rm)
+      })
+  }, [])
+
   return (
     <Main>
       <H1 title="Editar aluno" />
@@ -14,7 +37,8 @@ export default function Editar() {
           type="text"
           placeholder="Digite o nome do aluno"
           id="name"
-          value="Danilo Costa Rodrigues"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <label htmlFor="email">Email</label>
@@ -23,7 +47,8 @@ export default function Editar() {
           type="text"
           placeholder="Digite o email institucional do aluno"
           id="email"
-          value="danilo.rodrigues108@etec.sp.gov.br"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <label htmlFor="rm">RM</label>
@@ -32,7 +57,8 @@ export default function Editar() {
           type="text"
           placeholder="Digite o RM do aluno"
           id="rm"
-          value="22388"
+          value={rm}
+          onChange={(e) => setRm(e.target.value)}
         />
 
         <FormSubmitButton title="Editar aluno" />
