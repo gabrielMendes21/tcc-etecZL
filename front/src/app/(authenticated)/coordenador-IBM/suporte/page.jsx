@@ -11,7 +11,7 @@ export default function Suporte() {
 
       {/* Answered requests */}
       <H2 title="Respondidas" />
-      <AnsweredSupportRequests />
+      <AnsweredSupportRequests coordinator="IBM" />
 
       <hr className="border-[#C6C6C6] mt-7" />
 
