@@ -9,6 +9,9 @@ export async function GET(req) {
     where: {
       id: Number(supportRequestId),
     },
+    include: {
+      Resposta: true,
+    },
   })
 
   return NextResponse.json(supportRequest)
