@@ -20,10 +20,7 @@ export default async function ETECCoordinatorHome() {
       <h2 className="text-base py-7 md:text-2xl">Solicitações de suporte</h2>
       <PendingSupportRequests />
 
-      {/* See more link */}
-      <TradLink to="/coordenador-ETEC/suporte" size={10}>
-        Ver mais
-      </TradLink>
+      
     </Main>
   )
 }
