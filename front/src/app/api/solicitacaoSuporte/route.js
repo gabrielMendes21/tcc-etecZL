@@ -10,8 +10,26 @@ export async function GET(req) {
       id: Number(supportRequestId),
     },
     include: {
-      Resposta: true,
-      aluno: true,
+      Resposta: {
+        include: {
+          coordenador: {
+            select: {
+              nome: true,
+              tipoUsuario: true,
+            },
+          },
+        },
+      },
+      aluno: {
+        select: {
+          nome: true,
+          turma: {
+            include: {
+              escola: true,
+            },
+          },
+        },
+      },
     },
   })
 
