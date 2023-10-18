@@ -14,14 +14,28 @@ export async function GET() {
 export async function POST(req) {
   const students = await req.json()
 
-  for (let student of students) {
+  for (let i = 0; i < students.length; i++) {
     const studentResponse = await prisma.usuario.findFirst({
       where: {
-        rm: student.RM
-      }
+        rm: students[i].RM,
+      },
     })
 
-    console.log(studentResponse)
+    if (studentResponse === null) {
+      await prisma.usuario.create({
+        data: {
+          email: students[i].Email,
+          rm: students[i].RM,
+          nome: students[i].Nome,
+          senha: students[i].RM,
+          codEscola: 1,
+          codTipoUsuario: 1,
+          codTurma: 1,
+          horasAnuais: 0,
+          horasConcluidas: 0,
+        },
+      })
+    }
   }
 
   return NextResponse.json(students)
