@@ -5,12 +5,32 @@ import MyModal from './Modal'
 import H2 from './H2'
 import FormSubmitButton from './FormSubmitButton'
 import { PlusCircle } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { api } from '@/lib/api'
+import { useContext } from 'react'
+import { PageContext } from '@/app/context/PageContext'
+import { useRouter } from 'next/navigation'
 
 export default function NewSupportRequestModal() {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  const router = useRouter()
+
+  const user = useContext(PageContext)
+
+  // Form control
+  const { register, handleSubmit } = useForm()
+  const onSubmit = async (data) => {
+    const response = await api.post(`/solicitacaoSuporte?studentId=${user?.user?.sub}`, {
+      ...data,
+    })
+
+    setIsOpen(false)
+    router.refresh()
+  }
 
   return (
     <>
@@ -24,7 +44,7 @@ export default function NewSupportRequestModal() {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Criar solicitação de suporte" />
 
-        <form action="" className="mt-8">
+        <form action="" method='POST' className="mt-8" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="subject" className="text-sm">
             Assunto
           </label>
@@ -33,6 +53,8 @@ export default function NewSupportRequestModal() {
             id="subject"
             placeholder="Digite o assunto da sua solicitação"
             className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+            required
+            {...register("subject")}
           />
 
           <label htmlFor="message" className="text-sm">
@@ -44,6 +66,8 @@ export default function NewSupportRequestModal() {
             rows="10"
             className="mt-3 mb-8 border-b block resize-none border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
             placeholder="Digite sua mensagem"
+            required
+            {...register("message")}
           ></textarea>
 
           <hr className="border[#C6C6C6]" />

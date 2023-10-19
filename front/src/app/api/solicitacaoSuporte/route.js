@@ -35,3 +35,22 @@ export async function GET(req) {
 
   return NextResponse.json(supportRequest)
 }
+
+export async function POST(req) {
+  // Student id as a query param
+  const { searchParams } = new URL(req.url)
+  const studentId = searchParams.get('studentId')
+
+  // Data sent from form
+  const newSupportRequest = await req.json()
+
+  await prisma.solicitacaoSuporte.create({
+    data: {
+      titulo: newSupportRequest.subject,
+      conteudo: newSupportRequest.message,
+      codAluno: Number(studentId)
+    }
+  })
+
+  return NextResponse.json("Cadastrado")
+}

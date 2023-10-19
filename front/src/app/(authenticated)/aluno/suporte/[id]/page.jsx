@@ -34,11 +34,13 @@ export default async function Suporte({ params }) {
           <h1 className="block mt-7 font-medium text-xl text-center">
             Suporte
           </h1>
+
           {/* Request subject */}
           <span className="block font-light text-center">
             {supportRequest.titulo}
           </span>
           <hr className="border-[#C6C6C6] my-8" />
+
           {/* Support message */}
           <div className="my-8">
             <h2 className="font-medium md:text-xl">Mensagem:</h2>
