@@ -32,6 +32,14 @@ export default async function Atividade({ params }) {
     (task) => task.id.toString() === params.id,
   )
 
+  const taskDueDate = new Date(task.atividade.prazoEntrega)
+  const now = new Date()
+  now.setHours(now.getHours() - 3)
+
+  const sent = task.entregue
+  const overdue = taskDueDate < now && !sent
+  const pending = !sent && !overdue
+
   return (
     <Main>
       {/* Task info */}
@@ -68,20 +76,26 @@ export default async function Atividade({ params }) {
 
         {/* Student work */}
         <div className="font-medium">
-          <h2 className="mb-4">Meu trabalho:</h2>
-          {task.entregue ? (
-            <p className="font-normal">{task.conteudo}</p>
+          {sent ? (
+            <>
+              <h2 className="mb-4">Meu trabalho:</h2>
+              <p className="font-normal">{task.conteudo}</p>
+            </>
+          ) : overdue ? (
+            ''
           ) : (
-            <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
-              <Upload />
-              Anexar arquivo
-            </div>
+            <>
+              <h2 className="mb-4">Meu trabalho:</h2>
+              <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
+                <Upload />
+                Anexar arquivo
+              </div>
+              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3">
+                Enviar
+                <ArrowRight strokeWidth={1} />
+              </button>
+            </>
           )}
-
-          <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3">
-            Enviar
-            <ArrowRight strokeWidth={1} />
-          </button>
         </div>
       </div>
     </Main>
