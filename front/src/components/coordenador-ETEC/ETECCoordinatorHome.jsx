@@ -18,9 +18,9 @@ export default async function ETECCoordinatorHome() {
 
       {/* Support requests */}
       <h2 className="text-base py-7 md:text-2xl">Solicitações de suporte</h2>
-      <PendingSupportRequests />
+      <PendingSupportRequests coordinator="ETEC" />
 
-      
+
     </Main>
   )
 }
