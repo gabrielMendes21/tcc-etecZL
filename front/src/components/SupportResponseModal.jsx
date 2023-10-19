@@ -5,12 +5,31 @@ import { useState } from 'react'
 import MyModal from './Modal'
 import H2 from './H2'
 import FormSubmitButton from './FormSubmitButton'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { api } from '@/lib/api'
+import { useContext } from 'react'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function SupportResponseModal({ supportRequest }) {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  const router = useRouter()
+  const user = useContext(PageContext)
+
+  // Form control
+  const { register, handleSubmit } = useForm()
+  const onSubmit = async (data) => {
+    const response = await api.post(`/solicitacaoSuporte/resposta?requestId=${supportRequest.id}&coordinatorId=${user?.user?.sub}`, {
+      ...data,
+    })
+
+    setIsOpen(false)
+    router.refresh()
+  }
 
   return (
     <>
@@ -24,7 +43,7 @@ export default function SupportResponseModal({ supportRequest }) {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Responder suporte" />
 
-        <form action="" className="mt-8">
+        <form action="" method='POST' onSubmit={handleSubmit(onSubmit)} className="mt-8">
           <label htmlFor="assunto">Assunto</label>
           <input
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
@@ -40,6 +59,8 @@ export default function SupportResponseModal({ supportRequest }) {
             rows="10"
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             placeholder="Digite a sua resposta"
+            required
+            {...register("responseMessage")}
           ></textarea>
 
           <FormSubmitButton title="Enviar resposta" />

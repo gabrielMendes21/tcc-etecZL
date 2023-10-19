@@ -47,7 +47,7 @@ export async function POST(req) {
   await prisma.solicitacaoSuporte.create({
     data: {
       titulo: newSupportRequest.subject,
-      conteudo: newSupportRequest.message,
+      conteudo: newSupportRequest.message.trim(),
       codAluno: Number(studentId)
     }
   })
