@@ -24,10 +24,10 @@ export async function POST(req) {
     if (studentResponse === null) {
       await prisma.usuario.create({
         data: {
-          email: students[i].Email,
+          email: students[i].EMAIL,
           rm: students[i].RM,
-          nome: students[i].Nome,
-          senha: students[i].RM + students[i].Nome.slice(0, 2),
+          nome: students[i].NOME,
+          senha: students[i].RM + students[i].NOME.slice(0, 2),
           codEscola: 1,
           codTipoUsuario: 1,
           codTurma: 1,
