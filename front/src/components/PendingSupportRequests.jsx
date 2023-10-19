@@ -37,9 +37,9 @@ export default async function PendingSupportRequests({ coordinator }) {
             })}
 
             {/* See more link */}
-            <TradLink to={`/coordenador-${coordinator}/suporte`} size={10}>
+            {/* <TradLink to={`/coordenador-${coordinator}/suporte`} size={10}>
               Ver mais
-            </TradLink>
+            </TradLink> */}
           </>
         )}
       </div>

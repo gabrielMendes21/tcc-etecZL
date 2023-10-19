@@ -1,6 +1,5 @@
 import AnsweredSupportRequests from '@/components/AnsweredSupportRequests'
 import H1 from '@/components/H1'
-import H2 from '@/components/H2'
 import Main from '@/components/Main'
 import PendingSupportRequests from '@/components/PendingSupportRequests'
 

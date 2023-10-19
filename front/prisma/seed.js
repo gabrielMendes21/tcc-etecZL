@@ -177,6 +177,11 @@ async function seed() {
           'Bom dia. Não estou conseguindo entregar a minha atividade, e eu tenho apenas 2 hroas até o fechamento da mesma.',
         codAluno: 3,
       },
+      {
+        titulo: 'Problema com skills build',
+        conteudo: 'Bom dia. acessar o skills build.',
+        codAluno: 2,
+      },
     ],
   })
 
