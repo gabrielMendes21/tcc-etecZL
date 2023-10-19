@@ -11,6 +11,7 @@ import { api } from '@/lib/api'
 export default function NewStudentModal() {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
+  const [students, setStudents] = useState([])
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
@@ -38,19 +39,8 @@ export default function NewStudentModal() {
 
     promise
       .then((response) => {
-        // console.log(response)
-        // fetch('http://localhost:3000/api/alunos', {
-        //   method: 'POST',
-        //   headers: {
-        //     'content-type': 'application/json',
-        //   },
-        //   body: {
-        //     students: JSON.stringify(response),
-        //   },
-        // }).then((response) => console.log(response))
-        // // .then((data) => console.log(data))
         api
-          .post('/alunos', { ...response })
+          .post('/alunos', [...response])
           .then((response) => console.log(response.data))
       })
       .catch((err) => console.log(err))

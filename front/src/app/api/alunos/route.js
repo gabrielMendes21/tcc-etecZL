@@ -27,7 +27,7 @@ export async function POST(req) {
           email: students[i].Email,
           rm: students[i].RM,
           nome: students[i].Nome,
-          senha: students[i].RM,
+          senha: students[i].RM + students[i].Nome.slice(0, 2),
           codEscola: 1,
           codTipoUsuario: 1,
           codTurma: 1,
@@ -38,5 +38,5 @@ export async function POST(req) {
     }
   }
 
-  return NextResponse.json(students)
+  return NextResponse.json('Cadastrados')
 }
