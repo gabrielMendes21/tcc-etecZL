@@ -1,6 +1,4 @@
-import FormSubmitButton from '@/components/FormSubmitButton'
 import Main from '@/components/Main'
-import MyModal from '@/components/Modal'
 import SupportResponseModal from '@/components/SupportResponseModal'
 import { api } from '@/lib/api'
 import { ArrowRight } from 'lucide-react'
