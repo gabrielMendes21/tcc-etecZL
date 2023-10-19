@@ -1,18 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import MyModal from './Modal'
 import FormSubmitButton from './FormSubmitButton'
 import { PlusCircle, Upload } from 'lucide-react'
 import H2 from './H2'
 import * as XLSX from 'xlsx'
 import { api } from '@/lib/api'
+import { usePathname, useRouter } from 'next/navigation'
+import { PageContext } from '@/app/context/PageContext'
 
 export default function NewStudentModal() {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  const pathname = usePathname()
+
+  // user Data form page context
+  const user = useContext(PageContext)
+  const schoolId = user?.user?.escola?.codEscola
+
+  // students class
+  let classId = pathname.split('/')
+  classId = Number(classId[classId.length - 1])
+
+  const router = useRouter()
 
   // Read excel function
   const readExcel = (file) => {
@@ -39,8 +53,12 @@ export default function NewStudentModal() {
     promise
       .then((response) => {
         api
-          .post('/alunos', [...response])
-          .then((response) => console.log(response.data))
+          .post(`/alunos?school=${schoolId}&class=${classId}`, [...response])
+          .then(() => {
+            setIsOpen(false)
+            router.refresh()
+          })
+          .catch((err) => console.log(err))
       })
       .catch((err) => console.log(err))
   }

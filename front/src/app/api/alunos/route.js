@@ -12,6 +12,10 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  const { searchParams } = new URL(req.url)
+  const schoolId = searchParams.get('school')
+  const classId = searchParams.get('class')
+
   const students = await req.json()
 
   for (let i = 0; i < students.length; i++) {
@@ -28,9 +32,9 @@ export async function POST(req) {
           rm: students[i].RM,
           nome: students[i].NOME,
           senha: students[i].RM + students[i].NOME.slice(0, 2),
-          codEscola: 1,
+          codEscola: Number(schoolId),
           codTipoUsuario: 1,
-          codTurma: 1,
+          codTurma: Number(classId),
           horasAnuais: 120,
           horasConcluidas: 0,
         },
