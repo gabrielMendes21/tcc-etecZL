@@ -1,7 +1,7 @@
 import { api } from '@/lib/api'
 import Link from 'next/link'
 import Card from './Card'
-import TradLink from './Link'
+// import TradLink from './Link'
 
 export default async function PendingSupportRequests({ coordinator }) {
   const pendingRequestsResponse = await api.get(
