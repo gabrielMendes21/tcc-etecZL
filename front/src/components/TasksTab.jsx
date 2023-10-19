@@ -36,41 +36,51 @@ export default function TasksTab({ pendingTasks, sentTasks, overdueTasks }) {
           </TabList>
         </Box>
         <TabPanel value="1">
-          {pendingTasks.map((task) => {
-            return (
-              <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
-                <Task
-                  name={task.atividade.titulo}
-                  hours={task.atividade.horasAtividade}
-                  dueDate={
-                    new Date(task.atividade.prazoEntrega)
-                      .toLocaleString('pt-BR')
-                      .split(', ')[0]
-                  }
-                />
-              </Link>
-            )
-          })}
+          {pendingTasks.length === 0 ? (
+            <span>Você não possui atividades pendentes</span>
+          ) : (
+            pendingTasks.map((task) => {
+              return (
+                <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
+                  <Task
+                    name={task.atividade.titulo}
+                    hours={task.atividade.horasAtividade}
+                    dueDate={
+                      new Date(task.atividade.prazoEntrega)
+                        .toLocaleString('pt-BR')
+                        .split(', ')[0]
+                    }
+                  />
+                </Link>
+              )
+            })
+          )}
         </TabPanel>
         <TabPanel value="2">
-          {sentTasks.map((task) => {
-            return (
-              <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
-                <Task
-                  name={task.atividade.titulo}
-                  hours={task.atividade.horasAtividade}
-                  dueDate={
-                    new Date(task.atividade.prazoEntrega)
-                      .toLocaleString('pt-BR')
-                      .split(', ')[0]
-                  }
-                />
-              </Link>
-            )
-          })}
+          {sentTasks.length === 0 ? (
+            <span>Você não possui atividades pendentes</span>
+          ) : (
+            sentTasks.map((task) => {
+              return (
+                <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
+                  <Task
+                    name={task.atividade.titulo}
+                    hours={task.atividade.horasAtividade}
+                    dueDate={
+                      new Date(task.atividade.prazoEntrega)
+                        .toLocaleString('pt-BR')
+                        .split(', ')[0]
+                    }
+                  />
+                </Link>
+              )
+            })
+          )}
         </TabPanel>
         <TabPanel value="3">
           {overdueTasks.length === 0 ? (
+            <span>Você não possui atividades pendentes</span>
+          ) : overdueTasks.length === 0 ? (
             <span className="text-black/30 block">
               Você não possui nenhuma atividade atrasada
             </span>
