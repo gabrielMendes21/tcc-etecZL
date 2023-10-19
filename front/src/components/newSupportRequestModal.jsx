@@ -1,0 +1,56 @@
+'use client'
+
+import { useState } from 'react'
+import MyModal from './Modal'
+import H2 from './H2'
+import FormSubmitButton from './FormSubmitButton'
+import { PlusCircle } from 'lucide-react'
+
+export default function NewSupportRequestModal() {
+  // Modal control
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
+  return (
+    <>
+      <button
+        onClick={handleOpen}
+        className="flex gap-3 mt-5 invisible absolute md:visible md:relative"
+      >
+        <PlusCircle color="#C6C6C6" />
+        Nova solicitação
+      </button>
+      <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
+        <H2 title="Criar solicitação de suporte" />
+
+        <form action="" className="mt-8">
+          <label htmlFor="subject" className="text-sm">
+            Assunto
+          </label>
+          <input
+            type="text"
+            id="subject"
+            placeholder="Digite o assunto da sua solicitação"
+            className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+          />
+
+          <label htmlFor="message" className="text-sm">
+            Mensagem
+          </label>
+          <textarea
+            id="message"
+            cols="30"
+            rows="10"
+            className="mt-3 mb-8 border-b block resize-none border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
+            placeholder="Digite sua mensagem"
+          ></textarea>
+
+          <hr className="border[#C6C6C6]" />
+
+          <FormSubmitButton title="Enviar" />
+        </form>
+      </MyModal>
+    </>
+  )
+}

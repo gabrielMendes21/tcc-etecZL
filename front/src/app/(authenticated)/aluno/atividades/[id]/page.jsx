@@ -38,7 +38,7 @@ export default async function Atividade({ params }) {
 
   const sent = task.entregue
   const overdue = taskDueDate < now && !sent
-  const pending = !sent && !overdue
+  // const pending = !sent && !overdue
 
   return (
     <Main>
