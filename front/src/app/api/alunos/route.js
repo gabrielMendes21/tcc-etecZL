@@ -31,7 +31,7 @@ export async function POST(req) {
           codEscola: 1,
           codTipoUsuario: 1,
           codTurma: 1,
-          horasAnuais: 0,
+          horasAnuais: 120,
           horasConcluidas: 0,
         },
       })

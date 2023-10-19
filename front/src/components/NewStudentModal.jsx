@@ -11,7 +11,6 @@ import { api } from '@/lib/api'
 export default function NewStudentModal() {
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
-  const [students, setStudents] = useState([])
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
 
