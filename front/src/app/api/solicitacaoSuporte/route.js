@@ -48,9 +48,9 @@ export async function POST(req) {
     data: {
       titulo: newSupportRequest.subject,
       conteudo: newSupportRequest.message.trim(),
-      codAluno: Number(studentId)
-    }
+      codAluno: Number(studentId),
+    },
   })
 
-  return NextResponse.json("Cadastrado")
+  return NextResponse.json('Cadastrado')
 }

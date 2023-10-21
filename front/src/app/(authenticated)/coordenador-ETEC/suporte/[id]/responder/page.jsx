@@ -19,23 +19,27 @@ export default function Resposta() {
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data) => {
     const supportRequestId = pathname.split('/').slice(3, 4)[0]
-    const supportRequestResponse = api.get(`/solicitacaoSuporte?id=${supportRequestId}`)
-    const supportRequest = supportRequestResponse.data
 
-    console.log(supportRequest)
+    await api.post(
+      `/solicitacaoSuporte/resposta?requestId=${supportRequestId}&coordinatorId=${user?.user?.sub}`,
+      {
+        ...data,
+      },
+    )
 
-    // const response = await api.post(`/solicitacaoSuporte/resposta?requestId=${supportRequest.id}&coordinatorId=${user?.user?.sub}`, {
-    //   ...data,
-    // })
-
-    // router.push('/coordenador-ETEC/suporte')
+    router.push('/coordenador-ETEC/suporte')
   }
 
   return (
     <Main>
       <H2 title="Responder suporte" />
 
-      <form action="" className="mt-8" method='POST' onSubmit={handleSubmit(onSubmit)}>
+      <form
+        action=""
+        className="mt-8"
+        method="POST"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <label htmlFor="resposta">Resposta</label>
         <textarea
           id="resposta"
@@ -43,7 +47,7 @@ export default function Resposta() {
           rows="10"
           className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
           placeholder="Digite a sua resposta"
-          {...register("responseMessage")}
+          {...register('responseMessage')}
         ></textarea>
 
         <FormSubmitButton title="Enviar resposta" />
