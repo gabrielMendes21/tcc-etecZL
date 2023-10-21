@@ -51,8 +51,6 @@ async function seed() {
                 senha: '123456',
                 nome: 'Gabriel da Silva Mendes',
                 rm: 22302,
-                horasConcluidas: 50,
-                horasAnuais: 120,
                 codTipoUsuario: 1,
               },
               {
@@ -60,8 +58,6 @@ async function seed() {
                 senha: '654321',
                 nome: 'Danilo Costa Rodrigues',
                 rm: 22388,
-                horasConcluidas: 69,
-                horasAnuais: 120,
                 codTipoUsuario: 1,
               },
             ],
@@ -199,6 +195,13 @@ async function seed() {
         resposta:
           'Desculpe a demora. O seu problema ja foi resolvido. Espero que tenha conseguido entregar a sua atividade!',
       },
+    ],
+  })
+
+  await prisma.horas.createMany({
+    data: [
+      { horasAnuais: 120, horasConcluidas: 69, codAluno: 3, ano: 2023 },
+      { horasAnuais: 120, horasConcluidas: 50, codAluno: 2, ano: 2023 },
     ],
   })
 }
