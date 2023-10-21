@@ -9,6 +9,7 @@ import * as XLSX from 'xlsx'
 import { api } from '@/lib/api'
 import { usePathname, useRouter } from 'next/navigation'
 import { PageContext } from '@/app/context/PageContext'
+import { useForm } from 'react-hook-form'
 
 export default function NewStudentModal() {
   // Modal control
@@ -63,6 +64,23 @@ export default function NewStudentModal() {
       .catch((err) => console.log(err))
   }
 
+  // Form control
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  // Submit function
+  const onSubmit = async (data) => {
+    await api.post(`/aluno?class=${classId}&school=${schoolId}`, {
+      ...data,
+    })
+
+    setIsOpen(false)
+    router.refresh()
+  }
+
   return (
     <>
       {/* New student button (tablets and PC's) */}
@@ -83,30 +101,90 @@ export default function NewStudentModal() {
           method="POST"
           className="mt-8"
           encType="multipart/form-data"
+          onSubmit={handleSubmit(onSubmit)}
         >
           <label htmlFor="name">Nome do aluno</label>
           <input
-            className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             type="text"
             placeholder="Digite o nome do aluno"
             id="name"
+            {...register('nome')}
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="block mt-6">
+            Email
+          </label>
           <input
-            className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             type="text"
             placeholder="Digite o email institucional do aluno"
             id="email"
+            required
+            {...register('email', { pattern: /.*@.*\.*/i })}
           />
+          {errors.email?.type === 'pattern' && (
+            <p
+              role="alert"
+              className="text-red-500 text-xs font-bold mt-2 mb-4"
+            >
+              *Exemplo: nome@dominio.com
+            </p>
+          )}
 
-          <label htmlFor="rm">RM</label>
+          <label htmlFor="rm" className="block mt-6">
+            RM
+          </label>
           <input
-            className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             type="text"
             placeholder="Digite o RM do aluno"
             id="rm"
+            required
+            {...register('rm', { pattern: /^\d+$/ })}
           />
+          {errors.rm?.type === 'pattern' && (
+            <p
+              role="alert"
+              className="text-red-500 text-xs font-bold mt-2 mb-4"
+            >
+              *O RM do aluno deve ser composto apenas por números
+            </p>
+          )}
+
+          <label htmlFor="rm" className="block mt-6">
+            Meta anual de horas
+          </label>
+          <input
+            className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            type="text"
+            placeholder="Digite as horas que o aluno deve ter este ano"
+            id="rm"
+            required
+            {...register('horasAnuais', { pattern: /^\d+$/ })}
+          />
+          {errors.horasAnuais?.type === 'pattern' && (
+            <p role="alert" className="text-red-500 text-xs font-bold mt-2">
+              *Por favor, digite apenas números
+            </p>
+          )}
+
+          <label htmlFor="rm" className="block mt-6">
+            Horas concluídas
+          </label>
+          <input
+            className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
+            type="text"
+            placeholder="Digite as horas que o aluno deve ter este ano"
+            id="rm"
+            required
+            {...register('horasConcluidas', { pattern: /^\d+$/ })}
+          />
+          {errors.horasAnuais?.type === 'pattern' && (
+            <p role="alert" className="text-red-500 text-xs font-bold mt-2">
+              *Por favor, digite apenas números
+            </p>
+          )}
 
           <FormSubmitButton title="Adicionar aluno" />
 

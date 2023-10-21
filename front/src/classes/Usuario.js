@@ -110,6 +110,15 @@ export default class Usuario {
       },
     })
 
+    const horas = await prisma.horas.findFirst({
+      where: {
+        codAluno: user.id,
+        AND: {
+          ano: new Date().getFullYear(),
+        },
+      },
+    })
+
     // Verify if the params are correct
     if (user) {
       if (password === user.senha) {
@@ -120,8 +129,8 @@ export default class Usuario {
         this.setNome = user.nome
         this.setTurma = user.turma?.nomeTurma
         this.setRm = user.rm
-        this.setHorasConcluidas = user.horasConcluidas
-        this.setHorasAnuais = user.horasAnuais
+        this.setHorasConcluidas = horas?.horasConcluidas
+        this.setHorasAnuais = horas?.horasAnuais
         this.setEscola = user.escola
         this.setTipoUsuario = user.tipoUsuario.tipoUsuario
 
