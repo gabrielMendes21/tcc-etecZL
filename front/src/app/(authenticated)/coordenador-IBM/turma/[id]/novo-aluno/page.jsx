@@ -176,7 +176,7 @@ export default function NovoAluno() {
           name="fileInput"
           id="fileInput"
           accept=".xlsx"
-          className="invisible"
+          className="invisible absolute w-0"
           onChange={(event) => {
             event.preventDefault()
             const file = event.target.files[0]
