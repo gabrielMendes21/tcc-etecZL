@@ -65,7 +65,7 @@ export default function NovoAluno() {
         api
           .post(`/alunos?school=${schoolId}&class=${classId}`, [...response])
           .then(() => {
-            router.refresh()
+            router.push(`/coordenador-ETEC/turma/${classId}`)
           })
           .catch((err) => console.log(err))
       })

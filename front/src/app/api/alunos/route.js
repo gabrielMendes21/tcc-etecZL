@@ -35,8 +35,14 @@ export async function POST(req) {
           codEscola: Number(schoolId),
           codTipoUsuario: 1,
           codTurma: Number(classId),
-          horasAnuais: 120,
-          horasConcluidas: 0,
+
+          Horas: {
+            create: {
+              horasAnuais: students[i]['HORAS ANUAIS'],
+              horasConcluidas: students[i]['HORAS CONCLUÍDAS'],
+              ano: new Date().getFullYear(),
+            },
+          },
         },
       })
     }

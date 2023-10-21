@@ -9,6 +9,13 @@ export async function GET(req) {
     where: {
       id: Number(userId),
     },
+    include: {
+      Horas: {
+        where: {
+          ano: new Date().getFullYear(),
+        },
+      },
+    },
   })
 
   return NextResponse.json(student)

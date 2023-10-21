@@ -6,9 +6,14 @@ import './styles.css'
 import { Check, Clock4, Percent } from 'lucide-react'
 
 export default function CircleProgress({ unity, user }) {
+  console.log(user)
   // const { user } = useContext(PageContext)
-  const annualHours = user?.horasAnuais
-  const hoursCompleted = user?.horasConcluidas
+  const annualHours = user?.Horas
+    ? user?.Horas[0].horasAnuais
+    : user?.horasAnuais
+  const hoursCompleted = user?.Horas
+    ? user?.Horas[0].horasConcluidas
+    : user?.horasConcluidas
   const percentage = Math.round((hoursCompleted / annualHours) * 100)
   const circleSize = '160'
   const radius = 68
