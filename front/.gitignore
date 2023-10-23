@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tmp
+tmp/*
+
+fluid-axis-402017-05332102ad29.json
