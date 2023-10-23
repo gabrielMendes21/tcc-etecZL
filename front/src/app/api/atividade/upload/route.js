@@ -98,7 +98,7 @@ export async function POST(req) {
     const filePrefix = crypto.randomBytes(16)
     const filename = `${filePrefix.toString('hex')}-${file.name}`
 
-    const blob = bucket.file(file.name)
+    const blob = bucket.file(filename)
     const blobStream = blob.createWriteStream()
     blobStream.on('finish', () => {
       return NextResponse.json('Arquivo enviado', { status: 200 })
