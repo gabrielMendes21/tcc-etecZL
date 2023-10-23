@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma'
 import { NextResponse } from 'next/server'
+import bcrypt from 'bcrypt'
 
 export async function GET() {
   const students = await prisma.usuario.findMany({
@@ -25,13 +26,16 @@ export async function POST(req) {
       },
     })
 
+    const password = students[i].RM + students[i].NOME.slice(0, 2)
+    const hashedPassowrd = bcrypt.hash(password, 10)
+
     if (studentResponse === null) {
       await prisma.usuario.create({
         data: {
           email: students[i].EMAIL,
           rm: students[i].RM,
           nome: students[i].NOME,
-          senha: students[i].RM + students[i].NOME.slice(0, 2),
+          senha: hashedPassowrd,
           codEscola: Number(schoolId),
           codTipoUsuario: 1,
           codTurma: Number(classId),

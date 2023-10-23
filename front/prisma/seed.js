@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const bcrypt = require('bcrypt')
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
@@ -28,15 +29,20 @@ async function seed() {
     ],
   })
 
+  // Coordinator password
+  const hashedPassword1 = await bcrypt.hash('111111', 10)
   await prisma.usuario.create({
     data: {
       email: 'guilherme@email.com',
-      senha: '111111',
+      senha: hashedPassword1,
       nome: 'Guilherme',
       codTipoUsuario: 3,
     },
   })
 
+  const hashedPassword2 = await bcrypt.hash('123456', 10)
+  const hashedPassword3 = await bcrypt.hash('654321', 10)
+  const hashedPassword4 = await bcrypt.hash('987654', 10)
   await prisma.escola.create({
     data: {
       nomeEscola: 'ETEC Zona Leste',
@@ -48,14 +54,14 @@ async function seed() {
             create: [
               {
                 email: 'gabriel.mendes88@etec.sp.gov.br',
-                senha: '123456',
+                senha: hashedPassword2,
                 nome: 'Gabriel da Silva Mendes',
                 rm: 22302,
                 codTipoUsuario: 1,
               },
               {
                 email: 'danilo.rodrigues108@etec.sp.gov.br',
-                senha: '654321',
+                senha: hashedPassword3,
                 nome: 'Danilo Costa Rodrigues',
                 rm: 22388,
                 codTipoUsuario: 1,
@@ -67,7 +73,7 @@ async function seed() {
       Usuario: {
         create: {
           email: 'rogerio.costa3@etec.sp.gov.br',
-          senha: '987654',
+          senha: hashedPassword4,
           nome: 'Rogério Bezerra Costa',
           codTipoUsuario: 2,
         },

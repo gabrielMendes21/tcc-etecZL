@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import prisma from '@/lib/prisma'
 import Usuario from '@/classes/Usuario'
 import Escola from '@/classes/Escola'
+import bcrypt from 'bcrypt'
 
 // Get the user JWT
 export async function GET(req) {

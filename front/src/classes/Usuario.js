@@ -1,5 +1,6 @@
 /* eslint-disable accessor-pairs */
 import prisma from '@/lib/prisma'
+import bcrypt from 'bcrypt'
 
 export default class Usuario {
   constructor() {
@@ -119,9 +120,11 @@ export default class Usuario {
       },
     })
 
+    const passwordIsCorrect = await bcrypt.compare(password, user.senha)
+
     // Verify if the params are correct
     if (user) {
-      if (password === user.senha) {
+      if (passwordIsCorrect) {
         // Fill class data with user information
         this.setCodUsuario = user.id
         this.setEmail = user.email
