@@ -1,12 +1,9 @@
 'use client'
 
-// import { useContext } from 'react'
 import './styles.css'
-// import { PageContext } from '@/app/context/PageContext'
 import { Check, Clock4, Percent } from 'lucide-react'
 
 export default function CircleProgress({ unity, user }) {
-  console.log(user)
   // const { user } = useContext(PageContext)
   const annualHours = user?.Horas
     ? user?.Horas[0].horasAnuais
