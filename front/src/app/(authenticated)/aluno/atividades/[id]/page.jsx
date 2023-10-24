@@ -2,7 +2,6 @@ import FileForm from '@/components/FileForm'
 import ImageModal from '@/components/ImageModal'
 import Main from '@/components/Main'
 import { api } from '@/lib/api'
-import { File } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 

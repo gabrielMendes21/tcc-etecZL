@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 import { Storage } from '@google-cloud/storage'
-import { writeFile } from 'fs/promises'
+// import { writeFile } from 'fs/promises'
 import { NextResponse } from 'next/server'
 import { join } from 'path'
 import fs from 'fs'
