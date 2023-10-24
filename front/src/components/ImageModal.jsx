@@ -30,7 +30,7 @@ export default function ImageModal({ filename }) {
           alt=""
           width={1000}
           height={1000}
-          className="w-full h-full block object-contain"
+          className="w-max h-max block object-cover"
           quality={100}
         />
       </MyModal>
