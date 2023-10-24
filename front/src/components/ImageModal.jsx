@@ -28,9 +28,10 @@ export default function ImageModal({ filename }) {
         <Image
           src={`/${filename}`}
           alt=""
-          width={500}
-          height={500}
-          className="w-full h-full block"
+          width={1000}
+          height={1000}
+          className="w-full h-full block object-contain"
+          quality={100}
         />
       </MyModal>
     </>
