@@ -1,3 +1,4 @@
+import FileForm from '@/components/FileForm'
 import Main from '@/components/Main'
 import { api } from '@/lib/api'
 import { ArrowRight, File, Upload } from 'lucide-react'
@@ -86,14 +87,7 @@ export default async function Atividade({ params }) {
           ) : (
             <>
               <h2 className="mb-4">Meu trabalho:</h2>
-              <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
-                <Upload />
-                Anexar arquivo
-              </div>
-              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted text-white mt-7 p-3">
-                Enviar
-                <ArrowRight strokeWidth={1} />
-              </button>
+              <FileForm />
             </>
           )}
         </div>
