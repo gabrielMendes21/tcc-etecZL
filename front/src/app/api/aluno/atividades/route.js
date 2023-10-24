@@ -11,7 +11,11 @@ export async function GET(req) {
     },
 
     include: {
-      atividade: true,
+      atividade: {
+        include: {
+          tipoAtividade: true
+        }
+      }
     },
   })
 
