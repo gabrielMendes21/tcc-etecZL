@@ -1,8 +1,10 @@
 import FileForm from '@/components/FileForm'
+import ImageModal from '@/components/ImageModal'
 import Main from '@/components/Main'
 import { api } from '@/lib/api'
-import { ArrowRight, File, Upload } from 'lucide-react'
+import { File } from 'lucide-react'
 import { cookies } from 'next/headers'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const response = await api.get(`/atividades`)
@@ -15,10 +17,10 @@ export async function generateStaticParams() {
 }
 
 export default async function Atividade({ params }) {
+  // Get user id
   const cookieStore = cookies()
   const token = cookieStore.get('auth-token').value
 
-  // Get user id
   const userInfoResponse = await api.get(`/login`, {
     params: {
       token,
@@ -27,16 +29,29 @@ export default async function Atividade({ params }) {
 
   const userId = userInfoResponse.data.sub
 
+  // Get tasks
   const tasksResponse = await api.get(`/aluno/atividades?id=${userId}`)
 
+  // Find page task
   const task = tasksResponse.data.find(
     (task) => task.id.toString() === params.id,
   )
 
+  // Get task due date
   const taskDueDate = new Date(task.atividade.prazoEntrega)
   const now = new Date()
   now.setHours(now.getHours() - 3)
 
+  // Get task attachments
+  const files = task.atividade.anexos.split(', ')
+
+  await api.get('/atividade/anexos', {
+    params: {
+      taskId: task.atividade.id,
+    },
+  })
+
+  // Verify if task is sent, overdue or pending
   const sent = task.entregue
   const overdue = taskDueDate < now && !sent
   // const pending = !sent && !overdue
@@ -67,10 +82,24 @@ export default async function Atividade({ params }) {
         {/* Attached files */}
         <div className="font-medium">
           <h2 className="mb-4">Materiais disponíveis:</h2>
-          <div className="border-2 border-highlighted text-highlighted p-3 flex gap-2 underline">
-            <File />
-            Arquivo1.png
-          </div>
+          {files.length === 0 ? (
+            <span className="text-black/60">Nenhum material disponível</span>
+          ) : (
+            files.map((filename) => {
+              return filename.includes('.pdf') ? (
+                <Link
+                  href={`/${filename}`}
+                  target="_blank"
+                  className="bg-highlighted text-white px-2 w-max block mt-5"
+                  key={filename.split('-', 1)}
+                >
+                  {filename}
+                </Link>
+              ) : (
+                <ImageModal filename={filename} key={filename.split('-', 1)} />
+              )
+            })
+          )}
         </div>
 
         <hr className="border-[#C6C6C6]" />
