@@ -1,76 +1,75 @@
 // import multer from 'multer'
 import { NextResponse } from 'next/server'
-import { join, resolve } from 'path'
+import { join } from 'path'
 import { Storage } from '@google-cloud/storage'
 import crypto from 'crypto'
-import multer from 'multer'
 import { writeFile } from 'fs/promises'
 
-const upload = multer({
-  dest: resolve(
-    __dirname,
-    '..',
-    '..',
-    '..',
-    '..',
-    '..',
-    '..',
-    'tmp',
-    'uploads',
-  ),
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(
-        null,
-        resolve(
-          __dirname,
-          '..',
-          '..',
-          '..',
-          '..',
-          '..',
-          '..',
-          'tmp',
-          'uploads',
-        ),
-      )
-    },
-    filename: (req, file, cb) => {
-      crypto.randomBytes(16, (err, hash) => {
-        if (err) cb(err)
+// const upload = multer({
+//   dest: resolve(
+//     __dirname,
+//     '..',
+//     '..',
+//     '..',
+//     '..',
+//     '..',
+//     '..',
+//     'tmp',
+//     'uploads',
+//   ),
+//   storage: multer.diskStorage({
+//     destination: (req, file, cb) => {
+//       cb(
+//         null,
+//         resolve(
+//           __dirname,
+//           '..',
+//           '..',
+//           '..',
+//           '..',
+//           '..',
+//           '..',
+//           'tmp',
+//           'uploads',
+//         ),
+//       )
+//     },
+//     filename: (req, file, cb) => {
+//       crypto.randomBytes(16, (err, hash) => {
+//         if (err) cb(err)
 
-        const fileName = `${hash.toString('hex')}-${file.originalname}`
+//         const fileName = `${hash.toString('hex')}-${file.originalname}`
 
-        cb(null, fileName)
-      })
-    },
-  }),
-  limits: {
-    fileSize: 3 * 1024 * 1024,
-  },
-  fileFilter: (req, file, cb) => {
-    const allowedMimes = [
-      'image/jpeg',
-      'image/pjpeg',
-      'image/png',
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'application/pdf',
-    ]
+//         cb(null, fileName)
+//       })
+//     },
+//   }),
+//   limits: {
+//     fileSize: 3 * 1024 * 1024,
+//   },
+//   fileFilter: (req, file, cb) => {
+//     const allowedMimes = [
+//       'image/jpeg',
+//       'image/pjpeg',
+//       'image/png',
+//       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+//       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+//       'application/pdf',
+//     ]
 
-    if (allowedMimes.includes(file.mimetype)) {
-      cb(null, true)
-    } else {
-      cb(new Error('Invalide file type'))
-    }
-  },
-})
+//     if (allowedMimes.includes(file.mimetype)) {
+//       cb(null, true)
+//     } else {
+//       cb(new Error('Invalide file type'))
+//     }
+//   },
+// })
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// }
 
 const storage = new Storage({
   keyFilename: join(
