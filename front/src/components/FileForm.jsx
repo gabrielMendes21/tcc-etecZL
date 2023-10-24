@@ -5,10 +5,8 @@ import { ArrowRight, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import ImageModal from './ImageModal'
-// import { useForm } from 'react-hook-form'
 
 export default function FileForm() {
-  //   const { register, handleSubmit } = useForm()
   const [filesName, setFilesName] = useState([])
 
   const handleChange = async (e) => {
@@ -17,14 +15,27 @@ export default function FileForm() {
     for (const file of files) {
       const formData = new FormData()
       formData.set('file', file)
-      const response = await api.post('/atividade/upload', formData)
+      const response = await api.post('/aluno/entrega/upload', formData)
       setFilesName((prevValue) => [...prevValue, response.data])
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const data = Object.fromEntries(formData)
+
+    console.log(e.target.children[1].files)
+  }
+
   return (
     <div>
-      <form action="" method="POST" encType="multipart/form-data">
+      <form
+        action=""
+        method="POST"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         <label
           htmlFor="file"
           className="border-2 border-highlighted text-highlighted p-3 flex gap-2 hover:underline hover:cursor-pointer hover:text-white  hover:bg-highlighted transition-all"
