@@ -24,7 +24,10 @@ async function seed() {
         tipoAtividade: 'Sessão',
       },
       {
-        tipoAtividade: 'Tarefa',
+        tipoAtividade: 'Horas flexíveis',
+      },
+      {
+        tipoAtividade: 'Palestra',
       },
     ],
   })

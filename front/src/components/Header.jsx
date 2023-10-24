@@ -37,7 +37,7 @@ function Menu() {
             <Link href="/aluno/suporte">Suporte</Link>
           </li>
           <li
-            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            className="font-bold  hover:underline hover:cursor-pointer hover:brightness-110 rounded"
             onClick={logout}
           >
             Sair
