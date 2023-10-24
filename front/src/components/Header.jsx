@@ -127,7 +127,7 @@ export default function Header({ hasMenu, className }) {
       {/* Easy hours logo */}
       <Link
         href={
-          !user?.tipoUsuario
+          user?.tipoUsuario === "Aluno"
             ? '/'
             : user?.tipoUsuario === 'Coordenador ETEC'
             ? '/coordenador-ETEC/dashboard'
