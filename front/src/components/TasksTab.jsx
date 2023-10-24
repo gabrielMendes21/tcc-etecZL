@@ -79,7 +79,7 @@ export default function TasksTab({ pendingTasks, sentTasks, overdueTasks }) {
         </TabPanel>
         <TabPanel value="3">
           {overdueTasks.length === 0 ? (
-            <span>Você não possui atividades pendentes</span>
+            <span>Você não possui atividades atrasadas</span>
           ) : overdueTasks.length === 0 ? (
             <span className="text-black/30 block">
               Você não possui nenhuma atividade atrasada

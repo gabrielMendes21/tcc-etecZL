@@ -42,86 +42,93 @@ export default async function Atividade({ params }) {
   now.setHours(now.getHours() - 3)
 
   // Get task attachments
-  const files = task.atividade.anexos.split(', ')
+  if (task.atividade.anexos) {
+    const files = task.atividade.anexos.split(", ")
 
-  await api.get('/atividade/anexos', {
-    params: {
-      taskId: task.atividade.id,
-    },
-  })
+    await api.get('/atividade/anexos', {
+      params: {
+        taskId: task.atividade.id,
+      },
+    })
+  }
+
 
   // Verify if task is sent, overdue or pending
   const sent = task.entregue
   const overdue = taskDueDate < now && !sent
   // const pending = !sent && !overdue
 
+  console.log(task)
+
   return (
     <Main>
-      {/* Task info */}
-      <div className="space-y-10">
-        <div className="pt-7">
-          <h1 className="text-center font-medium text-xl">
-            {task.atividade.titulo}
-          </h1>
-          <span className="block text-center">
-            {new Date(task.atividade.prazoEntrega).toLocaleDateString()}
-          </span>
-        </div>
-
-        <hr className="border-[#C6C6C6]" />
-
-        {/* Task details */}
-        <div>
-          <h2 className="font-medium">Detalhes da tarefa:</h2>
-          <p className="py-3 text-justify text-xs leading-relaxed">
-            {task.atividade.descricao}
-          </p>
-        </div>
-
-        {/* Attached files */}
-        <div className="font-medium">
-          <h2 className="mb-4">Materiais disponíveis:</h2>
-          {files.length === 0 ? (
-            <span className="text-black/60">Nenhum material disponível</span>
-          ) : (
-            files.map((filename) => {
-              return filename.includes('.pdf') ? (
-                <Link
-                  href={`/${filename}`}
-                  target="_blank"
-                  className="bg-highlighted text-white px-2 w-max block mt-5"
-                  key={filename.split('-', 1)}
-                >
-                  {filename}
-                </Link>
-              ) : (
-                <ImageModal filename={filename} key={filename.split('-', 1)} />
-              )
-            })
-          )}
-        </div>
-
-        <hr className="border-[#C6C6C6]" />
-
-        {/* Student work */}
-        <div className="font-medium">
-          {sent ? (
-            <>
-              <h2 className="mb-4">Meu trabalho:</h2>
-              <p className="font-normal">{task.conteudo}</p>
-            </>
-          ) : overdue ? (
-            ''
-          ) : (
-            <>
-              <h2 className="mb-4">Meu trabalho:</h2>
-              <FileForm />
-            </>
-          )}
-        </div>
-      </div>
+      {task.atividade.tipoAtividade.tipoAtividade}
     </Main>
   )
 }
 
 export const dynamic = 'force-dynamic'
+
+// {/* Task info */}
+// <div className="space-y-10">
+// <div className="pt-7">
+//   <h1 className="text-center font-medium text-xl">
+//     {task.atividade.titulo}
+//   </h1>
+//   <span className="block text-center">
+//     {new Date(task.atividade.prazoEntrega).toLocaleDateString()}
+//   </span>
+// </div>
+
+// <hr className="border-[#C6C6C6]" />
+
+// {/* Task details */}
+// <div>
+//   <h2 className="font-medium">Detalhes da tarefa:</h2>
+//   <p className="py-3 text-justify text-xs leading-relaxed">
+//     {task.atividade.descricao}
+//   </p>
+// </div>
+
+// {/* Attached files */}
+// <div className="font-medium">
+//   <h2 className="mb-4">Materiais disponíveis:</h2>
+//   {files.length === 0 ? (
+//     <span className="text-black/60">Nenhum material disponível</span>
+//   ) : (
+//     files.map((filename) => {
+//       return filename.includes('.pdf') ? (
+//         <Link
+//           href={`/${filename}`}
+//           target="_blank"
+//           className="bg-highlighted text-white px-2 w-max block mt-5"
+//           key={filename.split('-', 1)}
+//         >
+//           {filename}
+//         </Link>
+//       ) : (
+//         <ImageModal filename={filename} key={filename.split('-', 1)} />
+//       )
+//     })
+//   )}
+// </div>
+
+// <hr className="border-[#C6C6C6]" />
+
+// {/* Student work */}
+// <div className="font-medium">
+//   {sent ? (
+//     <>
+//       <h2 className="mb-4">Meu trabalho:</h2>
+//       <p className="font-normal">{task.conteudo}</p>
+//     </>
+//   ) : overdue ? (
+//     ''
+//   ) : (
+//     <>
+//       <h2 className="mb-4">Meu trabalho:</h2>
+//       <FileForm />
+//     </>
+//   )}
+// </div>
+// </div>
