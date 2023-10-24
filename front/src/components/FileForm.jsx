@@ -2,7 +2,6 @@
 
 import { api } from '@/lib/api'
 import { ArrowRight, Upload } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import ImageModal from './ImageModal'
