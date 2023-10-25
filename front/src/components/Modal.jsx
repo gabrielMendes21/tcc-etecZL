@@ -21,7 +21,7 @@ export default function MyModal({
       <div
         className={`${
           onlyDesktop ? `w-1/2 h-4/5` : `w-4/5 h-auto md:w-1/2`
-        } w-1/2 h-4/5 bg-white p-8 flex justify-center items-center overflow-y-auto border-[2px] border-highlighted`}
+        } w-1/2 h-4/5 bg-white p-8 overflow-y-auto border-[2px] border-highlighted`}
       >
         {children}
       </div>
