@@ -69,7 +69,7 @@ function Menu() {
             <Link href="/coordenador-ETEC/suporte">Suporte</Link>
           </li>
           <li
-            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            className="font-bold  hover:underline hover:cursor-pointer hover:brightness-110 rounded"
             onClick={logout}
           >
             Sair
@@ -101,7 +101,7 @@ function Menu() {
             <Link href="/coordenador-IBM/suporte">Suporte</Link>
           </li>
           <li
-            className="font-bold  bg-red-500 text-white px-2 py-1 hover:cursor-pointer hover:brightness-110 rounded"
+            className="font-bold  hover:underline hover:cursor-pointer hover:brightness-110 rounded"
             onClick={logout}
           >
             Sair
@@ -127,7 +127,7 @@ export default function Header({ hasMenu, className }) {
       {/* Easy hours logo */}
       <Link
         href={
-          user?.tipoUsuario === "Aluno"
+          user?.tipoUsuario === 'Aluno'
             ? '/'
             : user?.tipoUsuario === 'Coordenador ETEC'
             ? '/coordenador-ETEC/dashboard'
