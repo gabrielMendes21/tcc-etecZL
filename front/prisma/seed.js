@@ -93,7 +93,6 @@ async function seed() {
         horasAtividade: 2,
         prazoEntrega: '2023-11-10T10:00:00.000Z',
         codTipoAtividade: 1,
-        anexos: 'jsoqoancojjgo1-exemplo-planilha.png',
       },
       {
         titulo: 'Horas flexíveis',
