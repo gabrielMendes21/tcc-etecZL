@@ -175,7 +175,7 @@ export default function NewStudentModal() {
           <input
             className="mt-3 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             type="text"
-            placeholder="Digite as horas que o aluno deve ter este ano"
+            placeholder="Digite as horas que o aluno concluiu este ano"
             id="rm"
             required
             {...register('horasConcluidas', { pattern: /^\d+$/ })}
