@@ -23,7 +23,7 @@ export default function FileForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
-    const data = Object.fromEntries(formData)
+    // const data = Object.fromEntries(formData)
 
     console.log(e.target.children[1].files)
   }

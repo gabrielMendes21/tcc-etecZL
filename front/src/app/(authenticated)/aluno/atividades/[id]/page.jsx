@@ -1,13 +1,9 @@
-import FileForm from '@/components/FileForm'
 import FlexibleHoursTask from '@/components/FlexibleHoursTask'
-import ImageModal from '@/components/ImageModal'
 import LectureTask from '@/components/LectureTask'
 import Main from '@/components/Main'
 import SessionTask from '@/components/SessionTask'
 import { api } from '@/lib/api'
-import { ArrowRight } from 'lucide-react'
 import { cookies } from 'next/headers'
-import Link from 'next/link'
 
 export async function generateStaticParams() {
   const response = await api.get(`/atividades`)
