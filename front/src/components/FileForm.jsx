@@ -58,14 +58,16 @@ export default function FileForm() {
           <></>
         ) : (
           filesName.map((filename) => {
-            return filename.includes('.pdf') ? (
+            const segments = filename.split('-')
+            const filenameWithoutID = segments.slice(1).join('-')
+            return filename.includes('.pdf') || filename.includes('.PDF') ? (
               <Link
                 href={`/${filename}`}
                 target="_blank"
                 className="bg-highlighted text-white px-2 w-max block mt-5"
                 key={filename.split('-', 1)}
               >
-                {filename}
+                {filenameWithoutID}
               </Link>
             ) : (
               <ImageModal filename={filename} key={filename.split('-', 1)} />
