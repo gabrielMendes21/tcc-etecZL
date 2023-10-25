@@ -25,14 +25,16 @@ export default function ImageModal({ filename }) {
 
       {/* Modal */}
       <MyModal isOpen={isOpen} handleClose={handleClose}>
-        <Image
-          src={`/${filename}`}
-          alt=""
-          width={1000}
-          height={1000}
-          className="w-max h-max block object-cover"
-          quality={100}
-        />
+        <div className='flex justify-center'>
+          <Image
+            src={`/${filename}`}
+            alt=""
+            width={1000}
+            height={1000}
+            className="w-max h-max block object-cover"
+            quality={100}
+          />
+        </div>
       </MyModal>
     </>
   )
