@@ -27,7 +27,7 @@ export async function POST(req) {
     })
 
     const password = students[i].RM + students[i].NOME.slice(0, 2)
-    const hashedPassowrd = bcrypt.hash(password, 10)
+    const hashedPassowrd = await bcrypt.hash(password, 10)
 
     if (studentResponse === null) {
       await prisma.usuario.create({
