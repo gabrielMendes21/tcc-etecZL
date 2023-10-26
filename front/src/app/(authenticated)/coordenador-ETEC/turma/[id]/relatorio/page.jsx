@@ -1,6 +1,7 @@
 'use client'
 
 import Main from "@/components/Main";
+import Report from "@/components/Report";
 import StudentInfo from "@/components/StudentInfo";
 import { api } from "@/lib/api";
 import { FileBarChart } from "lucide-react";
@@ -39,7 +40,17 @@ export default function Relatorio() {
             <div className="mt-8">
                 {
                     classData.Usuario?.map(student => {
-                        return <StudentInfo student={student} key={student.id} school={classData.escola.nomeEscola} />
+                        return (
+                            <>
+                                <div className="flex justify-between">
+                                    {/* student info */}
+                                    <StudentInfo student={student} key={student.id} school={classData.escola.nomeEscola} />
+                                    {/* Report */}
+                                    <Report student={student} key={student.id} />
+                                </div>
+                                <hr className="my-6" />
+                            </>
+                        )
                     })
                 }
             </div>
