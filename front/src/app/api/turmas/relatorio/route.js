@@ -12,6 +12,9 @@ export async function GET(req) {
     include: {
       escola: true,
       Usuario: {
+        orderBy: {
+          nome: 'asc',
+        },
         include: {
           turma: true,
         },
