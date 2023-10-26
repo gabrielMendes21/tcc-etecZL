@@ -3,6 +3,8 @@
 import Main from "@/components/Main";
 import StudentInfo from "@/components/StudentInfo";
 import { api } from "@/lib/api";
+import { FileBarChart } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -30,6 +32,10 @@ export default function Relatorio() {
 
     return (
         <Main>
+            <Link href="#" className="bg-red-700 inline-flex p-3 gap-3 items-center text-white hover:brightness-110 transition-all mt-8">
+                Gerar PDF
+                <FileBarChart size={20} />
+            </Link>
             <div className="mt-8">
                 {
                     classData.Usuario?.map(student => {
