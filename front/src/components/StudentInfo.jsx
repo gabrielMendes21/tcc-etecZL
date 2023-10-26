@@ -3,8 +3,8 @@ export default function({student, school}) {
     return (
         <div>
             <h2>{student.nome}</h2>
-            <span className="block">{student.turma.nomeTurma}</span>
-            <span className="block">{school}</span>
+            <span className="block text-sm my-3">{student.turma.nomeTurma}</span>
+            <span className="block text-sm">{school}</span>
         </div>
     )
 }
