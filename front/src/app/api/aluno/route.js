@@ -56,3 +56,90 @@ export async function POST(req) {
 
   return NextResponse.json('Cadastrado')
 }
+
+export async function DELETE(req) {
+  const {searchParams} = new URL(req.url)
+  const studentId = searchParams.get('studentId')
+
+  // Remove student tasks
+  const studentTasks = await prisma.entrega.findMany({
+    where: {
+      codAluno: Number(studentId)
+    },
+    include: {
+      Correcao: true
+    }
+  })
+
+  if(studentTasks) {
+    for (const task of studentTasks) {
+      if (task.Correcao) {
+        await prisma.correcao.delete({
+          where: {
+            codEntrega: task.id
+          }
+        })
+      }
+  
+      await prisma.entrega.delete({
+        where: {
+          id: task.id
+        }
+      })
+    }
+  }
+
+  // Remove student support requests
+  const supportRequests = await prisma.solicitacaoSuporte.findMany({
+    where: {
+      codAluno: Number(studentId)
+    },
+    include: {
+      Resposta: true
+    }
+  })
+
+  if (supportRequests) {
+    for (const supportRequest of supportRequests) {
+      if (supportRequest.Resposta) {
+        await prisma.resposta.delete({
+          where: {
+            codSolicitacao: supportRequest.id
+          }
+        })
+      }
+
+      await prisma.solicitacaoSuporte.delete({
+        where: {
+          id: supportRequest.id
+        }
+      })
+    }
+  }
+
+  // Remove student hours
+  const studentHours = await prisma.horas.findMany({
+    where: {
+      codAluno: Number(studentId)
+    }
+  })
+
+  if (studentHours) {
+    for (const hours of studentHours) {
+      await prisma.horas.delete({
+        where: {
+          id: hours.id
+        }
+      })
+    }
+  }
+
+  // Remove student
+  await prisma.usuario.delete({
+    where: {
+      id: Number(studentId)
+    }
+  })
+
+  return NextResponse.json("Aluno removido com sucesso")
+}

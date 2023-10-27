@@ -4,6 +4,7 @@ import EditStudentModal from '@/components/EditStudentModal'
 import { api } from '@/lib/api'
 import { FileText, Pen, Trash2 } from 'lucide-react'
 import Link from 'next/link'
+import RemoveStudentModal from '@/components/RemoveStudentModal'
 
 export async function generateStaticParams() {
   const studentsResponse = await api.get('/alunos')
@@ -70,13 +71,7 @@ export default async function Aluno({ params }) {
 
           {/* PC button */}
 
-          <button
-            // onClick={handleOpen}
-            className="flex justify-between items-center w-full text-left font-light bg-[#BE2528] hover:cursor-pointer hover:brightness-110 transition-all text-white mt-3 p-3"
-          >
-            Excluir aluno
-            <Trash2 strokeWidth={1} />
-          </button>
+          <RemoveStudentModal coordinator="IBM" />
 
           {/* Modal */}
           <EditStudentModal studentData={student} />

@@ -4,7 +4,7 @@ import EditStudentModal from '@/components/EditStudentModal'
 import { api } from '@/lib/api'
 import { FileText, Pen, Trash2 } from 'lucide-react'
 import Link from 'next/link'
-import RemoveStudentModal from '@/components/RemoveStudentModa'
+import RemoveStudentModal from '@/components/RemoveStudentModal'
 
 export async function generateStaticParams() {
   const studentsResponse = await api.get('/alunos')
@@ -69,11 +69,7 @@ export default async function Aluno({ params }) {
             <Pen strokeWidth={1} />
           </Link>
 
-          {/* PC button */}
-
-
-
-          <RemoveStudentModal />
+          <RemoveStudentModal coordinator="ETEC" />
 
           {/* Modal */}
           <EditStudentModal studentData={student} />
