@@ -73,7 +73,7 @@ export default async function Turma({ params }) {
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Percent color="#0F62FE" />
             {Math.round(
-              (studentsWithAllTasksDone.length / students.length) * 100,
+              (studentsWithAllTasksDone.length ?? 0 / students.length ?? 0) * 100,
             )}
             % - {studentsWithAllTasksDone.length}/{students.length} alunos
           </li>
