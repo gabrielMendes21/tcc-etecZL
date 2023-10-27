@@ -28,6 +28,7 @@ export default function NewStudentModal() {
   classId = Number(classId[classId.length - 1])
 
   const router = useRouter()
+  router.refresh()
 
   // Read excel function
   const readExcel = (file) => {
