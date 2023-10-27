@@ -111,21 +111,21 @@ export default class Usuario {
       },
     })
 
-    const horas = await prisma.horas.findFirst({
-      where: {
-        codAluno: user.id,
-        AND: {
-          ano: new Date().getFullYear(),
-        },
-      },
-    })
-
-    const passwordIsCorrect = await bcrypt.compare(password, user.senha)
-
+    
     // Verify if the params are correct
     if (user) {
+      const passwordIsCorrect = await bcrypt.compare(password, user.senha)
       if (passwordIsCorrect) {
         // Fill class data with user information
+        const horas = await prisma.horas.findFirst({
+          where: {
+            codAluno: user.id,
+            AND: {
+              ano: new Date().getFullYear(),
+            },
+          },
+        })
+
         this.setCodUsuario = user.id
         this.setEmail = user.email
         this.setSenha = user.senha
@@ -136,13 +136,13 @@ export default class Usuario {
         this.setHorasAnuais = horas?.horasAnuais
         this.setEscola = user.escola
         this.setTipoUsuario = user.tipoUsuario.tipoUsuario
-
+        
         return true
       } else {
         return false
       }
+    } else {
+      return false
     }
-
-    return user
   }
 }
