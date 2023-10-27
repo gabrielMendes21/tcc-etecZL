@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { use, useState } from 'react'
 import MyModal from './Modal'
-import FormSubmitButton from './FormSubmitButton'
 import H2 from './H2'
-import { Pen } from 'lucide-react'
+import { ArrowRight, Pen } from 'lucide-react'
+import FormSubmitButton from './FormSubmitButton'
+import { api } from '@/lib/api'
+import { useRouter } from 'next/navigation'
 
 export default function EditStudentModal({ studentData }) {
   // Input values
@@ -12,10 +14,26 @@ export default function EditStudentModal({ studentData }) {
   const [email, setEmail] = useState(studentData.email)
   const [rm, setRm] = useState(studentData.rm)
 
+  const router = useRouter()
+
   // Modal control
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.target)
+    const data = Object.fromEntries(formData)
+
+    const response = await api.put(`/aluno?studentId=${studentData.id}`, {
+      data,
+    })
+    
+    setIsOpen(false)
+    router.refresh()
+  }
 
   return (
     // PC Button
@@ -32,15 +50,18 @@ export default function EditStudentModal({ studentData }) {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Editar aluno" />
 
-        <form action="" className="mt-8">
+        <form action="" method='POST' onSubmit={onSubmit} className="mt-8">
           <label htmlFor="name">Nome do aluno</label>
           <input
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             type="text"
             placeholder="Digite o nome do aluno"
             id="name"
+            name='nome'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value) 
+            }}
           />
 
           <label htmlFor="email">Email</label>
@@ -49,8 +70,11 @@ export default function EditStudentModal({ studentData }) {
             type="text"
             placeholder="Digite o email institucional do aluno"
             id="email"
+            name='email'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+            }}
           />
 
           <label htmlFor="rm">RM</label>
@@ -59,8 +83,11 @@ export default function EditStudentModal({ studentData }) {
             type="text"
             placeholder="Digite o RM do aluno"
             id="rm"
+            name='rm'
             value={rm}
-            onChange={(e) => setRm(e.target.value)}
+            onChange={(e) => {
+              setRm(e.target.value)
+            }}
           />
 
           <FormSubmitButton title="Editar aluno" />

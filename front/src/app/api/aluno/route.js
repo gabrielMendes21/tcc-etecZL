@@ -57,6 +57,25 @@ export async function POST(req) {
   return NextResponse.json('Cadastrado')
 }
 
+export async function PUT(req) {
+  const {searchParams} = new URL(req.url)
+  const studentId = searchParams.get('studentId')
+  const body = await req.json()
+
+  await prisma.usuario.update({
+    where: {
+      id: Number(studentId)
+    },
+    data: {
+      nome: body.data.nome,
+      email: body.data.email,
+      rm: Number(body.data.rm)
+    }
+  })
+
+  return NextResponse.json("Aluno editado")
+}
+
 export async function DELETE(req) {
   const {searchParams} = new URL(req.url)
   const studentId = searchParams.get('studentId')
