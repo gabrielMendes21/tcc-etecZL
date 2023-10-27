@@ -22,7 +22,7 @@ export async function POST(req) {
   for (let i = 0; i < students.length; i++) {
     const studentResponse = await prisma.usuario.findFirst({
       where: {
-        rm: students[i].RM,
+        rm: Number(students[i].RM),
       },
     })
 
@@ -33,7 +33,7 @@ export async function POST(req) {
       await prisma.usuario.create({
         data: {
           email: students[i].EMAIL,
-          rm: students[i].RM,
+          rm: Number(students[i].RM),
           nome: students[i].NOME,
           senha: hashedPassowrd,
           codEscola: Number(schoolId),
@@ -42,8 +42,8 @@ export async function POST(req) {
 
           Horas: {
             create: {
-              horasAnuais: students[i]['HORAS ANUAIS'],
-              horasConcluidas: students[i]['HORAS CONCLUÍDAS'],
+              horasAnuais: Number(students[i]['HORAS ANUAIS']),
+              horasConcluidas: Number(students[i]['HORAS CONCLUÍDAS']),
               ano: new Date().getFullYear(),
             },
           },
