@@ -211,6 +211,8 @@ async function seed() {
     data: [
       { horasAnuais: 120, horasConcluidas: 69, codAluno: 3, ano: 2023 },
       { horasAnuais: 120, horasConcluidas: 50, codAluno: 2, ano: 2023 },
+      { horasAnuais: 40, horasConcluidas: 43, codAluno: 2, ano: 2022 },
+      { horasAnuais: 40, horasConcluidas: 49, codAluno: 3, ano: 2022 },
     ],
   })
 }
