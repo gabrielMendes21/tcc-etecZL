@@ -33,6 +33,9 @@ export default async function Turma({ params }) {
     include: {
       Entrega: true,
     },
+    orderBy: {
+      nome: 'asc',
+    },
   })
 
   // Check students with all the tasks completed
