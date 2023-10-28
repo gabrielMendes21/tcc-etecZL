@@ -1,11 +1,11 @@
-import Main from '@/components/Main'
-import { api } from '@/lib/api'
 import Card from '@/components/Card'
+import Main from '@/components/Main'
 import NewButton from '@/components/NewButton'
+import NewStudentModal from '@/components/NewStudentModal'
+import { api } from '@/lib/api'
+import prisma from '@/lib/prisma'
 import { Check, FileText, Percent, Users } from 'lucide-react'
 import Link from 'next/link'
-import NewStudentModal from '@/components/NewStudentModal'
-import prisma from '@/lib/prisma'
 
 export async function generateStaticParams() {
   const classesResponse = await api.get('/turmas')
@@ -36,11 +36,14 @@ export default async function Turma({ params }) {
   })
 
   // Check students with all the tasks completed
-  const studentsWithAllTasksDone = students.filter((student) => {
-    return student.Entrega.every((task) => {
-      return task.entregue === true
-    })
-  })
+  const studentsWithAllTasksDone =
+    students.length > 0
+      ? students.filter((student) => {
+          return student.Entrega.every((task) => {
+            return task.entregue === true
+          })
+        })
+      : 0
 
   return (
     <Main>
@@ -73,7 +76,7 @@ export default async function Turma({ params }) {
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Percent color="#0F62FE" />
             {Math.round(
-              (studentsWithAllTasksDone.length ?? 0 / students.length ?? 0) * 100,
+              (studentsWithAllTasksDone.length / students.length) * 100,
             )}
             % - {studentsWithAllTasksDone.length}/{students.length} alunos
           </li>
@@ -90,7 +93,7 @@ export default async function Turma({ params }) {
       <Link
         href={`${params.id}/relatorio`}
         className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
-        target='_blank'
+        target="_blank"
       >
         Gerar relatório
         <FileText strokeWidth={1} />

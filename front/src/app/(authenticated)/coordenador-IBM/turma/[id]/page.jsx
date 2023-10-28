@@ -36,11 +36,14 @@ export default async function Turma({ params }) {
   })
 
   // Check students with all the tasks completed
-  const studentsWithAllTasksDone = students.filter((student) => {
-    return student.Entrega.every((task) => {
-      return task.entregue === true
-    })
-  })
+  const studentsWithAllTasksDone =
+    students.length > 0
+      ? students.filter((student) => {
+          return student.Entrega.every((task) => {
+            return task.entregue === true
+          })
+        })
+      : 0
 
   return (
     <Main>
