@@ -1,7 +1,7 @@
 'use client'
 
-import './styles.css'
 import { Check, Clock4, Percent } from 'lucide-react'
+import './styles.css'
 
 export default function CircleProgress({ unity, user }) {
   // const { user } = useContext(PageContext)
@@ -11,7 +11,7 @@ export default function CircleProgress({ unity, user }) {
   const hoursCompleted = user?.Horas
     ? user?.Horas[0].horasConcluidas
     : user?.horasConcluidas
-  const percentage = Math.round((hoursCompleted / annualHours) * 100)
+  const percentage = Math.round((hoursCompleted ?? 0 / annualHours ?? 0) * 100)
   const circleSize = '160'
   const radius = 68
   const dashArray = radius * Math.PI * 2
@@ -76,7 +76,8 @@ export default function CircleProgress({ unity, user }) {
         </li>
         <li className="flex items-center gap-3 text-left text-xxs lg:text-xs">
           <Percent color="#0F62FE" />
-          {Math.round((hoursCompleted / annualHours) * 100)}% do caminho
+          {Math.round((hoursCompleted ?? 0 / annualHours ?? 0) * 100)}% do
+          caminho
         </li>
       </ul>
     </div>
