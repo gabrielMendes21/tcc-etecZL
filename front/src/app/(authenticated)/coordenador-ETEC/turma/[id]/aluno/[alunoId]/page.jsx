@@ -1,10 +1,10 @@
-import Main from '@/components/Main'
-import CircleProgress from '@/components/circle/CircleProgress'
 import EditStudentModal from '@/components/EditStudentModal'
-import { api } from '@/lib/api'
-import { FileText, Pen, Trash2 } from 'lucide-react'
-import Link from 'next/link'
+import Main from '@/components/Main'
 import RemoveStudentModal from '@/components/RemoveStudentModal'
+import CircleProgress from '@/components/circle/CircleProgress'
+import { api } from '@/lib/api'
+import { FileText, Pen } from 'lucide-react'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const studentsResponse = await api.get('/alunos')
