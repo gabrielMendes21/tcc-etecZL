@@ -1,13 +1,14 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
+import darkLogo from '../assets/dark-logo.svg'
 import menu from '../assets/hamburger.svg'
 import closeHamburger from '../assets/x.svg'
-import Image from 'next/image'
-import darkLogo from '../assets/dark-logo.svg'
-import Link from 'next/link'
 
-import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
+import { usePathname } from 'next/navigation'
+import { useContext } from 'react'
 
 function Menu() {
   const { isOpen, setIsOpen, user, handleMenu, logout } =
@@ -116,8 +117,11 @@ function Menu() {
 
 export default function Header({ hasMenu, className }) {
   const { user } = useContext(PageContext)
+  const pathname = usePathname()
 
-  return (
+  return pathname.includes('relatorio') ? (
+    <></>
+  ) : (
     <header
       className={`w-full h-16 fixed top-0 z-10 bg-white border-b-2 border-b-[#C6C6C6] md:flex md:flex-row-reverse md:justify-around md:items-center md:h-20 ${className}`}
     >

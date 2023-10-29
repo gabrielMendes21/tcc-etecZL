@@ -3,10 +3,15 @@
 import lightLogo from '@/assets/light-logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Delay from './LoadDelay'
 
 export default function Footer() {
-  return (
+  const pathname = usePathname()
+
+  return pathname.includes('relatorio') ? (
+    <></>
+  ) : (
     <footer className="px-5 bg-[#262626] w-full py-10 self-end text-white">
       <Delay className="flex justify-around flex-wrap">
         <div className="flex gap-5 md:gap-20 mb-5">
