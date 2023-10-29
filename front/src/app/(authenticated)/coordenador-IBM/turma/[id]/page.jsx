@@ -96,7 +96,6 @@ export default async function Turma({ params }) {
       <Link
         href={`${params.id}/relatorio`}
         className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
-        target="_blank"
       >
         Gerar relatório
         <FileText strokeWidth={1} />
