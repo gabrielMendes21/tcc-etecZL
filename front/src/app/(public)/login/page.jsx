@@ -1,16 +1,16 @@
 'use client'
 
-import Main from '@/components/Main'
-import Image from 'next/image'
-import darkLogo from '../../../assets/dark-logo.svg'
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import Header from '@/components/Header'
-import { useForm } from 'react-hook-form'
-import { useContext, useState } from 'react'
 import { PageContext } from '@/app/context/PageContext'
+import Header from '@/components/Header'
 import LoginErrorMessages from '@/components/LoginErrorMessages'
+import Main from '@/components/Main'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useContext, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { SyncLoader } from 'react-spinners'
+import darkLogo from '../../../assets/dark-logo.svg'
 
 export default function Login() {
   const [error, setError] = useState('')
@@ -68,6 +68,7 @@ export default function Login() {
               onSubmit={handleSubmit(onSubmit)}
               method="POST"
               className="pt-5"
+              id="login-form"
             >
               <label htmlFor="email" className="text-sm">
                 Email
@@ -120,7 +121,10 @@ export default function Login() {
                 </p>
               )}
 
-              <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 mt-8 p-3">
+              <button
+                id="submit-button"
+                className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-color text-white mb-2 mt-8 p-3"
+              >
                 Entrar
                 {icon}
               </button>

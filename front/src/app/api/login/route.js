@@ -1,9 +1,8 @@
-import { NextResponse } from 'next/server'
-import jwt from 'jsonwebtoken'
-import prisma from '@/lib/prisma'
-import Usuario from '@/classes/Usuario'
 import Escola from '@/classes/Escola'
-import bcrypt from 'bcrypt'
+import Usuario from '@/classes/Usuario'
+import prisma from '@/lib/prisma'
+import jwt from 'jsonwebtoken'
+import { NextResponse } from 'next/server'
 
 // Get the user JWT
 export async function GET(req) {
