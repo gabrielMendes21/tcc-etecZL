@@ -4,7 +4,6 @@ export default function Report({ student }) {
   // Get student data for report
   const tasks = student.Entrega
   const hours = student.Horas
-  console.log(hours)
 
   // Put student activity years in the table
   const studentClass = student.turma.nomeTurma.split('')[0]
