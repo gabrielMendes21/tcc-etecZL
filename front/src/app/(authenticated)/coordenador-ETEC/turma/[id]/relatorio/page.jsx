@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Relatorio() {
-  const [classData, setClassData] = useState({})
+  const [students, setStudents] = useState()
 
   const pathname = usePathname()
   const segments = pathname.split('/')
@@ -25,8 +25,7 @@ export default function Relatorio() {
         },
       })
       .then((response) => {
-        setClassData(response.data)
-        console.log(response.data)
+        setStudents(response.data)
       })
       .catch((e) => {
         console.log(e)
@@ -43,15 +42,14 @@ export default function Relatorio() {
         <FileBarChart size={20} />
       </Link>
       <div className="mt-8">
-        {classData.Usuario?.map((student) => {
+        {students?.map((student) => {
           return (
             <>
               <div className="flex justify-between">
                 {/* student info */}
                 <StudentInfo
                   student={student}
-                  key={student.id}
-                  school={classData.escola.nomeEscola}
+                  school={student.turma.escola.nomeEscola}
                 />
                 {/* Report */}
                 <Report student={student} key={student.id} />

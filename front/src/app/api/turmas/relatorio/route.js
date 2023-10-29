@@ -5,22 +5,27 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url)
   const classId = Number(searchParams.get('classId'))
 
-  const classData = await prisma.turma.findFirst({
+  const students = await prisma.usuario.findMany({
     where: {
-      id: classId,
+      codTurma: classId,
+    },
+    orderBy: {
+      nome: 'asc',
     },
     include: {
-      escola: true,
-      Usuario: {
-        orderBy: {
-          nome: 'asc',
-        },
+      turma: {
         include: {
-          turma: true,
+          escola: true,
+        },
+      },
+      Horas: { orderBy: { ano: 'desc' } },
+      Entrega: {
+        include: {
+          atividade: true,
         },
       },
     },
   })
 
-  return NextResponse.json(classData)
+  return NextResponse.json(students)
 }
