@@ -37,11 +37,11 @@ export default function TasksTab({ pendingTasks, sentTasks, overdueTasks }) {
         <button className="px-3 mt-5 overdue" onClick={handleTab}>
           Atrasadas
         </button>
-        <div className="absolute top-12 left-0 w-20 h-1 bg-highlighted transition-all"></div>
+        <div className="absolute top-12 left-0 w-[105px] h-1 bg-highlighted transition-all"></div>
       </div>
 
       {/* Pending tasks */}
-      <div className="invisible absolute w-0 pending">
+      <div className="static m-5 pending">
         {pendingTasks.length === 0 ? (
           <span className="text-black/60">
             Você não possui atividades pendentes
