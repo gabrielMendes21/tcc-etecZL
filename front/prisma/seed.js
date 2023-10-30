@@ -15,6 +15,9 @@ async function seed() {
       {
         tipoUsuario: 'Coordenador IBM',
       },
+      {
+        tipoUsuario: 'ReportManager',
+      },
     ],
   })
 
@@ -40,6 +43,15 @@ async function seed() {
       senha: hashedPassword1,
       nome: 'Guilherme',
       codTipoUsuario: 3,
+    },
+  })
+
+  await prisma.usuario.create({
+    data: {
+      nome: 'Report manager',
+      email: 'root@root.com',
+      senha: '123456789',
+      codTipoUsuario: 4,
     },
   })
 
