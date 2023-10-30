@@ -46,15 +46,6 @@ async function seed() {
     },
   })
 
-  await prisma.usuario.create({
-    data: {
-      nome: 'Report manager',
-      email: 'root@root.com',
-      senha: '123456789',
-      codTipoUsuario: 4,
-    },
-  })
-
   const hashedPassword2 = await bcrypt.hash('123456', 10)
   const hashedPassword3 = await bcrypt.hash('654321', 10)
   const hashedPassword4 = await bcrypt.hash('987654', 10)
@@ -226,6 +217,16 @@ async function seed() {
       { horasAnuais: 40, horasConcluidas: 43, codAluno: 2, ano: 2022 },
       { horasAnuais: 40, horasConcluidas: 49, codAluno: 3, ano: 2022 },
     ],
+  })
+
+  const hashedPassword5 = await bcrypt.hash('123456789', 10)
+  await prisma.usuario.create({
+    data: {
+      nome: 'Report manager',
+      email: 'root@root.com',
+      senha: hashedPassword5,
+      codTipoUsuario: 4,
+    },
   })
 }
 
