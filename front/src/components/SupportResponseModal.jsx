@@ -1,14 +1,14 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
-import { useState } from 'react'
-import MyModal from './Modal'
-import H2 from './H2'
-import FormSubmitButton from './FormSubmitButton'
-import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
 import { api } from '@/lib/api'
-import { useContext } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useContext, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import FormSubmitButton from './FormSubmitButton'
+import H2 from './H2'
+import MyModal from './Modal'
+
 import { PageContext } from '@/app/context/PageContext'
 
 export default function SupportResponseModal({ supportRequest }) {
@@ -23,9 +23,12 @@ export default function SupportResponseModal({ supportRequest }) {
   // Form control
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data) => {
-    const response = await api.post(`/solicitacaoSuporte/resposta?requestId=${supportRequest.id}&coordinatorId=${user?.user?.sub}`, {
-      ...data,
-    })
+    const response = await api.post(
+      `/solicitacaoSuporte/resposta?requestId=${supportRequest.id}&coordinatorId=${user?.user?.sub}`,
+      {
+        ...data,
+      },
+    )
 
     setIsOpen(false)
     router.refresh()
@@ -43,7 +46,12 @@ export default function SupportResponseModal({ supportRequest }) {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Responder suporte" />
 
-        <form action="" method='POST' onSubmit={handleSubmit(onSubmit)} className="mt-8">
+        <form
+          action=""
+          method="POST"
+          onSubmit={handleSubmit(onSubmit)}
+          className="mt-8"
+        >
           <label htmlFor="assunto">Assunto</label>
           <input
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
@@ -60,7 +68,7 @@ export default function SupportResponseModal({ supportRequest }) {
             className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
             placeholder="Digite a sua resposta"
             required
-            {...register("responseMessage")}
+            {...register('responseMessage')}
           ></textarea>
 
           <FormSubmitButton title="Enviar resposta" />
