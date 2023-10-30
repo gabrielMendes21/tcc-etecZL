@@ -111,7 +111,6 @@ export default class Usuario {
       },
     })
 
-    
     // Verify if the params are correct
     if (user) {
       const passwordIsCorrect = await bcrypt.compare(password, user.senha)
@@ -136,7 +135,7 @@ export default class Usuario {
         this.setHorasAnuais = horas?.horasAnuais
         this.setEscola = user.escola
         this.setTipoUsuario = user.tipoUsuario.tipoUsuario
-        
+
         return true
       } else {
         return false
