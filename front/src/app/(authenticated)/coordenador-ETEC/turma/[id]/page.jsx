@@ -1,10 +1,11 @@
 import Card from '@/components/Card'
+import GenerateReportButton from '@/components/GenerateReportButton'
 import Main from '@/components/Main'
 import NewButton from '@/components/NewButton'
 import NewStudentModal from '@/components/NewStudentModal'
 import { api } from '@/lib/api'
 import prisma from '@/lib/prisma'
-import { Check, FileText, Percent, Users } from 'lucide-react'
+import { Check, Percent, Users } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 
@@ -97,14 +98,7 @@ export default async function Turma({ params }) {
       <hr className="border-[#C6C6C6]" />
 
       {/* Generate report */}
-      <Link
-        href={`/api/relatorio/gerarPDF?token=${token}`}
-        className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3"
-      >
-        Gerar relatório
-        <FileText strokeWidth={1} />
-      </Link>
-      {/* <GenerateReportButton /> */}
+      <GenerateReportButton token={token} />
 
       <hr className="border-[#C6C6C6] my-8" />
 
