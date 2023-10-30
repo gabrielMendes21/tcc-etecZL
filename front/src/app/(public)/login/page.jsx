@@ -2,6 +2,7 @@
 
 import { PageContext } from '@/app/context/PageContext'
 import Header from '@/components/Header'
+import LoadingIcon from '@/components/LoadingIcon'
 import LoginErrorMessages from '@/components/LoginErrorMessages'
 import Main from '@/components/Main'
 import { ArrowRight } from 'lucide-react'
@@ -9,7 +10,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { SyncLoader } from 'react-spinners'
 import darkLogo from '../../../assets/dark-logo.svg'
 
 export default function Login() {
@@ -26,7 +26,7 @@ export default function Login() {
   const onSubmit = async (data, event) => {
     event.preventDefault()
     try {
-      setIcon(<SyncLoader color="#FFF" size={5} />)
+      setIcon(<LoadingIcon />)
       const message = await login(data)
       setError(message)
     } catch (err) {
