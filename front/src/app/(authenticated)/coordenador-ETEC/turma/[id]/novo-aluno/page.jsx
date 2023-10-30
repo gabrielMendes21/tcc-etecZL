@@ -5,6 +5,7 @@ import H1 from '@/components/H1'
 import Main from '@/components/Main'
 import { api } from '@/lib/api'
 import { Upload } from 'lucide-react'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
@@ -184,6 +185,23 @@ export default function NovoAluno() {
             readExcel(file)
           }}
         />
+        <figure>
+          <Image
+            src="/excel-model.png"
+            alt=""
+            width={1000}
+            height={1000}
+            className="w-full"
+            quality={100}
+          />
+          <figcaption className="text-black/60 text-xs">
+            Exemplo de planilha a ser anexada
+          </figcaption>
+        </figure>
+        <div className="flex items-center gap-3 mt-2">
+          <div className="w-5 h-5 bg-red-500 rounded"></div>
+          Obrigatório
+        </div>
       </form>
     </Main>
   )
