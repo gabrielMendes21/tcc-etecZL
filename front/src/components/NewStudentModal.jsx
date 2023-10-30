@@ -1,15 +1,16 @@
 'use client'
 
-import { useContext, useState } from 'react'
-import MyModal from './Modal'
-import FormSubmitButton from './FormSubmitButton'
-import { PlusCircle, Upload } from 'lucide-react'
-import H2 from './H2'
-import * as XLSX from 'xlsx'
-import { api } from '@/lib/api'
-import { usePathname, useRouter } from 'next/navigation'
 import { PageContext } from '@/app/context/PageContext'
+import { api } from '@/lib/api'
+import { PlusCircle, Upload } from 'lucide-react'
+import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import * as XLSX from 'xlsx'
+import FormSubmitButton from './FormSubmitButton'
+import H2 from './H2'
+import MyModal from './Modal'
 
 export default function NewStudentModal() {
   // Modal control
@@ -190,7 +191,7 @@ export default function NewStudentModal() {
 
           <label
             htmlFor="fileInput"
-            className="hover:cursor-pointer flex justify-between items-center w-full text-left font-light bg-[#008000] hover:brightness-110 transition-all text-white mb-2 p-3"
+            className="hover:cursor-pointer flex justify-between items-center w-full text-left font-light bg-[#008000] hover:brightness-110 transition-all text-white p-3"
           >
             Importar planilha
             <Upload strokeWidth={1} />
@@ -208,6 +209,23 @@ export default function NewStudentModal() {
               readExcel(file)
             }}
           />
+          <figure>
+            <Image
+              src="/excel-model.png"
+              alt=""
+              width={1000}
+              height={1000}
+              className="w-full"
+              quality={100}
+            />
+            <figcaption className="text-black/60 text-xs">
+              Exemplo de planilha a ser anexada
+            </figcaption>
+          </figure>
+          <div className="flex items-center gap-3 mt-2">
+            <div className="w-5 h-5 bg-red-500 rounded"></div>
+            Obrigatório
+          </div>
         </form>
       </MyModal>
     </>
