@@ -1,5 +1,5 @@
 import { SyncLoader } from 'react-spinners'
 
-export default function LoadingIcon() {
-  return <SyncLoader color="#FFF" size={5} />
+export default function LoadingIcon({ color }) {
+  return <SyncLoader color={color} size={5} />
 }

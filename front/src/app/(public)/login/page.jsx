@@ -26,7 +26,7 @@ export default function Login() {
   const onSubmit = async (data, event) => {
     event.preventDefault()
     try {
-      setIcon(<LoadingIcon />)
+      setIcon(<LoadingIcon color="#FFF" />)
       const message = await login(data)
       setError(message)
     } catch (err) {
