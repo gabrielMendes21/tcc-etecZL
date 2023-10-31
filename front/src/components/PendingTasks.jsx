@@ -1,8 +1,8 @@
-import Task from './Task'
+import { api } from '@/lib/api'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import TradLink from './Link'
-import { cookies } from 'next/headers'
-import { api } from '@/lib/api'
+import Task from './Task'
 
 export default async function PendingTasks() {
   const cookieStore = cookies()
@@ -36,7 +36,7 @@ export default async function PendingTasks() {
   return tasks.length > 0 ? (
     <div className="lg:grow">
       <h2 className="text-base lg:text-2xl mt-5 mb-8">
-        Atividades do programa P-TECH
+        Atividades do programa AMS
       </h2>
 
       <div className="space-y-5">
@@ -64,7 +64,7 @@ export default async function PendingTasks() {
   ) : (
     <div>
       <h2 className="text-base lg:text-2xl mt-5 mb-5">
-        Atividades do programa P-TECH
+        Atividades do programa AMS
       </h2>
       <span className="text-black/30 block">
         Você não possui nenhuma atividade

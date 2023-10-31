@@ -17,9 +17,7 @@ export default function Footer() {
         <div className="flex gap-5 md:gap-20 mb-5">
           {/* Schools */}
           <div className="">
-            <h2 className="font-medium text-base mb-[14px]">
-              Membros do P-TECH
-            </h2>
+            <h2 className="font-medium text-base mb-[14px]">Membros do AMS</h2>
             <ul className="text-xxs text-gray-200  font-thin space-y-3">
               <li>
                 <a
