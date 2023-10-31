@@ -114,7 +114,7 @@ model Entrega {
   // Attributes
   id          Int       @id @default(autoincrement()) @map("codEntrega")
   dataEntrega DateTime?
-  conteudo    String?
+  conteudo    Json?
   entregue    Boolean   @default(false)
 
   // Relations

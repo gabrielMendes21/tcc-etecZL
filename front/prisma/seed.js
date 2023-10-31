@@ -126,7 +126,10 @@ async function seed() {
     data: [
       {
         dataEntrega: '2023-11-02T04:00:00.000Z',
-        conteudo: 'Aprendi bastante coisa.',
+        conteudo: {
+          conhecimento: 'Aprendi bastante coisa',
+          anexos: '',
+        },
         entregue: true,
         codAluno: 2,
         codAtividade: 1,
@@ -148,7 +151,10 @@ async function seed() {
       },
       {
         dataEntrega: '2023-10-09T09:00:00.000Z',
-        conteudo: 'Anexado.',
+        conteudo: {
+          conhecimento: 'Nenhum',
+          anexos: '',
+        },
         entregue: true,
         codAluno: 3,
         codAtividade: 2,
