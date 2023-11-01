@@ -33,7 +33,7 @@ export async function GET(req) {
   const files = []
 
   if (task.conteudo?.anexos) {
-    const filesName = task.conteudo?.anexos.split(', ')
+    const filesName = task.conteudo?.anexos.split(',')
 
     for (const filename of filesName) {
       files.push(filename)

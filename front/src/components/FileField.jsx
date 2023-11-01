@@ -1,7 +1,7 @@
 'use client'
 
 import { api } from '@/lib/api'
-import { Upload } from 'lucide-react'
+import { FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { BarLoader } from 'react-spinners'
@@ -27,9 +27,9 @@ export default function FileField({ disabled }) {
   }
 
   return (
-    <div>
+    <>
       <label
-        htmlFor="file"
+        htmlFor="files"
         className="border-2 border-highlighted text-highlighted p-3 flex gap-2 items-center hover:underline hover:cursor-pointer hover:text-white  hover:bg-highlighted transition-all"
       >
         {icon}
@@ -39,8 +39,8 @@ export default function FileField({ disabled }) {
         multiple
         accept="image/png, image/jpeg, application/pdf"
         type="file"
-        id="file"
-        name="file"
+        id="files"
+        name="files"
         className="invisible absolute w-0"
         onChange={handleChange}
         disabled={disabled}
@@ -57,9 +57,10 @@ export default function FileField({ disabled }) {
             <Link
               href={`/${filename}`}
               target="_blank"
-              className="bg-highlighted text-white px-2 w-max block mt-5"
+              className="bg-highlighted flex gap-3 text-white px-3 py-2 w-max mt-5 hover:brightness-110 transition-all"
               key={filename.split('-', 1)}
             >
+              <FileText />
               {filenameWithoutID}
             </Link>
           ) : (
@@ -67,6 +68,6 @@ export default function FileField({ disabled }) {
           )
         })
       )}
-    </div>
+    </>
   )
 }

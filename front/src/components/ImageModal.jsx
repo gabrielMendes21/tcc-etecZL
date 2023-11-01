@@ -1,5 +1,6 @@
 'use client'
 
+import { FileImage } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import MyModal from './Modal'
@@ -15,11 +16,12 @@ export default function ImageModal({ filename }) {
 
   return (
     <>
-      {/* New student button (tablets and PC's) */}
       <button
+        type="button"
         onClick={handleOpen}
-        className="block mt-5 bg-highlighted text-white px-2"
+        className="mt-5 bg-highlighted text-white flex gap-3 px-3 py-2 hover:brightness-110 transition-all"
       >
+        <FileImage />
         {filenameWithoutID}
       </button>
 
