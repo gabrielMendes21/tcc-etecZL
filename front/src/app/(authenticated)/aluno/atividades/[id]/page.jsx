@@ -1,7 +1,5 @@
-import FlexibleHoursTask from '@/components/FlexibleHoursTask'
-import LectureTask from '@/components/LectureTask'
+import Activity from '@/components/Activity'
 import Main from '@/components/Main'
-import SessionTask from '@/components/SessionTask'
 import { api } from '@/lib/api'
 import { cookies } from 'next/headers'
 
@@ -36,26 +34,9 @@ export default async function Atividade({ params }) {
     (task) => task.id.toString() === params.id,
   )
 
-  // Get task attachments
-  // if (task.atividade.anexos) {
-  //   const files = task.atividade.anexos.split(', ')
-
-  //   await api.get('/atividade/anexos', {
-  //     params: {
-  //       taskId: task.atividade.id,
-  //     },
-  //   })
-  // }
-
   return (
     <Main>
-      {task.atividade.tipoAtividade.tipoAtividade === 'Sessão' ? (
-        <SessionTask task={task} />
-      ) : task.atividade.tipoAtividade.tipoAtividade === 'Horas flexíveis' ? (
-        <FlexibleHoursTask task={task} />
-      ) : (
-        <LectureTask task={task} />
-      )}
+      <Activity task={task} />
     </Main>
   )
 }

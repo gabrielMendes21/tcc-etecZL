@@ -9,7 +9,7 @@ import { BarLoader } from 'react-spinners'
 import ImageModal from './ImageModal'
 import LoadingIcon from './LoadingIcon'
 
-export default function SessionTask({ task }) {
+export default function Activity({ task }) {
   const [knowledge, setKnowledge] = useState('')
   const [taskSentFiles, setTaskSentFiles] = useState([])
   const [filesName, setFilesName] = useState([])
@@ -83,7 +83,7 @@ export default function SessionTask({ task }) {
       <hr className="border-[#C6C6C6]" />
 
       <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="knowledge">O que você aprendeu nessa sessão?</label>
+        <label htmlFor="knowledge">O que você aprendeu nessa atividade?</label>
         <textarea
           name="knowledge"
           id="knowledge"
@@ -101,9 +101,17 @@ export default function SessionTask({ task }) {
           taskSentFiles ? (
             <>
               <span className="block">Anexos</span>
-              {taskSentFiles.map((file) => {
-                return <ImageModal filename={file} />
-              })}
+              {taskSentFiles.length > 0 ? (
+                <>
+                  {taskSentFiles.map((file) => {
+                    return <ImageModal filename={file} />
+                  })}
+                </>
+              ) : (
+                <span className="text-black/60">
+                  Você não anexou nenhum arquivo nesta atividade
+                </span>
+              )}
             </>
           ) : (
             ''
