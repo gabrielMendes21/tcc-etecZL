@@ -1,8 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import MyModal from './Modal'
-import Image from 'next/image'
 
 export default function ImageModal({ filename }) {
   // Modal control
@@ -25,7 +25,7 @@ export default function ImageModal({ filename }) {
 
       {/* Modal */}
       <MyModal isOpen={isOpen} handleClose={handleClose}>
-        <div className='flex justify-center'>
+        <div className="flex justify-center">
           <Image
             src={`/${filename}`}
             alt=""
