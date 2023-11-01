@@ -1,9 +1,9 @@
 import prisma from '@/lib/prisma'
 import { Storage } from '@google-cloud/storage'
 // import { writeFile } from 'fs/promises'
+import fs from 'fs'
 import { NextResponse } from 'next/server'
 import { join } from 'path'
-import fs from 'fs'
 
 const storage = new Storage({
   keyFilename: join(
@@ -30,39 +30,45 @@ export async function GET(req) {
     },
   })
 
-  const filesName = task.anexos.split(', ')
+  const files = []
 
-  for (const filename of filesName) {
-    // Path where file will bee stored
-    const filePath = join(
-      __dirname,
-      '..',
-      '..',
-      '..',
-      '..',
-      '..',
-      '..',
-      'public',
-      filename,
-    )
-    if (fs.existsSync(filePath)) {
-      console.log(`O arquivo ${filename} existe no diretório public.`)
-    } else {
-      const file = bucket.file(filename)
-      const fileStream = file.createReadStream()
+  if (task.anexos) {
+    const filesName = task.anexos.split(', ')
 
-      const writeStream = fs.createWriteStream(filePath)
+    for (const filename of filesName) {
+      files.push(filename)
+      // Path where file will be stored
+      const filePath = join(
+        __dirname,
+        '..',
+        '..',
+        '..',
+        '..',
+        '..',
+        '..',
+        'public',
+        filename,
+      )
+      if (fs.existsSync(filePath)) {
+        console.log(`O arquivo ${filename} existe no diretório public.`)
+      } else {
+        const file = bucket.file(filename)
+        const fileStream = file.createReadStream()
 
-      fileStream.pipe(writeStream)
+        const writeStream = fs.createWriteStream(filePath)
 
-      writeStream.on('finish', () => {
-        return NextResponse.json('Pronto')
-      })
+        fileStream.pipe(writeStream)
 
-      writeStream.on('error', () => {
-        return NextResponse.json('Erro ao puxar arquivo', { status: 500 })
-      })
+        writeStream.on('finish', () => {
+          return NextResponse.json('Pronto')
+        })
+
+        writeStream.on('error', () => {
+          return NextResponse.json('Erro ao puxar arquivo', { status: 500 })
+        })
+      }
     }
   }
-  return NextResponse.json('Oh yeah')
+
+  return NextResponse.json(files)
 }
