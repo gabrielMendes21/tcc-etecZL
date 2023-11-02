@@ -1,6 +1,7 @@
 'use client'
 
 import { api } from '@/lib/api'
+import crypto from 'crypto'
 import { ArrowRight, FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -57,6 +58,7 @@ export default function Activity({ task }) {
 
     console.log(response.data)
     router.refresh()
+    router.push('../')
   }
 
   // Get task due date
@@ -104,7 +106,11 @@ export default function Activity({ task }) {
               {taskSentFiles.length > 0 ? (
                 <>
                   {taskSentFiles.map((file) => {
-                    return <ImageModal filename={file} />
+                    const id = crypto.randomBytes(256, (err, buffer) => {
+                      if (err) throw err
+                      return buffer.toString('hex')
+                    })
+                    return <ImageModal filename={file} key={id} />
                   })}
                 </>
               ) : (

@@ -17,7 +17,7 @@ export default function NovaSolicitação() {
   // Form control
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data) => {
-    const response = await api.post(`/solicitacaoSuporte?studentId=${user?.user?.sub}`, {
+    await api.post(`/solicitacaoSuporte?studentId=${user?.user?.sub}`, {
       ...data,
     })
 
@@ -29,7 +29,12 @@ export default function NovaSolicitação() {
       <H1 title="Solicitar suporte" />
 
       {/* Form */}
-      <form action="" method='POST' onSubmit={handleSubmit(onSubmit)} className="pt-5">
+      <form
+        action=""
+        method="POST"
+        onSubmit={handleSubmit(onSubmit)}
+        className="pt-5"
+      >
         <label htmlFor="subject" className="text-sm">
           Assunto
         </label>
@@ -39,7 +44,7 @@ export default function NovaSolicitação() {
           placeholder="Digite o assunto da sua solicitação"
           className="mt-3 mb-8 border-b block w-full border-black bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
           required
-          {...register("subject")}
+          {...register('subject')}
         />
 
         <label htmlFor="message" className="text-sm">
@@ -52,7 +57,7 @@ export default function NovaSolicitação() {
           className="mt-3 mb-6 w-full resize-none border-b block border-black bg-[#F4F4F4] focus:outline-highlighted p-2"
           placeholder="Digite sua mensagem"
           required
-          {...register("message")}
+          {...register('message')}
         ></textarea>
 
         <hr className="border[#C6C6C6]" />
