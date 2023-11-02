@@ -4,7 +4,6 @@ import Main from '@/components/Main'
 import NewButton from '@/components/NewButton'
 import NewStudentModal from '@/components/NewStudentModal'
 import { api } from '@/lib/api'
-import prisma from '@/lib/prisma'
 import { Check, Percent, Users } from 'lucide-react'
 import Link from 'next/link'
 
@@ -27,17 +26,9 @@ export default async function Turma({ params }) {
   })[0]
 
   // Get all students
-  const students = await prisma.usuario.findMany({
-    where: {
-      codTurma: Number(params.id),
-    },
-    include: {
-      Entrega: true,
-    },
-    orderBy: {
-      nome: 'asc',
-    },
-  })
+  const response = await api.get(`/alunos?classId=${params.id}`)
+
+  const students = response.data
 
   // Check students with all the tasks completed
   const studentsWithAllTasksDone =
@@ -47,7 +38,7 @@ export default async function Turma({ params }) {
             return task.entregue === true
           })
         })
-      : 0
+      : []
 
   return (
     <Main>
@@ -66,7 +57,8 @@ export default async function Turma({ params }) {
           className="w-full rounded-full h-6 my-6"
           style={{
             background: `linear-gradient(90deg, blue ${
-              (studentsWithAllTasksDone.length / students.length) * 100
+              (studentsWithAllTasksDone.length ?? 0 / students.length ?? 0) *
+              100
             }%, #D9D9D9 0%)`,
           }}
         ></div>
@@ -80,7 +72,7 @@ export default async function Turma({ params }) {
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Percent color="#0F62FE" />
             {Math.round(
-              (studentsWithAllTasksDone.length / students.length) * 100,
+              (studentsWithAllTasksDone.length ?? 0 / students.length) * 100,
             )}
             % - {studentsWithAllTasksDone.length}/{students.length} alunos
           </li>
@@ -120,3 +112,5 @@ export default async function Turma({ params }) {
     </Main>
   )
 }
+
+export const dynamic = 'force-dynamic'

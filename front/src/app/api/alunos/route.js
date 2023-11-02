@@ -1,11 +1,20 @@
 import prisma from '@/lib/prisma'
-import { NextResponse } from 'next/server'
 import bcrypt from 'bcrypt'
+import { NextResponse } from 'next/server'
 
-export async function GET() {
+export async function GET(req) {
+  const { searchParams } = new URL(req.url)
+  const classId = searchParams.get('classId')
+
   const students = await prisma.usuario.findMany({
     where: {
-      codTipoUsuario: 1,
+      codTurma: Number(classId),
+    },
+    include: {
+      Entrega: true,
+    },
+    orderBy: {
+      nome: 'asc',
     },
   })
 
