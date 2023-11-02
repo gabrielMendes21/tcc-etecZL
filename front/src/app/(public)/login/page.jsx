@@ -7,7 +7,6 @@ import LoginErrorMessages from '@/components/LoginErrorMessages'
 import Main from '@/components/Main'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import darkLogo from '../../../assets/dark-logo.svg'
@@ -132,7 +131,7 @@ export default function Login() {
 
             <hr className="border-[#C6C6C6 mt-9 mb-5" />
 
-            <span className="text-xs">
+            {/* <span className="text-xs">
               Esqueceu a senha?{' '}
               <Link
                 href="mailto:teste@gmail.com"
@@ -140,7 +139,7 @@ export default function Login() {
               >
                 Entre em contato com um coordenador
               </Link>
-            </span>
+            </span> */}
           </div>
         </div>
       </Main>
