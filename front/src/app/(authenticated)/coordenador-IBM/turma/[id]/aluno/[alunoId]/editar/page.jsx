@@ -44,6 +44,7 @@ export default function Editar() {
     })
 
     router.refresh()
+    router.push(`../${studentId}`)
   }
 
   return (
@@ -60,11 +61,6 @@ export default function Editar() {
           defaultValue={name}
           {...register('nome', { required: true })}
         />
-        {errors.nome?.type === 'required' && (
-          <p role="alert" className="text-red-500 text-xs font-bold mt-2">
-            *Não deixe o campo vazio
-          </p>
-        )}
 
         <label htmlFor="email">Email</label>
         <input
@@ -75,11 +71,6 @@ export default function Editar() {
           defaultValue={email}
           {...register('email', { required: true, pattern: /.*@.*\.*/i })}
         />
-        {errors.email?.type === 'required' && (
-          <p role="alert" className="text-red-500 text-xs font-bold mt-2">
-            *Não deixe o campo vazio
-          </p>
-        )}
         {errors.email?.type === 'pattern' && (
           <p role="alert" className="text-red-500 text-xs font-bold mt-2">
             *Exemplo: nome@dominio.com
@@ -95,11 +86,6 @@ export default function Editar() {
           defaultValue={rm}
           {...register('rm', { required: true })}
         />
-        {errors.rm?.type === 'required' && (
-          <p role="alert" className="text-red-500 text-xs font-bold mt-2">
-            *Não deixe o campo vazio
-          </p>
-        )}
 
         <FormSubmitButton title="Editar aluno" />
       </form>

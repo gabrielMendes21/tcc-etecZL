@@ -47,7 +47,7 @@ export default async function Turma({ params }) {
             return task.entregue === true
           })
         })
-      : 0
+      : []
 
   return (
     <Main>
@@ -66,7 +66,7 @@ export default async function Turma({ params }) {
           className="w-full rounded-full h-6 my-6"
           style={{
             background: `linear-gradient(90deg, blue ${
-              (studentsWithAllTasksDone.length / students.length) * 100
+              (studentsWithAllTasksDone.length ?? 0 / students.length) * 100
             }%, #D9D9D9 0%)`,
           }}
         ></div>
@@ -80,7 +80,7 @@ export default async function Turma({ params }) {
           <li className="flex items-center gap-3 text-xxs lg:text-xs">
             <Percent color="#0F62FE" />
             {Math.round(
-              (studentsWithAllTasksDone.length / students.length) * 100,
+              (studentsWithAllTasksDone.length ?? 0 / students.length) * 100,
             )}
             % - {studentsWithAllTasksDone.length}/{students.length} alunos
           </li>
