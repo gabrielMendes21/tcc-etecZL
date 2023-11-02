@@ -12,7 +12,7 @@ export default function Footer() {
   return pathname.includes('relatorio') ? (
     <></>
   ) : (
-    <footer className="px-5 bg-[#262626] w-full py-10 self-end text-white">
+    <footer className="px-5 bg-[#262626] w-full py-10 self-end absolute text-white">
       <Delay className="flex justify-around flex-wrap">
         <div className="flex gap-5 md:gap-20 mb-5">
           {/* Schools */}

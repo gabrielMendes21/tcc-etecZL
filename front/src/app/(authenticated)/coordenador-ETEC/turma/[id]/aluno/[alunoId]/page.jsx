@@ -56,7 +56,7 @@ export default async function Aluno({ params }) {
         {/* Options */}
         <div className="grow">
           <button className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 p-3">
-            Gerar relatório
+            Gerar relatório detalhado
             <FileText strokeWidth={1} />
           </button>
 
