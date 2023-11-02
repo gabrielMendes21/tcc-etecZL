@@ -15,7 +15,7 @@ export default function GenerateReportButton() {
   const coordinator = segments[segments.length - 3].split('-')[1]
 
   const handleChangeIcon = () => {
-    setIcon(<LoadingIcon />)
+    setIcon(<LoadingIcon color="#FFF" />)
   }
 
   return (

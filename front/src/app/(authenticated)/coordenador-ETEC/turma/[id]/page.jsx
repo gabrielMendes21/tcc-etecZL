@@ -6,7 +6,6 @@ import NewStudentModal from '@/components/NewStudentModal'
 import { api } from '@/lib/api'
 import prisma from '@/lib/prisma'
 import { Check, Percent, Users } from 'lucide-react'
-import { cookies } from 'next/headers'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -21,9 +20,6 @@ export async function generateStaticParams() {
 }
 
 export default async function Turma({ params }) {
-  const cookie = cookies()
-  const token = cookie.get('auth-token').value
-
   const classResponse = await api.get(`/turmas`)
 
   const turma = classResponse.data.filter((schoolclass) => {
@@ -98,7 +94,7 @@ export default async function Turma({ params }) {
       <hr className="border-[#C6C6C6]" />
 
       {/* Generate report */}
-      <GenerateReportButton token={token} />
+      <GenerateReportButton />
 
       <hr className="border-[#C6C6C6] my-8" />
 
