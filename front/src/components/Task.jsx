@@ -5,7 +5,7 @@ export default function Task({ name, hours, dueDate }) {
     <Card>
       <span className="text-base col-span-1/2">{name}</span>
       <span>Prazo de entrega - {dueDate}</span>
-      <span>{hours} hora(s)</span>
+      {hours ? <span>{hours} hora(s)</span> : ''}
     </Card>
   )
 }

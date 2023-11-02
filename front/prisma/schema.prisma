@@ -195,39 +195,3 @@ model Horas {
 
   @@index([codAluno])
 }
-
-// model Coordenador {
-//   id              Int    @id @default(autoincrement()) @map("codCoordenador")
-//   nome            String
-//   email           String @unique
-//   senha           String
-//   tipoCoordenador String
-
-//   escolaId Int
-//   escola   Escola @relation(fields: [escolaId], references: [id])
-
-//   @@index([escolaId])
-// }
-
-// model Aluno {
-//   id Int @id @map("rm")
-
-//   nome            String
-//   email           String @unique
-//   senha           String
-//   turma           String
-//   horasConcluidas Int
-//   horasAnuais     Int
-
-//   escolaId Int
-//   escola   Escola @relation(fields: [escolaId], references: [id])
-
-//   AlunoAtividade Entrega[]
-
-//   @@index([escolaId])
-// }
-
-//   AlunoAtividade Entrega[]
-
-//   @@index([escolaId])
-// }

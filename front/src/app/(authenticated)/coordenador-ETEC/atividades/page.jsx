@@ -1,29 +1,74 @@
-'use client'
-
+import CoordinatorTasksTab from '@/components/CoordinatorTasksTab'
 import H1 from '@/components/H1'
-import Dropdown from '@/components/Dropdown'
-import Task from '@/components/Task'
-import Link from 'next/link'
 import Main from '@/components/Main'
+import NewActivityModal from '@/components/NewActivityModal'
+import NewButton from '@/components/NewButton'
+import prisma from '@/lib/prisma'
 
-export default function Atividades() {
+export default async function Atividades() {
+  const firstYearTasks = await prisma.atividade.findMany({
+    where: {
+      entrega: {
+        some: {
+          aluno: {
+            turma: {
+              nomeTurma: {
+                contains: '1',
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+
+  const secondYearTasks = await prisma.atividade.findMany({
+    where: {
+      entrega: {
+        some: {
+          aluno: {
+            turma: {
+              nomeTurma: {
+                contains: '2',
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+
+  const thirdYearTasks = await prisma.atividade.findMany({
+    where: {
+      entrega: {
+        some: {
+          aluno: {
+            turma: {
+              nomeTurma: {
+                contains: '3',
+              },
+            },
+          },
+        },
+      },
+    },
+  })
+
   return (
     <Main>
       <H1 title="Atividades" />
 
-      {/* Pending activities */}
-      <Dropdown title="Pendentes">
-        <Link href="/coordenador-ETEC/atividades/pitch">
-          <Task name="Pitch de apresentação" hours={1} dueDate="19/05/2023" />
-        </Link>
-        <Task name="Cursos DIO" hours={1} dueDate="05/12/2023" />
-      </Dropdown>
+      <CoordinatorTasksTab
+        classesTasks={[firstYearTasks, secondYearTasks, thirdYearTasks]}
+        coordinator="ETEC"
+      />
 
-      {/* Past Activities */}
-      <Dropdown title="Atividades passadas">
-        <Task name="Pre-projeto" hours={2} dueDate="19/05/2023" />
-        <Task name="Skills Build" hours={30} dueDate="25/06/2023" />
-      </Dropdown>
+      <NewButton
+        to="/coordenador-ETEC/atividades/nova-atividade"
+        text="Nova atividade"
+      />
+
+      <NewActivityModal />
     </Main>
   )
 }
