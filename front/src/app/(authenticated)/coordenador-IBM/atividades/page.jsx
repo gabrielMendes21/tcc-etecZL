@@ -3,18 +3,20 @@ import H1 from '@/components/H1'
 import Main from '@/components/Main'
 import NewActivityModal from '@/components/NewActivityModal'
 import NewButton from '@/components/NewButton'
+import { api } from '@/lib/api'
 import prisma from '@/lib/prisma'
 
 export default async function Atividades() {
-  const firstYearTasks = await prisma.atividade.findMany({
+  const classesTasks = await prisma.turma.findMany({
     where: {
-      entrega: {
-        some: {
-          aluno: {
-            turma: {
-              nomeTurma: {
-                contains: '1',
-              },
+      ano: new Date().getFullYear(),
+    },
+    include: {
+      Usuario: {
+        include: {
+          Entrega: {
+            include: {
+              atividade: true,
             },
           },
         },
@@ -22,53 +24,21 @@ export default async function Atividades() {
     },
   })
 
-  const secondYearTasks = await prisma.atividade.findMany({
-    where: {
-      entrega: {
-        some: {
-          aluno: {
-            turma: {
-              nomeTurma: {
-                contains: '2',
-              },
-            },
-          },
-        },
-      },
-    },
-  })
-
-  const thirdYearTasks = await prisma.atividade.findMany({
-    where: {
-      entrega: {
-        some: {
-          aluno: {
-            turma: {
-              nomeTurma: {
-                contains: '3',
-              },
-            },
-          },
-        },
-      },
-    },
-  })
+  const response = await api.get('/turmas')
+  const classes = response.data
 
   return (
     <Main>
       <H1 title="Atividades" />
 
-      <CoordinatorTasksTab
-        classesTasks={[firstYearTasks, secondYearTasks, thirdYearTasks]}
-        coordinator="IBM"
-      />
+      <CoordinatorTasksTab classesTasks={classesTasks} coordinator="IBM" />
 
       <NewButton
         to="/coordenador-IBM/atividades/nova-atividade"
         text="Nova atividade"
       />
 
-      <NewActivityModal />
+      <NewActivityModal classes={classes} />
     </Main>
   )
 }
