@@ -25,105 +25,64 @@ export default function CoordinatorTasksTab({ classesTasks, coordinator }) {
     tabButtons[tabButtons.length - 1].style.left = `${e.target.offsetLeft}px`
   }
 
+  function removeRepeatedTasks(array, propriedade) {
+    return new Set(array.map((item) => item[propriedade]))
+  }
+
   return (
     <div>
+      {/* Create a nav button for each class */}
       <div className="relative">
-        <button className="px-3 mt-5 pending" onClick={handleTab}>
-          1º AMS
-        </button>
-        <button className="px-3 mt-5 sent" onClick={handleTab}>
-          2º AMS
-        </button>
-        <button className="px-3 mt-5 overdue" onClick={handleTab}>
-          3º AMS
-        </button>
+        {classesTasks.map((classTask) => {
+          return (
+            <button className={`px-3 mt-5 ${classTask.id}`} onClick={handleTab}>
+              {classTask.nomeTurma}
+            </button>
+          )
+        })}
         {/* Nav Line */}
-        <div className="absolute top-12 left-0 w-[80px] h-1 bg-highlighted transition-all"></div>
+        <div className="absolute top-12 left-0 w-[110px] h-1 bg-highlighted transition-all"></div>
       </div>
 
-      {/* Pending tasks */}
-      <div className="static m-5 pending">
-        {classesTasks[0].length === 0 ? (
-          <span className="text-black/60">
-            Essa turma não possui atividades
-          </span>
-        ) : (
-          classesTasks[0].map((task) => {
-            return (
-              <Link
-                href={`/coordenador-${coordinator}/atividades/${task.id}`}
-                key={task.id}
-              >
-                <Task
-                  name={task.titulo}
-                  hours={task.horasAtividade}
-                  dueDate={
-                    new Date(task.prazoEntrega)
-                      .toLocaleString('pt-BR')
-                      .split(', ')[0]
-                  }
-                />
-              </Link>
-            )
-          })
-        )}
-      </div>
+      {/* {console.log(classesTasks)} */}
 
-      {/* Sent tasks */}
-      <div className="invisible absolute w-0 sent">
-        {classesTasks[1].length === 0 ? (
-          <span className="text-black/60">
-            Essa turma não possui atividades
-          </span>
-        ) : (
-          classesTasks[1].map((task) => {
-            return (
-              <Link
-                href={`/coordenador-${coordinator}/atividades/${task.id}`}
-                key={task.id}
-              >
-                <Task
-                  name={task.titulo}
-                  hours={task.horasAtividade}
-                  dueDate={
-                    new Date(task.prazoEntrega)
-                      .toLocaleString('pt-BR')
-                      .split(', ')[0]
-                  }
-                />
-              </Link>
-            )
+      {/* Get the set of tasks for each class */}
+      {classesTasks.map((classTask) => {
+        let tasks = []
+        classTask.Usuario.map((student) => {
+          return student.Entrega.map((task) => {
+            return tasks.push(task.atividade)
           })
-        )}
-      </div>
+        })
+        const tasksId = removeRepeatedTasks(tasks, 'id')
 
-      {/* Overdue Tasks */}
-      <div className="invisible absolute w-0 overdue">
-        {classesTasks[2].length === 0 ? (
-          <span className="text-black/30 block">
-            Essa turma não possui atividades
-          </span>
-        ) : (
-          classesTasks[2].map((task) => {
-            return (
-              <Link
-                href={`/coordenador-${coordinator}/atividades/${task.id}`}
-                key={task.id}
-              >
-                <Task
-                  name={task.titulo}
-                  hours={task.horasAtividade}
-                  dueDate={
-                    new Date(task.prazoEntrega)
-                      .toLocaleString('pt-BR')
-                      .split(', ')[0]
-                  }
-                />
-              </Link>
-            )
-          })
-        )}
-      </div>
+        tasks = [...tasksId].map((id) => {
+          return tasks.find((item) => item.id === id)
+        })
+
+        return (
+          <div className={`static m-5 ${classTask.id}`}>
+            {tasks.map((task) => {
+              return (
+                <Link
+                  href={`/coordenador-${coordinator}/atividades/${task.id}`}
+                  key={task.id}
+                >
+                  <Task
+                    name={task.titulo}
+                    hours={task.horasAtividade}
+                    dueDate={
+                      new Date(task.prazoEntrega)
+                        .toLocaleString('pt-BR')
+                        .split(', ')[0]
+                    }
+                  />
+                </Link>
+              )
+            })}
+          </div>
+        )
+      })}
     </div>
   )
 }
