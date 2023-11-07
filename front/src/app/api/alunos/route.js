@@ -6,17 +6,27 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url)
   const classId = searchParams.get('classId')
 
-  const students = await prisma.usuario.findMany({
-    where: {
-      codTurma: Number(classId),
-    },
-    include: {
-      Entrega: true,
-    },
-    orderBy: {
-      nome: 'asc',
-    },
-  })
+  let students = []
+
+  if (classId) {
+    students = await prisma.usuario.findMany({
+      where: {
+        codTurma: Number(classId),
+      },
+      include: {
+        Entrega: true,
+      },
+      orderBy: {
+        nome: 'asc',
+      },
+    })
+  } else {
+    students = await prisma.usuario.findMany({
+      where: {
+        codTipoUsuario: 1,
+      },
+    })
+  }
 
   return NextResponse.json(students)
 }

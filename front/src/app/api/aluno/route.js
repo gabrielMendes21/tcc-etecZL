@@ -16,6 +16,7 @@ export async function GET(req) {
           ano: new Date().getFullYear(),
         },
       },
+      Entrega: true,
     },
   })
 
