@@ -7,7 +7,10 @@ export async function GET(req) {
 
   const task = await prisma.atividade.findFirst({
     where: {
-      id: taskId,
+      id: Number(taskId),
+    },
+    include: {
+      tipoAtividade: true,
     },
   })
 
