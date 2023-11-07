@@ -116,6 +116,7 @@ model Entrega {
   dataEntrega DateTime?
   conteudo    Json?
   entregue    Boolean   @default(false)
+  aprovada    Boolean?
 
   // Relations
   aluno    Usuario @relation(fields: [codAluno], references: [id])
