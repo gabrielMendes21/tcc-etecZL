@@ -47,6 +47,7 @@ export async function GET(req) {
         '..',
         '..',
         '..',
+        '..',
         'public',
         filename,
       )
@@ -61,11 +62,11 @@ export async function GET(req) {
         fileStream.pipe(writeStream)
 
         writeStream.on('finish', () => {
-          return NextResponse.json('Pronto')
+          console.log('Pronto')
         })
 
-        writeStream.on('error', () => {
-          return NextResponse.json('Erro ao puxar arquivo', { status: 500 })
+        writeStream.on('error', (e) => {
+          console.log('Erro', e)
         })
       }
     }

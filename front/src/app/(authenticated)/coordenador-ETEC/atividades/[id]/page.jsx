@@ -45,6 +45,7 @@ export default async function TaskPage({ params }) {
         <span className=" text-black/60 block mb-7">
           {task.tipoAtividade.tipoAtividade}
         </span>
+        <hr className="border border-[#C6C6C6]" />
       </div>
 
       <div>
@@ -55,9 +56,15 @@ export default async function TaskPage({ params }) {
       ) : (
         deliveredTasks.map((task) => {
           return (
-            <Link href={`${params.id}/aluno/${task.aluno.id}`}>
+            <Link href={`${params.id}/entregas/${task.id}`}>
               <Card>
-                <span className="text-lg">{task.aluno.nome}</span>
+                <span className="md:text-lg col-span-1/2">
+                  {task.aluno.nome}
+                </span>
+                <span className="text-xs inline-flex">
+                  {`${task.aluno.turma.nomeTurma} - ${task.aluno.turma.escola.nomeEscola}`}
+                </span>
+                {task.Correcao ? <span>Corrigida</span> : <></>}
               </Card>
             </Link>
           )
@@ -74,11 +81,12 @@ export default async function TaskPage({ params }) {
       ) : (
         notDeliveredTasks.map((task) => {
           return (
-            <Link href={`${params.id}/aluno/${task.aluno.id}`}>
-              <Card>
-                <span className="text-lg">{task.aluno.nome}</span>
-              </Card>
-            </Link>
+            <Card>
+              <span className="md:text-lg">{task.aluno.nome}</span>
+              <span className="text-xs">
+                {`${task.aluno.turma.nomeTurma} - ${task.aluno.turma.escola.nomeEscola}`}
+              </span>
+            </Card>
           )
         })
       )}

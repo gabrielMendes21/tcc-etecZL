@@ -7,25 +7,47 @@ export async function POST(req) {
   const taskDeliveryId = searchParams.get('taskDeliveryId')
   const coordinatorId = searchParams.get('coordinatorId')
 
+  const isApproved = data.taskVal === 'approve'
+
   await prisma.correcao.create({
     data: {
       codEntrega: Number(taskDeliveryId),
       conteudo: data.assessment,
       codCoordenador: Number(coordinatorId),
+      entregaAprovada: !!isApproved,
     },
   })
 
-  const isApproved = data.taskVal === 'approve'
-  console.log(taskDeliveryId)
+  if (isApproved) {
+    const taskDelivery = await prisma.entrega.findFirst({
+      where: {
+        id: Number(taskDeliveryId),
+      },
+      include: {
+        atividade: true,
+        aluno: {
+          include: {
+            Horas: true,
+          },
+        },
+      },
+    })
 
-  // await prisma.entrega.update({
-  //   data: {
-  //     aprovada: !!isApproved,
-  //   },
-  //   where: {
-  //     id: Number(taskDeliveryId),
-  //   },
-  // })
+    const hours = taskDelivery.aluno.Horas.find((hours) => {
+      return hours.ano === new Date().getFullYear()
+    })
+
+    const completedHours = hours.horasConcluidas
+
+    await prisma.horas.update({
+      data: {
+        horasConcluidas: completedHours + taskDelivery.atividade.horasAtividade,
+      },
+      where: {
+        id: hours.id,
+      },
+    })
+  }
 
   return NextResponse.json('Sucesso')
 }
