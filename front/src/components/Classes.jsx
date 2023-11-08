@@ -1,7 +1,7 @@
 import { api } from '@/lib/api'
-import Card from './Card'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+import Card from './Card'
 
 export default async function Classes() {
   const cookieStore = cookies()
@@ -15,6 +15,8 @@ export default async function Classes() {
   })
 
   const user = userInfoResponse.data
+
+  console.log(user)
 
   // Get the school's classes
   const classesResponse = await api.get(

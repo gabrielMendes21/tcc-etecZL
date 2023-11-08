@@ -11,5 +11,7 @@ export async function GET(req) {
     },
   })
 
+  console.log(schoolId)
+
   return NextResponse.json(turmas)
 }

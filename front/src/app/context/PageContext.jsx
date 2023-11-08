@@ -1,8 +1,8 @@
 'use client'
 import { api } from '@/lib/api'
+import { usePathname, useRouter } from 'next/navigation'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { createContext, useEffect, useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
 
 export const PageContext = createContext({})
 
@@ -25,6 +25,7 @@ export function PageContextProvider({ children }) {
 
       // Get the token and the user info
       const { token, user } = loginResponse.data
+
       // Create the auth cookie
       setCookie(null, 'auth-token', token, {
         maxAge: 60 * 60 * 24 * 7,
