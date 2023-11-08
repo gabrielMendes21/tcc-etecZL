@@ -14,6 +14,7 @@ const storage = new Storage({
     '..',
     '..',
     '..',
+    '..',
     'fluid-axis-402017-05332102ad29.json',
   ),
   projectId: 'fluid-axis-402017',

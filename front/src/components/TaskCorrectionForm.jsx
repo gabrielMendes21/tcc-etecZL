@@ -28,8 +28,6 @@ export default function TaskCorrectionForm({ taskDelivery }) {
     router.refresh()
   }
 
-  console.log(taskDelivery)
-
   return (
     <form action="" className="mt-6" onSubmit={handleSubmit} method="POST">
       <label htmlFor="assessment">Avaliação</label>
@@ -48,7 +46,7 @@ export default function TaskCorrectionForm({ taskDelivery }) {
           ></textarea>
           <span className="block">Validação da atividade</span>
           <span className="text-sm text-black/60">
-            {taskDelivery.aprovada
+            {taskDelivery.Correcao.entregaAprovada
               ? 'Atividade aprovada'
               : 'Atividade reprovada'}
           </span>
@@ -92,7 +90,9 @@ export default function TaskCorrectionForm({ taskDelivery }) {
 
       <button
         type="submit"
-        className="flex justify-between items-center w-full text-left font-light bg-highlighted hover:brightness-110 transition-all text-white mt-7 mb-2 p-3"
+        className={`flex justify-between items-center w-full text-left font-light hover:brightness-110 transition-all text-white mt-7 mb-2 p-3 ${
+          taskDelivery.Correcao ? 'bg-gray-500' : 'bg-highlighted'
+        }`}
         disabled={taskDelivery.Correcao}
       >
         {taskDelivery.Correcao ? 'Correção realizada' : 'Enviar correção'}
