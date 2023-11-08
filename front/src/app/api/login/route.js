@@ -10,8 +10,27 @@ export async function GET(req) {
   const token = searchParams.get('token')
 
   try {
-    const user = jwt.verify(token, process.env.NEXT_PUBLIC_TOKENSECRET)
-    return NextResponse.json(user)
+    const userTokenInfo = jwt.verify(token, process.env.NEXT_PUBLIC_TOKENSECRET)
+
+    const user = await prisma.usuario.findFirst({
+      where: {
+        id: Number(userTokenInfo.sub),
+      },
+      include: {
+        Horas: true,
+      },
+    })
+
+    const hours = user.Horas.find(
+      (hours) => hours.ano === new Date().getFullYear(),
+    )
+
+    if (user.codTipoUsuario === 1) {
+      userTokenInfo.horasAnuais = hours.horasAnuais
+      userTokenInfo.horasConcluidas = hours.horasConcluidas
+    }
+
+    return NextResponse.json(userTokenInfo)
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 401 })
   }
