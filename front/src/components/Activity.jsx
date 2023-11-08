@@ -58,7 +58,7 @@ export default function Activity({ task }) {
 
     console.log(response.data)
     router.refresh()
-    router.push('../')
+    router.push('../atividades')
   }
 
   // Get task due date
@@ -110,7 +110,23 @@ export default function Activity({ task }) {
                       if (err) throw err
                       return buffer.toString('hex')
                     })
-                    return <ImageModal filename={file} key={id} />
+
+                    const segments = file.split('-')
+                    const filenameWithoutID = segments.slice(1).join('-')
+
+                    return file.includes('.pdf') ? (
+                      <Link
+                        href={`/${file}`}
+                        target="_blank"
+                        className="bg-highlighted flex gap-3 text-white px-3 py-2 w-max mt-5 hover:brightness-110 transition-all"
+                        key={id}
+                      >
+                        <FileText />
+                        {filenameWithoutID}
+                      </Link>
+                    ) : (
+                      <ImageModal filename={file} key={id} />
+                    )
                   })}
                 </>
               ) : (
