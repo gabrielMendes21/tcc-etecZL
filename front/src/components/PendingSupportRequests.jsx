@@ -1,11 +1,24 @@
 import { api } from '@/lib/api'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import Card from './Card'
 // import TradLink from './Link'
 
 export default async function PendingSupportRequests({ coordinator }) {
+  const cookieStore = cookies()
+  const token = cookieStore.get('auth-token').value
+
+  // Get the data from the token
+  const userResponse = await api.get(`/login`, {
+    params: {
+      token,
+    },
+  })
+
+  const user = userResponse.data
+
   const pendingRequestsResponse = await api.get(
-    '/solicitacoesSuporte/pendentes',
+    `/solicitacoesSuporte/pendentes?coordinatorId=${user.sub}`,
   )
   const pendingRequests = pendingRequestsResponse.data
 
