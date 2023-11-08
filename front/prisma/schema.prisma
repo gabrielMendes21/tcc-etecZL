@@ -116,7 +116,6 @@ model Entrega {
   dataEntrega DateTime?
   conteudo    Json?
   entregue    Boolean   @default(false)
-  aprovada    Boolean?
 
   // Relations
   aluno    Usuario @relation(fields: [codAluno], references: [id])
@@ -169,9 +168,10 @@ model Resposta {
 
 model Correcao {
   // Attributes
-  id           Int      @id @default(autoincrement()) @map("codCorrecao")
-  dataCorrecao DateTime @default(now())
-  conteudo     String
+  id              Int      @id @default(autoincrement()) @map("codCorrecao")
+  dataCorrecao    DateTime @default(now())
+  conteudo        String
+  entregaAprovada Boolean
 
   // Relations
   coordenador    Usuario @relation(fields: [codCoordenador], references: [id])

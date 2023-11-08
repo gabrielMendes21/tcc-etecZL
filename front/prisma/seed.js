@@ -165,14 +165,10 @@ async function seed() {
   await prisma.correcao.createMany({
     data: [
       {
+        entregaAprovada: true,
         codCoordenador: 1,
         codEntrega: 1,
         conteudo: 'Meus parabéns.',
-      },
-      {
-        codCoordenador: 1,
-        codEntrega: 4,
-        conteudo: 'Sem palavras!',
       },
     ],
   })
