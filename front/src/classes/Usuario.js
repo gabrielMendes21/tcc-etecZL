@@ -135,7 +135,7 @@ export default class Usuario {
         this.setRm = user.rm
         this.setHorasConcluidas = horas?.horasConcluidas
         this.setHorasAnuais = horas?.horasAnuais
-        this.setEscola = user.codEscola
+        this.setEscola = user.codEscola || user.turma?.codEscola || null
         this.setTipoUsuario = user.tipoUsuario.tipoUsuario
 
         return true
