@@ -14,8 +14,6 @@ export async function GET(req) {
     },
   })
 
-  console.log(codEscola)
-
   const requests = await prisma.solicitacaoSuporte.findMany({
     where: {
       aluno: {

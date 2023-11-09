@@ -1,10 +1,23 @@
 import { api } from '@/lib/api'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import Card from './Card'
 
 export default async function AnsweredSupportRequests({ coordinator }) {
+  const cookieStore = cookies()
+  const token = cookieStore.get('auth-token').value
+
+  // Get the data from the token
+  const userResponse = await api.get(`/login`, {
+    params: {
+      token,
+    },
+  })
+
+  const user = userResponse.data
+
   const answeredRequestsResponse = await api.get(
-    '/solicitacoesSuporte/respondidas',
+    `/solicitacoesSuporte/respondidas?coordinatorId=${user.sub}`,
   )
   const answeredRequests = answeredRequestsResponse.data
 
