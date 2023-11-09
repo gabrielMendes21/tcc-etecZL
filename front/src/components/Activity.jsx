@@ -16,13 +16,19 @@ export default function Activity({ task }) {
   const [filesName, setFilesName] = useState([])
   const [uploadIcon, setUploadIcon] = useState(<Upload />)
   const [sendIcon, setSendIcon] = useState(<ArrowRight strokeWidth={1} />)
+  const [loadingFiles, setLoadingFiles] = useState('Carregando anexos...')
 
   const router = useRouter()
 
   useEffect(() => {
     api
       .get(`/aluno/entrega/anexos?taskId=${task.id}`)
-      .then((response) => setTaskSentFiles(response.data))
+      .then((response) => {
+        setTaskSentFiles(response.data)
+      })
+      .finally(() => {
+        setLoadingFiles('Você não possui anexos')
+      })
   }, [])
 
   const handleChangeKnowledge = (e) => {
@@ -130,9 +136,7 @@ export default function Activity({ task }) {
                   })}
                 </>
               ) : (
-                <span className="text-black/60">
-                  Você não anexou nenhum arquivo nesta atividade
-                </span>
+                <span className="text-black/60">{loadingFiles}</span>
               )}
             </>
           ) : (
