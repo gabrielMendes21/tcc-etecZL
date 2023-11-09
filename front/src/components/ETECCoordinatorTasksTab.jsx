@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Task from './Task'
 
-export default function CoordinatorTasksTab({ classesTasks, coordinator }) {
+export default function ETECCoordinatorTasksTab({ classesTasks }) {
   const handleTab = (e) => {
     const tabButtons = Array.from(e.target.parentNode.children)
 
@@ -44,10 +44,8 @@ export default function CoordinatorTasksTab({ classesTasks, coordinator }) {
         <div className="absolute top-12 left-0 w-[110px] h-1 bg-highlighted transition-all"></div>
       </div>
 
-      {/* {console.log(classesTasks)} */}
-
       {/* Get the set of tasks for each class */}
-      {classesTasks.map((classTask) => {
+      {classesTasks.map((classTask, index) => {
         let tasks = []
         classTask.Usuario.map((student) => {
           return student.Entrega.map((task) => {
@@ -61,25 +59,29 @@ export default function CoordinatorTasksTab({ classesTasks, coordinator }) {
         })
 
         return (
-          <div className={`static m-5 ${classTask.id}`}>
-            {tasks.map((task) => {
-              return (
-                <Link
-                  href={`/coordenador-${coordinator}/atividades/${task.id}`}
-                  key={task.id}
-                >
-                  <Task
-                    name={task.titulo}
-                    hours={task.horasAtividade}
-                    dueDate={
-                      new Date(task.prazoEntrega)
-                        .toLocaleString('pt-BR')
-                        .split(', ')[0]
-                    }
-                  />
-                </Link>
-              )
-            })}
+          <div className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${classTask.id}`}>
+            {tasks.length === 0 ? (
+              <span className='text-black/60'>Essa turma não possui atividades</span>
+            ) : (
+              tasks.map((task) => {
+                return (
+                  <Link
+                    href={`/coordenador-ETEC/atividades/${task.id}`}
+                    key={task.id}
+                  >
+                    <Task
+                      name={task.titulo}
+                      hours={task.horasAtividade}
+                      dueDate={
+                        new Date(task.prazoEntrega)
+                          .toLocaleString('pt-BR')
+                          .split(', ')[0]
+                      }
+                    />
+                  </Link>
+                )
+              })
+            )}
           </div>
         )
       })}

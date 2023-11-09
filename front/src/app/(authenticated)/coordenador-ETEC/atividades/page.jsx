@@ -1,4 +1,5 @@
-import CoordinatorTasksTab from '@/components/CoordinatorTasksTab'
+
+import ETECCoordinatorTasksTab from '@/components/ETECCoordinatorTasksTab'
 import H1 from '@/components/H1'
 import Main from '@/components/Main'
 import NewActivityModal from '@/components/NewActivityModal'
@@ -29,7 +30,7 @@ export default async function Atividades() {
     <Main>
       <H1 title="Atividades" />
 
-      <CoordinatorTasksTab classesTasks={classes} coordinator="ETEC" />
+      <ETECCoordinatorTasksTab classesTasks={classes} />
 
       <NewButton
         to="/coordenador-ETEC/atividades/nova-atividade"

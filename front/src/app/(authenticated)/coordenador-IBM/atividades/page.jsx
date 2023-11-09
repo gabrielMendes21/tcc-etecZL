@@ -1,5 +1,5 @@
-import CoordinatorTasksTab from '@/components/CoordinatorTasksTab'
 import H1 from '@/components/H1'
+import IBMCoordinatorTasksTab from '@/components/IBMCoordinatorTasksTab'
 import Main from '@/components/Main'
 import NewActivityModal from '@/components/NewActivityModal'
 import NewButton from '@/components/NewButton'
@@ -12,6 +12,7 @@ export default async function Atividades() {
       ano: new Date().getFullYear(),
     },
     include: {
+      escola: true,
       Usuario: {
         include: {
           Entrega: {
@@ -23,6 +24,7 @@ export default async function Atividades() {
       },
     },
   })
+  console.log(classesTasks)
 
   const response = await api.get('/turmas')
   const classes = response.data
@@ -31,7 +33,7 @@ export default async function Atividades() {
     <Main>
       <H1 title="Atividades" />
 
-      <CoordinatorTasksTab classesTasks={classesTasks} coordinator="IBM" />
+      <IBMCoordinatorTasksTab classesTasks={classesTasks} />
 
       <NewButton
         to="/coordenador-IBM/atividades/nova-atividade"
