@@ -27,7 +27,7 @@ export default async function PendingSupportRequests({ coordinator }) {
       <div className="classes space-y-2">
         {pendingRequests.length === 0 ? (
           <span className="text-black/30 block">
-            Você não possui nenhuma solicição pendente
+            Você não possui nenhuma solicitação pendente
           </span>
         ) : (
           <>
