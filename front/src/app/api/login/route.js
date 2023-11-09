@@ -48,13 +48,20 @@ export async function POST(req) {
 
   // Response can be true of false
   if (loginResponse) {
-    // Get user school
-    const schoolResponse = await prisma.escola.findFirst({
-      where: {
-        id: user.escola,
-      },
-    })
-    const schoolInfo = new Escola(schoolResponse.id, schoolResponse.nomeEscola)
+    let schoolInfo = null
+    if (
+      user.tipoUsuario === 'Coordenador ETEC' ||
+      user.tipoUsuario === 'Aluno'
+    ) {
+      // Get user school
+      const schoolResponse = await prisma.escola.findFirst({
+        where: {
+          id: user.escola,
+        },
+      })
+
+      schoolInfo = new Escola(schoolResponse.id, schoolResponse.nomeEscola)
+    }
 
     // Generate token
     const token = jwt.sign(
