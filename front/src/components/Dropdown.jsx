@@ -11,7 +11,7 @@ export default function Dropdown({ title, children }) {
   return (
     <>
       <div
-        className="dropdown flex items-end gap-2 my-6 w-max"
+        className="dropdown flex items-end gap-2 my-6 w-max hover:cursor-pointer"
         onClick={handleDropDown}
       >
         <h3 className="font-medium">{title}</h3>
