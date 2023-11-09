@@ -4,34 +4,32 @@ import Main from '@/components/Main'
 import NewActivityModal from '@/components/NewActivityModal'
 import NewButton from '@/components/NewButton'
 import { api } from '@/lib/api'
-import prisma from '@/lib/prisma'
+import { cookies } from 'next/headers'
 
 export default async function Atividades() {
-  const classesTasks = await prisma.turma.findMany({
-    where: {
-      ano: new Date().getFullYear(),
-    },
-    include: {
-      Usuario: {
-        include: {
-          Entrega: {
-            include: {
-              atividade: true,
-            },
-          },
-        },
-      },
+  const cookieStore = cookies()
+  const token = cookieStore.get('auth-token').value
+
+  // Get the data from the token
+  const userResponse = await api.get(`/login`, {
+    params: {
+      token,
     },
   })
 
-  const response = await api.get('/turmas')
-  const classes = response.data
+  const user = userResponse.data
+
+  const classesResponse = await api.get(
+    `/escola/turmas?schoolId=${user.escola.codEscola}`,
+  )
+
+  const classes = classesResponse.data
 
   return (
     <Main>
       <H1 title="Atividades" />
 
-      <CoordinatorTasksTab classesTasks={classesTasks} coordinator="ETEC" />
+      <CoordinatorTasksTab classesTasks={classes} coordinator="ETEC" />
 
       <NewButton
         to="/coordenador-ETEC/atividades/nova-atividade"
