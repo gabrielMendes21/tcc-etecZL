@@ -14,20 +14,31 @@ export async function GET(req) {
     },
   })
 
-  const requests = await prisma.solicitacaoSuporte.findMany({
-    where: {
-      aluno: {
-        turma: {
-          codEscola,
+  let requests = []
+
+  if (codEscola) {
+    requests = await prisma.solicitacaoSuporte.findMany({
+      where: {
+        aluno: {
+          turma: {
+            codEscola,
+          },
         },
       },
-    },
-    include: {
-      Resposta: true,
-      aluno: true,
-    },
-  })
+      include: {
+        Resposta: true,
+        aluno: true,
+      },
+    })
+  }
 
+  requests = await prisma.solicitacaoSuporte.findMany({
+    include: {
+      aluno: true,
+      Resposta: true
+    }
+  })
+    
   const pendingRequests = requests.filter((request) => !request.Resposta)
 
   return NextResponse.json(pendingRequests)

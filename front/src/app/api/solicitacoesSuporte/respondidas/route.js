@@ -14,19 +14,31 @@ export async function GET(req) {
     },
   })
 
-  const requests = await prisma.solicitacaoSuporte.findMany({
-    where: {
-      aluno: {
-        turma: {
-          codEscola,
+  let requests = []
+
+  if (codEscola) {
+    requests = await prisma.solicitacaoSuporte.findMany({
+      where: {
+        aluno: {
+          turma: {
+            codEscola,
+          },
         },
       },
-    },
+      include: {
+        Resposta: true,
+        aluno: true,
+      },
+    })
+  }
+
+  requests = await prisma.solicitacaoSuporte.findMany({
     include: {
-      Resposta: true,
       aluno: true,
-    },
+      Resposta: true
+    }
   })
+
 
   const answeredRequests = requests.filter((request) => request.Resposta)
 
