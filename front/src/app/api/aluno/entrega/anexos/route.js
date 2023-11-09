@@ -36,7 +36,8 @@ export async function GET(req) {
   if (task.conteudo?.anexos) {
     const filesName = task.conteudo?.anexos.split(',')
 
-    for (const filename of filesName) {
+    for (let filename of filesName) {
+      filename = filename.trim()
       files.push(filename)
       // Path where file will be stored
       const filePath = join(
