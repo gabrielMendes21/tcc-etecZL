@@ -3,7 +3,7 @@
 
 import { NextResponse } from 'next/server'
 
-const loginUrl = `${process.env.NEXT_PUBLIC_WEB_URL}login`
+const loginUrl = `http://localhost:3000/login`
 
 export function middleware(req) {
   // Auth Token
