@@ -3,6 +3,8 @@ import Main from '@/components/Main'
 import { api } from '@/lib/api'
 import Link from 'next/link'
 
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   const response = await api.get(`/atividades`)
 
@@ -41,9 +43,9 @@ export default async function TaskPage({ params }) {
   return (
     <Main>
       <div className="text-center my-7">
-        <h1 className="text-xl md:text-2xl">{task.titulo}</h1>
+        <h1 className="text-xl md:text-2xl">{task?.titulo ?? ''}</h1>
         <span className=" text-black/60 block mb-7">
-          {task.tipoAtividade.tipoAtividade}
+          {task?.tipoAtividade?.tipoAtividade ?? ''}
         </span>
         <hr className="border border-[#C6C6C6]" />
       </div>
