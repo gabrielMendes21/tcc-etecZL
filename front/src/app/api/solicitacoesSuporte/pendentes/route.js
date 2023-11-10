@@ -35,10 +35,10 @@ export async function GET(req) {
   requests = await prisma.solicitacaoSuporte.findMany({
     include: {
       aluno: true,
-      Resposta: true
-    }
+      Resposta: true,
+    },
   })
-    
+
   const pendingRequests = requests.filter((request) => !request.Resposta)
 
   return NextResponse.json(pendingRequests)

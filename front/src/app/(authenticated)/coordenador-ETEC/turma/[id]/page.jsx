@@ -34,10 +34,10 @@ export default async function Turma({ params }) {
   const studentsWithAllTasksDone =
     students.length > 0
       ? students.filter((student) => {
-        return student.Entrega.every((task) => {
-          return task.entregue === true
+          return student.Entrega.every((task) => {
+            return task.entregue === true
+          })
         })
-      })
       : []
 
   return (
@@ -56,9 +56,10 @@ export default async function Turma({ params }) {
         <div
           className="w-full rounded-full h-6 my-6"
           style={{
-            background: `linear-gradient(90deg, blue ${((studentsWithAllTasksDone.length ?? 0) / students.length ?? 0) *
+            background: `linear-gradient(90deg, blue ${
+              ((studentsWithAllTasksDone.length ?? 0) / students.length ?? 0) *
               100
-              }%, #D9D9D9 0%)`,
+            }%, #D9D9D9 0%)`,
           }}
         ></div>
 

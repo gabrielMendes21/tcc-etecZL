@@ -59,9 +59,15 @@ export default function ETECCoordinatorTasksTab({ classesTasks }) {
         })
 
         return (
-          <div className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${classTask.id}`}>
+          <div
+            className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${
+              classTask.id
+            }`}
+          >
             {tasks.length === 0 ? (
-              <span className='text-black/60'>Essa turma não possui atividades</span>
+              <span className="text-black/60">
+                Essa turma não possui atividades
+              </span>
             ) : (
               tasks.map((task) => {
                 return (

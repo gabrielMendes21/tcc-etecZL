@@ -1,15 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-import MyModal from './Modal'
-import H2 from './H2'
-import FormSubmitButton from './FormSubmitButton'
-import { PlusCircle } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { api } from '@/lib/api'
-import { useContext } from 'react'
 import { PageContext } from '@/app/context/PageContext'
+import { api } from '@/lib/api'
+import { PlusCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useContext, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import FormSubmitButton from './FormSubmitButton'
+import H2 from './H2'
+import MyModal from './Modal'
 
 export default function NewSupportRequestModal() {
   // Modal control
@@ -24,7 +23,7 @@ export default function NewSupportRequestModal() {
   // Form control
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data) => {
-    const response = await api.post(`/solicitacaoSuporte?studentId=${user?.user?.sub}`, {
+    await api.post(`/solicitacaoSuporte?studentId=${user?.user?.sub}`, {
       ...data,
     })
 
@@ -44,7 +43,12 @@ export default function NewSupportRequestModal() {
       <MyModal isOpen={isOpen} handleClose={handleClose} onlyDesktop>
         <H2 title="Criar solicitação de suporte" />
 
-        <form action="" method='POST' className="mt-8" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          action=""
+          method="POST"
+          className="mt-8"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <label htmlFor="subject" className="text-sm">
             Assunto
           </label>
@@ -54,7 +58,7 @@ export default function NewSupportRequestModal() {
             placeholder="Digite o assunto da sua solicitação"
             className="mt-3 mb-8 border-b block border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
             required
-            {...register("subject")}
+            {...register('subject')}
           />
 
           <label htmlFor="message" className="text-sm">
@@ -67,7 +71,7 @@ export default function NewSupportRequestModal() {
             className="mt-3 mb-8 border-b block resize-none border-black w-full bg-[#F4F4F4] focus:outline-highlighted rounded-none p-2"
             placeholder="Digite sua mensagem"
             required
-            {...register("message")}
+            {...register('message')}
           ></textarea>
 
           <hr className="border[#C6C6C6]" />

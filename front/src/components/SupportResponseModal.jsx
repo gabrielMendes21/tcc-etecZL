@@ -23,7 +23,7 @@ export default function SupportResponseModal({ supportRequest }) {
   // Form control
   const { register, handleSubmit } = useForm()
   const onSubmit = async (data) => {
-    const response = await api.post(
+    await api.post(
       `/solicitacaoSuporte/resposta?requestId=${supportRequest.id}&coordinatorId=${user?.user?.sub}`,
       {
         ...data,

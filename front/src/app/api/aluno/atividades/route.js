@@ -13,9 +13,9 @@ export async function GET(req) {
     include: {
       atividade: {
         include: {
-          tipoAtividade: true
-        }
-      }
+          tipoAtividade: true,
+        },
+      },
     },
   })
 

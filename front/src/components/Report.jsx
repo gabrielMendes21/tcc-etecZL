@@ -26,7 +26,7 @@ export default function Report({ student }) {
       <tbody>
         <tr>
           <th className="border p-2">Horas anuais</th>
-          {studentActivityYears.map((year, index) => {
+          {studentActivityYears.map((year) => {
             return (
               <td className="border p-2">
                 {hours.length > 0

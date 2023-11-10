@@ -35,10 +35,9 @@ export async function GET(req) {
   requests = await prisma.solicitacaoSuporte.findMany({
     include: {
       aluno: true,
-      Resposta: true
-    }
+      Resposta: true,
+    },
   })
-
 
   const answeredRequests = requests.filter((request) => request.Resposta)
 
