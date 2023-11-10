@@ -1,5 +1,4 @@
-export default function ({ student, school }) {
-  console.log(student)
+export default function StudentInfo({ student, school }) {
   return (
     <div>
       <h2>{student.nome}</h2>

@@ -96,7 +96,7 @@ export function PageContextProvider({ children }) {
           router.push('/')
         })
     }
-  }, [router])
+  }, [router, pathname])
 
   return (
     <PageContext.Provider

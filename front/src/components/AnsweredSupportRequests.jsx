@@ -34,7 +34,10 @@ export default async function AnsweredSupportRequests({ coordinator }) {
             const formattedDate = answerDate.toLocaleDateString()
 
             return (
-              <Link href={`/coordenador-${coordinator}/suporte/${request.id}`}>
+              <Link
+                href={`/coordenador-${coordinator}/suporte/${request.id}`}
+                key={request.id}
+              >
                 <Card>
                   <span className="text-base">{request.aluno.nome}</span>
                   <span>

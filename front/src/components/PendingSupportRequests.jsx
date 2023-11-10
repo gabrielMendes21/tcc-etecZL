@@ -37,6 +37,7 @@ export default async function PendingSupportRequests({ coordinator }) {
 
               return (
                 <Link
+                  key={request.id}
                   href={`/coordenador-${coordinator}/suporte/${request.id}`}
                 >
                   <Card>

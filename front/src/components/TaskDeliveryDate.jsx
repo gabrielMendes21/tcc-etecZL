@@ -24,7 +24,7 @@ export default function TaskDeliveryDate() {
         setTaskDeliveryDate(new Date(response.data.dataEntrega)),
       )
       .catch((err) => console.log(err))
-  }, [])
+  }, [studentId, taskId])
 
   return (
     <span className=" text-black/60 block mb-7">

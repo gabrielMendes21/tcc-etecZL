@@ -35,7 +35,11 @@ export default function ETECCoordinatorTasksTab({ classesTasks }) {
       <div className="relative">
         {classesTasks.map((classTask) => {
           return (
-            <button className={`px-3 mt-5 ${classTask.id}`} onClick={handleTab}>
+            <button
+              className={`px-3 mt-5 ${classTask.id}`}
+              onClick={handleTab}
+              key={classTask.id}
+            >
               {classTask.nomeTurma}
             </button>
           )
@@ -60,6 +64,7 @@ export default function ETECCoordinatorTasksTab({ classesTasks }) {
 
         return (
           <div
+            key={classTask.id}
             className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${
               classTask.id
             }`}

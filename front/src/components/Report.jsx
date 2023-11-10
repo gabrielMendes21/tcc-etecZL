@@ -19,7 +19,11 @@ export default function Report({ student }) {
         <tr>
           <th className="border p-2"></th>
           {studentActivityYears.map((year) => {
-            return <th className="border p-2">{year}</th>
+            return (
+              <th key={Math.random()} className="border p-2">
+                {year}
+              </th>
+            )
           })}
         </tr>
       </thead>
@@ -28,7 +32,7 @@ export default function Report({ student }) {
           <th className="border p-2">Horas anuais</th>
           {studentActivityYears.map((year) => {
             return (
-              <td className="border p-2">
+              <td key={Math.random()} className="border p-2">
                 {hours.length > 0
                   ? (
                       hours.find((hour) => hour.ano === year) || {
@@ -44,7 +48,7 @@ export default function Report({ student }) {
           <th className="border p-2">Horas concluídas</th>
           {studentActivityYears.map((year, index) => {
             return (
-              <td className="border p-2">
+              <td key={Math.random()} className="border p-2">
                 {hours.length > 0
                   ? (
                       hours.find((hour) => hour.ano === year) || {
@@ -66,7 +70,11 @@ export default function Report({ student }) {
                 : acc
             }, 0)
 
-            return <td className="border p-2">{assignedTasks}</td>
+            return (
+              <td key={Math.random()} className="border p-2">
+                {assignedTasks}
+              </td>
+            )
           })}
         </tr>
         <tr>
@@ -79,7 +87,11 @@ export default function Report({ student }) {
                 : acc
             }, 0)
 
-            return <td className="border p-2">{completed}</td>
+            return (
+              <td key={Math.random()} className="border p-2">
+                {completed}
+              </td>
+            )
           })}
         </tr>
       </tbody>

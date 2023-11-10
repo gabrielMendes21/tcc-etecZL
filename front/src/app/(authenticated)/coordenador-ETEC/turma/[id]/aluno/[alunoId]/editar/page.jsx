@@ -28,7 +28,7 @@ export default function Editar() {
         setEmail(data.email)
         setRm(data.rm)
       })
-  }, [])
+  }, [studentId])
 
   const {
     register,

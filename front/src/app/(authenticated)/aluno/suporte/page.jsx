@@ -42,7 +42,10 @@ export default async function Suporte() {
         {pendingSupportRequests.length > 0 ? (
           pendingSupportRequests.map((supportRequest) => {
             return (
-              <Link href={`suporte/${supportRequest.id}`}>
+              <Link
+                href={`suporte/${supportRequest.id}`}
+                key={supportRequest.id}
+              >
                 <Card>
                   <span className="text-base">{supportRequest.titulo}</span>
                   <span>Aguardando resposta...</span>
@@ -66,7 +69,10 @@ export default async function Suporte() {
               .split(', ')[0]
 
             return (
-              <Link href={`suporte/${supportRequest.id}`}>
+              <Link
+                href={`suporte/${supportRequest.id}`}
+                key={supportRequest.id}
+              >
                 <Card>
                   <span className="text-base">{supportRequest.titulo}</span>
                   <span>Respondida em {answerDate}</span>

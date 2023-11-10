@@ -42,7 +42,7 @@ export default async function PendingTasks() {
       <div className="space-y-5">
         {tasks.map((task) => {
           return (
-            <Link href={`/aluno/atividades/${task.id}`}>
+            <Link href={`/aluno/atividades/${task.id}`} key={task.id}>
               <Task
                 name={task.atividade.titulo}
                 hours={task.atividade.horasAtividade}

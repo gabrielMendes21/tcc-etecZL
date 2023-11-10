@@ -27,7 +27,7 @@ export default function Relatorio() {
       .catch((e) => {
         console.log(e)
       })
-  }, [])
+  }, [classId])
 
   return (
     <div className="mt-8">

@@ -22,7 +22,10 @@ export default async function SchoolsAndClasses() {
               ) : (
                 school.Turma.map((turma) => {
                   return (
-                    <Link href={`/coordenador-IBM/turma/${turma.id}`}>
+                    <Link
+                      key={turma.id}
+                      href={`/coordenador-IBM/turma/${turma.id}`}
+                    >
                       <Card>
                         <span className="text-base">{turma.nomeTurma}</span>
                         <span>{turma.ano}</span>

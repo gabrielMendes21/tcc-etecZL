@@ -71,7 +71,11 @@ export default function NewActivityModal({ classes }) {
               Selecione uma turma
             </option>
             {classes.map((grade) => {
-              return <option value={grade.nomeTurma}>{grade.nomeTurma}</option>
+              return (
+                <option key={grade.id} value={grade.nomeTurma}>
+                  {grade.nomeTurma}
+                </option>
+              )
             })}
           </select>
 

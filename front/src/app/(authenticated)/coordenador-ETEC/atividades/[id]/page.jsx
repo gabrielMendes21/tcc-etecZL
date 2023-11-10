@@ -56,7 +56,7 @@ export default async function TaskPage({ params }) {
       ) : (
         deliveredTasks.map((task) => {
           return (
-            <Link href={`${params.id}/entregas/${task.id}`}>
+            <Link href={`${params.id}/entregas/${task.id}`} key={params.id}>
               <Card>
                 <span className="md:text-lg col-span-1/2">
                   {task.aluno.nome}
@@ -81,7 +81,7 @@ export default async function TaskPage({ params }) {
       ) : (
         notDeliveredTasks.map((task) => {
           return (
-            <Card>
+            <Card key={params.id}>
               <span className="md:text-lg">{task.aluno.nome}</span>
               <span className="text-xs">
                 {`${task.aluno.turma.nomeTurma} - ${task.aluno.turma.escola.nomeEscola}`}

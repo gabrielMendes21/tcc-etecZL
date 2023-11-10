@@ -11,7 +11,8 @@ export async function generateStaticParams() {
     }
   })
 }
-export default async function Suporte({ params }) {
+
+export default function Suporte({ params }) {
   const convertISOtoDateFormat = (string) => {
     let date = new Date(string)
     date = date.toLocaleDateString()
@@ -19,13 +20,17 @@ export default async function Suporte({ params }) {
     return date
   }
 
-  const supportRequestresponse = await api.get('/solicitacaoSuporte', {
-    params: {
-      id: Number(params.id),
-    },
-  })
+  const getSupportRequest = async () => {
+    const response = await api.get('/solicitacaoSuporte', {
+      params: {
+        id: Number(params.id),
+      },
+    })
 
-  const supportRequest = supportRequestresponse.data
+    return response.data
+  }
+
+  const supportRequest = getSupportRequest()
 
   return (
     <Main>
