@@ -49,7 +49,7 @@ export default function ClassTasksTab({ classesTasks, schoolName }) {
         {/* Nav Line */}
         <div className="absolute top-7 left-0 w-[110px] h-1 bg-highlighted transition-all"></div>
       </div>
-      {classesTasks.map((classTask, index) => {
+      {schoolTasks.map((classTask, index) => {
         let tasks = []
         classTask.Usuario.map((student) => {
           return student.Entrega.map((task) => {
@@ -65,9 +65,8 @@ export default function ClassTasksTab({ classesTasks, schoolName }) {
         return (
           <div
             key={classTask.id}
-            className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${
-              classTask.id
-            }`}
+            className={`${index === 0 ? 'static m-5' : 'invisible absolute'} ${classTask.id
+              }`}
           >
             {tasks.length === 0 ? (
               <span className="text-black/60">
