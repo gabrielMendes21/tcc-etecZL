@@ -24,7 +24,8 @@ export default async function Atividades() {
       },
     },
   })
-  console.log(classesTasks)
+
+  const schools = await prisma.escola.findMany()
 
   const response = await api.get('/turmas')
   const classes = response.data
@@ -33,7 +34,7 @@ export default async function Atividades() {
     <Main>
       <H1 title="Atividades" />
 
-      <IBMCoordinatorTasksTab classesTasks={classesTasks} />
+      <IBMCoordinatorTasksTab classesTasks={classesTasks} schools={schools} />
 
       <NewButton
         to="/coordenador-IBM/atividades/nova-atividade"
